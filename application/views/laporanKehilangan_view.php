@@ -10,7 +10,7 @@
                 <!--INI TABEL-->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Laporan Sepeda Kuning Belum Ditemukang
+                            Laporan Sepeda Kuning Belum Ditemukan
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -25,15 +25,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                        foreach ($daftarKehilanganSpekun->result_array() as $row) { ?>
-                                            <tr class="odd gradeX">
-                                                <td><?php echo $row['No_Spekun']; ?></td>
-                                                <td><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun']; ?></td>
-                                                <td><?php echo "Belum Ditemukan"; ?></td>
-                                                <td><?php echo "Belum Kembali"; ?></td>   
-				           </tr>
-                                    <?php }?>                                    
+                                        <?php
+                                            foreach ($daftarKehilanganSpekun->result_array() as $row) { ?>
+                                                <tr class="odd gradeX">
+                                                    <td class="center"><?php echo $row['No_Spekun']; ?></td>
+													<td><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun']; ?></td>
+                                                    <td class="center"><?php echo $row['Tanggal Ketemu']; ?></td>
+                                                    <td class="center"><?php echo $row['Status']; ?></td>
+                                                </tr>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>

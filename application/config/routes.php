@@ -37,6 +37,7 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+
 $route['laporan/kerusakan']='laporan/Kerusakan';
 $route['laporan/kehilangan']='laporan/kehilangan';
 $route['penugasan/tambah'] = 'penugasan/tambah_penjaga';

@@ -39,13 +39,13 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Laporan <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo site_url('laporan'); ?>" class="<?php if ($page_loc == 'Laporan Peminjaman') echo 'active'; ?>">Peminjaman</a>
+                                    <a href="<?php echo site_url('laporan/peminjaman'); ?>" class="<?php if ($page_loc == 'Peminjaman') echo 'active'; ?>">Peminjaman</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('laporan/kerusakan'); ?>" class="<?php if ($page_loc == 'Laporan Kerusakan') echo 'active'; ?>">Kerusakan</a>
+                                    <a href="<?php echo site_url('laporan/kerusakan'); ?>" class="<?php if ($page_loc == 'Kerusakan') echo 'active'; ?>">Kerusakan</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('laporan/kehilangan'); ?>" class="<?php if ($page_loc == 'Laporan Kehilangan') echo 'active'; ?>">Kehilangan</a>
+                                    <a href="<?php echo site_url('laporan/kehilangan'); ?>" class="<?php if ($page_loc == 'Kehilangan') echo 'active'; ?>">Kehilangan</a>
                                 </li>
                             </ul>
 							

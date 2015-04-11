@@ -2,11 +2,6 @@
 class Kerusakan_Spekun_Model extends CI_Model 
 {
 	public $table = 'KERUSAKAN_SPEKUN';
-
-	 public function getAllKerusakanSpekun()
-                {
-                        return $this->db->get($this->table);
-                }
 	
     public function getCountSpekunRusak()
 	{

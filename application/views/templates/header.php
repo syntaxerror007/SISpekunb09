@@ -12,19 +12,19 @@
     <title>SI Spekun</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo site_url('./bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="<?php echo site_url('./bower_components/metisMenu/dist/metisMenu.min.css');?>" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <link href="<?php echo site_url('./dist/css/timeline.css');?>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?php echo site_url('./dist/css/sb-admin-2.css');?>" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="<?php echo site_url('./bower_components/morrisjs/morris.css');?>" rel="stylesheet">
 	
 	<!-- DataTables CSS 
     <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet"> -->
 
     <!-- Custom Fonts -->
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo site_url('./bower_components/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
