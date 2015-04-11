@@ -16,7 +16,7 @@
 		}
 
 		// getDaftarPeminjamanUsingDate (Date) : List<Peminjaman>
-		public function get_daftar_peminjaman_using_date($Tanggal, $Bulan, $Tahun)
+		public function getDaftarPeminjamanUsingDate($Tanggal, $Bulan, $Tahun)
 		{
 			$this->db->where('Tanggal',$Tanggal);
 			$this->db->where('Bulan',$Bulan);
@@ -24,7 +24,7 @@
 			return $this->db->get($this->table);
 		}
 		
-		public function get_all_peminjaman_from_shelter($Lokasi_Peminjaman, $Lokasi_Kembali)
+		public function getAllPeminjamUsingShelter($Lokasi_Peminjaman, $Lokasi_Kembali)
 		{
 			$this->db->where('Lokasi_Peminjaman',$Lokasi_Peminjaman);
 			$this->db->where('Lokasi_Kembali',$Lokasi_Kembali);
@@ -37,7 +37,7 @@
 			return $this->db->get($this->table);
 		}
 		
-		public function get_all_pengembalian_from_shelter_using_date($Tanggal, $Bulan, $Tahun, $Shelter)
+		public function getAllPengembalianFromShelterUsingDate($Tanggal, $Bulan, $Tahun, $Shelter)
 		{
 			$this->db->where('Tanggal',$Tanggal);
 			$this->db->where('Bulan',$Bulan);
@@ -46,7 +46,7 @@
 			return $this->db->get($this->table);
 		}
 		
-		public function get_all_peminjaman_from_shelter_using_date($Tanggal, $Bulan, $Tahun, $Shelter)
+		public function getAllPeminjamanFromShelterUsingDate($Tanggal, $Bulan, $Tahun, $Shelter)
 		{
 			$this->db->where('Tanggal',$Tanggal);
 			$this->db->where('Bulan',$Bulan);
@@ -63,7 +63,7 @@
 
 		public function getCountPeminjamanUsingDate($Tanggal, $Bulan, $Tahun)
 		{
-			$result = $this->get_daftar_peminjaman_using_date($Tanggal, $Bulan, $Tahun);
+			$result = $this->getDaftarPeminjamanUsingDate($Tanggal, $Bulan, $Tahun);
 			return $result->num_rows();
 		}
 		public function getCountPeminjamanUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
@@ -92,13 +92,13 @@
 			$totalHari = $this->db->query($query)->num_rows();
 			return round($totalPeminjaman/$totalHari);
 		}
-		public function ubah_status_spekun($No_Spekun, $Status, $Tanggal, $Bulan, $Tahun)
+		public function ubahStatusSpekun($No_Spekun, $Status, $Tanggal, $Bulan, $Tahun)
 		{
 			$query = "update PEMINJAMAN set Status = ".$Status." where Tanggal = '".$Tanggal."' and Bulan = '".$Bulan."' and Tahun = '".$Tahun."'";
 			return $this->db->query($query);
 		}
 		
-		public function get_nomor_spekun_using_npm($NPM_Mahasiswa)
+		public function getNomorSpekunUsingNPM($NPM_Mahasiswa)
 		{
 			$this->db->select('No_Spekun');
 			$this->db->where('NPM_Mahasiswa',$NPM_Mahasiswa);

@@ -32,15 +32,42 @@
 			$this->load->view('templates/footer');
 		}
         
-        public function tambah_penjaga($ID_Shelter, $ID_Penjaga, $Tanggal, $Bulan, $Tahun,$No_Device)
+		public function doInsert()
 		{
-            $data['TambahPenjagaShelter'] = $this->peminjaman_model-> createNewPenugasan($ID_Shelter, $ID_Penjaga, $Tanggal, $Bulan, $Tahun,$No_Device);
+			$nama = $this->input->post("NamaPenjaga");
+			$noKTP = $this->input->post("NoKTP");
+			$noTelp = $this->input->post("NoTelp");
+			$Alamat = $this->input->post("Alamat");
+			$Password = $this->input->post("Password");
+			$Username = $this->input->post("Username");
+			$result = $this->penjaga_shelter_model->createNewPenjagaShelter($nama,$noKTP,$noTelp,$Alamat,$Username, $Password);
+			if ($result)
+			{
+				$data['page_loc'] = "Tambah Penjaga";
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation',$data);
+				$this->load->view('penugasanTambahPenjaga_view',$data);
+				$this->load->view('templates/footer');
+			}
+		}
+		
+        public function tambah_penjaga()
+		{	
             $data['page_loc'] = "Tambah Penjaga";
-            
-			$this->load->view('templates/header');
-			$this->load->view('templates/navigation',$data);
-			$this->load->view('penugasanTambahPenjaga_view',$data);
-			$this->load->view('templates/footer');
+            $this->form_validation->set_rules('NamaPenjaga', 'Nama Penjaga', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('NoKTP', 'No KTP', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('NoTelp', 'No Telp', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('Alamat', 'Alamat', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('Username', 'Username', 'trim|required|xss_clean');
+			
+			if ($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation',$data);
+				$this->load->view('penugasanTambahPenjaga_view',$data);
+				$this->load->view('templates/footer');
+			}
 		}
 	}
 ?>

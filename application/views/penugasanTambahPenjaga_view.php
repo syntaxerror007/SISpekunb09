@@ -1,81 +1,3 @@
-
-<?php
-	//INI MASIH COPAS DARI FORMULIR VIEW
-		// define variables and set to empty values
-		$nameErr = $fakultaslErr = $tanggalErr = $jumlahErr = $jamAwalErr = $jamAkhirErr = $keteranganErr = "";
-		$name = $fakultas = $tanggal = $jumlah = $jamAwal = $jamAkhir = $keterangan = "";
-		$validName = $validTanggal = $validJumlah = $validKeterangan = "";
-		$sukses = "";
-
-		if ($_SERVER["REQUEST_METHOD"] == "POST"){
-			
-			if (empty($_POST["name"])){
-				$nameErr = "Nama harus diisi"; 
-				$validName = "";
-			}
-			else{
-			
-				$name = test_input($_POST["name"]);
-				// check if name only contains letters and whitespace
-		
-				if (!preg_match("/^[a-zA-Z ]*$/",$name)){
-
-					$nameErr = "Nama hanya boleh huruf atau spasi";
-					$validName = "gagal";
-				}
-				else{
-					$validName = "sukses";
-				}
-			
-			}
-			
-			if (empty($_POST["tanggal"])){
-				$tanggal = "";
-			}
-			else{
-				$tanggal = test_input($_POST["tangal"]);
-			}
-			
-			if (empty($_POST["jumlah"])){
-				$jumlah = "";
-			}
-			else{
-				$jumlah = test_input($_POST["jumlah"]);
-			}
-			
-			if (empty($_POST["keterangan"])){
-				$keterangan = "";
-			}
-			else{
-				$keterangan = test_input($_POST["keterangan"]);
-			}
-			// Submit to database
-	
-			if ($validName == "sukses") {
-				$sukses = "Formulir sudah disimpan";
-				$sendQuery = "insert into komentar values (" 
-							. "'" . $name . "', "
-							. "'" . $fakultas . "', "
-							. "'" . $tanggal . "', 0"
-							. "'" . $jumlah . "', 0"
-							. "'" . $jamAwal . "', 0"
-							. "'" . $jamAkhir . "', 0"
-							. "'" . $keterangan . "', 0"
-							. ")";
-				$this->db->query($sendQuery);
-				header('Location: comment');
-			}
-
-		}
-		function test_input($data){
-			echo $data;
-			$data = trim($data);
-			$data = stripslashes($data);
-			$data = htmlspecialchars($data);
-			return $data;
-		}		
-?>
-
 <!-- Page Content -->
         <div id="page-wrapper">
 			<div class="row">
@@ -84,7 +6,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-		
+			
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -95,44 +17,85 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-8">
-                                    <form role="form">
-                                        <div class="form-group">
-                                            <label>Nama Peminjaman</label>
-                                            <input class="form-control" placeholder="Nama Peminjam">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Fakultas</label>
-                                            <input class="form-control" placeholder="Fakultas">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tanggal</label>
-                                            <input class="form-control" placeholder="DD-MM-YYYY">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jumlah Spekun</label>
-                                             <input class="form-control" placeholder="Jumlah Spekun">
-                                        </div>
-										<div class="form-group">
-                                            <label>Jam Awal</label>
-                                             <input class="form-control" placeholder="Jam Awal">
-                                        </div>
-										<div class="form-group">
-                                            <label>Jam Akhir</label>
-                                             <input class="form-control" placeholder="Jam Akhir">
-                                        </div>
+									<?php echo validation_errors(); ?>
+                                    <?php
+										echo form_open('penugasan/doInsert');
+										echo "<div class='form-group'>";
+										echo "<label>Nama Penjaga</label>";
+										$data = array(
+													  'name'        => 'NamaPenjaga',
+													  'id'          => 'NamaPenjaga',
+													  'placeholder' => 'Nama Penjaga',
+													  'class'		=> 'form-control'
+													);
 										
-										<div class="form-group">
-                                            <label>Keterangan</label>
-                                            <textarea class="form-control" rows="3"></textarea>
-                                        </div>
+										echo form_input($data);
+										echo "</div>";
 										
-									   <button type="submit" class="btn btn-default">Simpan</button>
-                                       
-                                    </form>
+										echo "<div class='form-group'>";
+										echo "<label>Username</label>";
+										$data = array(
+													  'name'        => 'Username',
+													  'id'          => 'Username',
+													  'placeholder' => 'Username',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										
+										echo "<div class='form-group'>";
+										echo "<label>Password</label>";
+										$data = array(
+													  'name'        => 'Password',
+													  'id'          => 'Password',
+													  'placeholder' => 'Password',
+													  'class'		=> 'form-control',
+													  'type'		=> 'password'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										
+										echo "<div class='form-group'>";
+										echo "<label>Nomor Tanda Pengenal</label>";
+										$data = array(
+													  'name'        => 'NoKTP',
+													  'id'          => 'NoKTP',
+													  'placeholder' => 'Nomor Tanda Pengenal',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										echo "<div class='form-group'>";
+										echo "<label>Nomor Telepon</label>";
+										$data = array(
+													  'name'        => 'NoTelp',
+													  'id'          => 'NoTelp',
+													  'placeholder' => 'Nomor Telepon',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										echo "<div class='form-group'>";
+										echo "<label>Alamat</label>";
+										$data = array(
+													  'name'        => 'Alamat',
+													  'id'          => 'Alamat',
+													  'placeholder' => 'Alamat',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										
+										echo form_submit('TambahPenjaga', 'Tambah Penjaga',"class='btn btn-default'");
+										echo form_close();
+										
+									?>
                                 </div>
-								
-                                
-								
                             </div>
                             <!-- /.row (nested) -->
                         </div>

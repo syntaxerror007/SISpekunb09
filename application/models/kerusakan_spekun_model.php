@@ -11,6 +11,11 @@ class Kerusakan_Spekun_Model extends CI_Model
 		return $query->num_rows();
 
 	}
+	
+	public function getAllKerusakanSpekun()
+	{
+		return $this->db->get($this->table);
+	}
 	// + getTotalSpekunRusakUsingDate(Date) : int
 	public function getTotalSpekunRusakUsingDate($Tanggal, $Bulan, $Tahun)
 	{
