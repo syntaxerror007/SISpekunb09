@@ -14,11 +14,11 @@ class administrator_Model extends CI_Model
         }
 
         public function login($username, $password) {
-                $this->db->where('username', $username);
-                $this->db->where('password', $password);
-                $this->db->limit(1);
-                $query = $this->db->get($this->table);
-		return ($query->num_rows() == 1) ? $query->result() : false;
+			$this->db->where('username', $username);
+			$this->db->where('password', $password);
+			$this->db->limit(1);
+			$query = $this->db->get($this->table);
+			return ($query->num_rows() == 1) ? $query->result() : false;
         }
 
         public function get_account($username)

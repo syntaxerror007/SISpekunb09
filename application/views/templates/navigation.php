@@ -13,7 +13,7 @@
 
     <ul class="nav navbar-top-links navbar-right">
         <li>
-           <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+           <a href="<?php echo site_url('auth/logout'); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
        </li>
    </ul>
 
