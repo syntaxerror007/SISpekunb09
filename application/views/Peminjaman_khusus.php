@@ -1,49 +1,112 @@
-<html>
-<head>
-</head>
-    <body>
-    
-    <div id="menu">
-    <? $this->load->view('books_menu'); ?>
-    </div>
+<!-- Page Content -->
+        <div id="page-wrapper">
+			<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Formulir Peminjaman</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+			
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Formulir Peminjaman
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+									<?php echo validation_errors(); ?>
+                                    <?php
+										echo form_open('formulir/doInsert');
+										echo "<div class='form-group'>";
+										echo "<label>Nama Kegiatan</label>";
+										$data = array(
+													  'name'        => 'NamaKegiatan',
+													  'id'          => 'NamaKegiatan',
+													  'placeholder' => 'Nama Kegiatan',
+													  'class'		=> 'form-control'
+													);
+										
+										echo form_input($data);
+										echo "</div>";
+										
+										echo "<div class='form-group'>";
+										echo "<label>Organisasi</label>";
+										$data = array(
+													  'name'        => 'Organisasi',
+													  'id'          => 'Organisasi',
+													  'placeholder' => 'Organisasi',
+													  'class'		=> 'form-control'
+													);
 
-        <? echo form_open('books/input'); ?>
-        <? echo $Nama; ?>: 
-        <? echo form_input('Nama'); ?>
-        </br>
-        <? echo $Organisasi; ?>: 
-        <? echo form_input('Organisasi'); ?>
-        </br>
-        <? echo $Jumlah_Spekun; ?>: 
-        <? echo form_input('Jumlah_Spekun'); ?>
-        </br>
-        <? echo $Jam_Awal; ?>: 
-        <? echo form_input('Jam_Awal'); ?>
-        </br>
-        <? echo $Jam_Akhir; ?>: 
-        <? echo form_input('Jam_Akhir'); ?>
-        </br>
-        <? echo $Tanggal; ?>: 
-        <? echo form_dropdown('Tanggal', $Tanggal); ?>
-        </br>
-         </br>
-        <? echo $Bulan; ?>: 
-        <? echo form_dropdown('Bulan', $Bulan); ?>
-        </br>
-         </br>
-        <? echo $Tahun; ?>: 
-        <? echo form_dropdown('Tahun', $Tahun); ?>
-        </br>
-        </br>
-        <? echo $Keterangan; ?>: 
-        <? echo form_textarea('Keterangan'); ?>
-        </br>
-        </br>
-        <? echo $ID_Admin; ?>: 
-        <? echo form_input('ID_Admin'); ?>
-        </br>
-        <? echo form_submit('mysubmit','Submit!');  ?>
-        <? echo form_close(); ?>
+										echo form_input($data);
+										echo "</div>";
+										
+										echo "<div class='form-group'>";
+										echo "<label>Jumlah Spekun</label>";
+										$data = array(
+													  'name'        => 'jumlah',
+													  'id'          => 'jumlah',
+													  'placeholder' => 'Jumlah Spekun',
+													  'class'		=> 'form-control',
+													  'type'		=> 'number'
+													);
 
-    </body>
-</html>
+										echo form_input($data);
+										echo "</div>";
+										
+										echo "<div class='form-group'>";
+										echo "<label>Jam Awal(HH:mm)</label>";
+										$data = array(
+													  'name'        => 'JamAwal',
+													  'id'          => 'JamAwal',
+													  'placeholder' => 'Jam Awal',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										echo "<div class='form-group'>";
+										echo "<label>Jam Akhir(HH:mm)</label>";
+										$data = array(
+													  'name'        => 'JamAkhir',
+													  'id'          => 'JamAkhir',
+													  'placeholder' => 'Jam Akhir',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										echo "<div class='form-group'>";
+										echo "<label>Keterangan</label>";
+										$data = array(
+													  'name'        => 'Keterangan',
+													  'id'          => 'Keterangan',
+													  'placeholder' => 'Keterangan',
+													  'class'		=> 'form-control'
+													);
+
+										echo form_input($data);
+										echo "</div>";
+										
+										echo form_submit('Submit', 'Submit',"class='btn btn-default'");
+										echo form_close();
+										
+									?>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+            </div>
+            
+            
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->

@@ -37,6 +37,8 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+$route['formulir/doInsert'] = 'PeminjamanKhusus_controller/doInsert';
+$route['formulir'] = 'PeminjamanKhusus_controller';
 $route['penugasan/profile/(:any)'] = 'penugasan/getProfilePetugas/$1';
 $route['laporan/kerusakan']='laporan/Kerusakan';
 $route['laporan/kehilangan']='laporan/kehilangan';
