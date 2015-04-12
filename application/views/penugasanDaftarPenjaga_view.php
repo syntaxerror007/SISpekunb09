@@ -45,7 +45,7 @@
                                                 <?php $i++; ?> 
 												<tr class="odd gradeX">
                                                     <td><?php echo $i; ?></td>
-                                                    <td><a href="profil_petugas.html"><?php echo $row['Nama']; ?></a></td>
+                                                    <td><a href="<?php echo site_url("penugasan/profile/".$row['ID_Penjaga']); ?>"><?php echo $row['Nama']; ?></a></td>
                                                     <td><?php echo $row['ID_Penjaga'];?></td>
                                                     <td><?php echo $row['Password'];?></td>
                                                     <td><?php echo $row['Mulai_Bekerja'];?></td>
