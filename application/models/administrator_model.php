@@ -3,7 +3,7 @@
 
 class administrator_Model extends CI_Model
 {
-        public $table = 'Administrator';
+        public $table = 'ADMINISTRATOR';
 
         public function validate($username,$password)
         {
