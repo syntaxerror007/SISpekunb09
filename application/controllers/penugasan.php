@@ -3,34 +3,46 @@
 	class Penugasan extends CI_Controller {
 		public function index()
 		{
-            $Tanggal = date("d");
-            //$TanggalAwal = 1;
-            //$BulanAwal = 1;
-            $Bulan = date("m");
-            $Tahun = date("Y");
-            $data['page_loc'] = "Shelter";
-            $data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
+			if($this->session->userdata('logged_in')){
+	            $Tanggal = date("d");
+	            //$TanggalAwal = 1;
+	            //$BulanAwal = 1;
+	            $Bulan = date("m");
+	            $Tahun = date("Y");
+	            $data['page_loc'] = "Shelter";
+	            $data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
 
-            $this->load->view('templates/header');
-            $this->load->view('templates/navigation',$data);
-			$this->load->view('penugasanShelter_view',$data);
-			$this->load->view('templates/footer');
+	            $this->load->view('templates/header');
+	            $this->load->view('templates/navigation',$data);
+				$this->load->view('penugasanShelter_view',$data);
+				$this->load->view('templates/footer');
+			}
+			else
+			{
+				redirect('auth','refresh');
+			}
 		}
 		public function daftar_penjaga()
 		{
-            $Tanggal = date("d");
-            $TanggalAwal = 1;
-            $BulanAwal = 1;
-            $Bulan = date("m");
-            $Tahun = date("Y");
-			
-            $data['daftarPenjagaShelter'] = $this->penjaga_shelter_model-> getAllPenjagaShelter();
-            $data['page_loc'] = "Daftar Penjaga";
+			if($this->session->userdata('logged_in')){
+	            $Tanggal = date("d");
+	            $TanggalAwal = 1;
+	            $BulanAwal = 1;
+	            $Bulan = date("m");
+	            $Tahun = date("Y");
+				
+	            $data['daftarPenjagaShelter'] = $this->penjaga_shelter_model-> getAllPenjagaShelter();
+	            $data['page_loc'] = "Daftar Penjaga";
 
-			$this->load->view('templates/header');
-			$this->load->view('templates/navigation',$data);
-			$this->load->view('penugasanDaftarPenjaga_view',$data);
-			$this->load->view('templates/footer');
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation',$data);
+				$this->load->view('penugasanDaftarPenjaga_view',$data);
+				$this->load->view('templates/footer');
+			}
+			else
+			{
+				redirect('auth','refresh');
+			}
 		}
         
 		public function doInsert()
@@ -54,24 +66,30 @@
 		
         public function tambah_penjaga()
 		{	
-            $data['page_loc'] = "Tambah Penjaga";
-            $this->form_validation->set_rules('NamaPenjaga', 'Nama Penjaga', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('NoKTP', 'No KTP', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('NoTelp', 'No Telp', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('Alamat', 'Alamat', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('Username', 'Username', 'trim|required|xss_clean');
-			
-			if ($this->form_validation->run() == FALSE)
-			{
-				$this->load->view('templates/header');
-				$this->load->view('templates/navigation',$data);
-				$this->load->view('penugasanTambahPenjaga_view',$data);
-				$this->load->view('templates/footer');
+			if($this->session->userdata('logged_in')){
+	            $data['page_loc'] = "Tambah Penjaga";
+	            $this->form_validation->set_rules('NamaPenjaga', 'Nama Penjaga', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('NoKTP', 'No KTP', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('NoTelp', 'No Telp', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('Alamat', 'Alamat', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
+				$this->form_validation->set_rules('Username', 'Username', 'trim|required|xss_clean');
+				
+				if ($this->form_validation->run() == FALSE)
+				{
+					$this->load->view('templates/header');
+					$this->load->view('templates/navigation',$data);
+					$this->load->view('penugasanTambahPenjaga_view',$data);
+					$this->load->view('templates/footer');
+				}
+				else
+				{
+					
+				}
 			}
 			else
 			{
-				
+				redirect('auth','refresh');
 			}
 		}
 	}
