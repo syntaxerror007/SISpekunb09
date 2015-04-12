@@ -44,19 +44,19 @@
 
 		public function getStatistikKerusakanMingguan()
 		{
-			$query = "SELECT Hari, count(*) as count FROM Kerusakan_spekun group by Hari order by Hari";
+			$query = "SELECT Hari, count(*) as count FROM KERUSAKAN_SPEKUN group by Hari order by Hari";
 			return $this->db->query($query);
 		}
 		
 		public function getStatistikKerusakanBulanan()
 		{
-			$query = "SELECT Bulan, count(*) as count FROM Kerusakan_spekun group by bulan";
+			$query = "SELECT Bulan, count(*) as count FROM KERUSAKAN_SPEKUN group by bulan";
 			return $this->db->query($query);
 		}
 		
 		public function getStatistikKerusakanTahunan()
 		{
-			$query = "SELECT Tahun, count(*) as count FROM Kerusakan_spekun group by tahun";
+			$query = "SELECT Tahun, count(*) as count FROM KERUSAKAN_SPEKUN group by tahun";
 			return $this->db->query($query);
 		}
 			
