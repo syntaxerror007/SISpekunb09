@@ -11,10 +11,11 @@
 				   'jumlah_spekun' => $jumlahSpekun,
 				   'jam_awal' => $jamAwal,
 				   'jam_akhir' => $jamAkhir,
-				   'pesan' => $pesan,
+				   'Keterangan' => $pesan,
 				   'tahun' => $tahun,
 				   'Tanggal' => $tanggal,
-				   'bulan' => $bulan
+				   'bulan' => $bulan,
+				   'ID_Admin'=>'01'
 				);
 			$this->db->insert($this->table,$data);
 		}
@@ -27,7 +28,7 @@
 				   'jumlah_spekun' => $jumlahSpekun,
 				   'jam_awal' => $jamAwal,
 				   'jam_akhir' => $jamAkhir,
-				   'pesan' => $pesan,
+				   'Keterangan' => $pesan,
 				   'tahun' => $tahun,
 				   'Tanggal' => $tanggal,
 				   'bulan' => $bulan

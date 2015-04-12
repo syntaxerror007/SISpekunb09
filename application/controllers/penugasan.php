@@ -45,6 +45,23 @@
 			}
 		}
         
+		public function getProfilePetugas($idPetugas)
+		{
+			if($this->session->userdata('logged_in')){
+				$data['page_loc'] = "Daftar Penjaga";
+				$data['profilePenjagaShelter'] = $this->penjaga_shelter_model->getPenjagaShelterFromID($idPetugas);
+				
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation',$data);
+				$this->load->view('profilePenjagaShelter_view',$data);
+				$this->load->view('templates/footer');
+			}
+			else
+			{
+				redirect('auth','refresh');
+			}
+		}
+		
 		public function doInsert()
 		{
 			$nama = $this->input->post("NamaPenjaga");

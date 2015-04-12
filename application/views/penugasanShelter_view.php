@@ -42,7 +42,7 @@
                                                 <tr class="odd gradeX">
                                                     <td><?php echo $i; ?></td>
                                                     <td><?php echo $row['NamaShelter'];?></td>
-                                                    <td><a href="profil_petugas.html"><?php echo $row['NamaPenjaga']; ?></a></td>
+                                                    <td><a href="<?php echo site_url("penugasan/profile/".$row['IDPenjaga']); ?>"><?php echo $row['NamaPenjaga']; ?></a></td>
                                                     <td><?php echo $row['No_Device'];?></td>
                                                 </tr>
                                         <?php }?>

@@ -73,8 +73,7 @@
 		$idShelter = mysqli_real_escape_string($con, stripslashes($idShelter));
 		$noDevice = mysqli_real_escape_string($con, stripslashes($noDevice));
 		
-		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$Tanggal','$Bulan','$Tahun','$noDevice')");
-		
+		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
 		return array('status'=> $status);
 	}
 	

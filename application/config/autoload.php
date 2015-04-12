@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('kerusakan_spekun_model', 'peminjaman_model', 'penugasan_penjaga_shelter_model', 'penjaga_shelter_model', 'administrator_model');
+$autoload['model'] = array('kerusakan_spekun_model', 'peminjaman_model', 'penugasan_penjaga_shelter_model', 'penjaga_shelter_model', 'administrator_model','peminjaman_khusus_model');
 
 
 /* End of file autoload.php */
