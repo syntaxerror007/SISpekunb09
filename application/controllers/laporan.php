@@ -31,6 +31,7 @@
 			$this->load->view('laporanKerusakan_view', $data);
 			$this->load->view('templates/footer');
 		}
+		
 		public function kehilangan()
 		{
 			$Tanggal = date("d");
@@ -46,7 +47,7 @@
                         $this->load->view('laporanKehilangan_view', $data);
                         $this->load->view('templates/footer');
 		}
-		
+		/*	
 		public function peminjaman()
 		{
 			$this->load->view('templates/header');
@@ -54,5 +55,6 @@
 			$this->load->view('laporanPeminjaman_view');
 			$this->load->view('templates/footer');
 		}
+		*/	
 	}
 ?>
