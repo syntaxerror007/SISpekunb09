@@ -48,7 +48,7 @@
 				{
 					foreach ($statistikMingguan->result_array() as $row)
 					{
-						if ($i == 6)
+						if ($i == $statistikMingguan->num_rows()-1)
 							echo '['.$i.',hari['.$row['Hari'].']]';
 						else
 							echo '['.$i.',hari['.$row['Hari'].']],';
