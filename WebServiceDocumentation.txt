@@ -1,0 +1,52 @@
+Semuanya pake method post
+
+default return value : key json status yg value-nya 1/0 (coba sendiri kalo mau)
+
+Proses Peminjaman
+	Butuh parameter :
+		1. command : isinya wajib pinjam
+		2. namaShelter
+		3. noSpekun
+		4. idPeminjam
+		5. tipePeminjam (isinya antara Mahasiswa atau Non-Mahasiswa)
+		6. namaPeminjam
+		7. fakultasPeminjam (kalau tipenya Mahasiswa, kalau tidak terserah mau diisi ato enggak)
+	return value = default
+proses pengembalian
+	
+	Untuk pengambilan nomor spekun peminjam
+		1. command : isinya wajib getPeminjaman
+		2. idPeminjam
+		3. tipePeminjam
+	return value = key json No_Spekun yang valuenya nomor spekun yang dipinjam
+	
+	Setelah itu lakukan proses pengembalian setelah divalidasi
+	menggunakan fungsi doPengembalian
+	Butuh Parameter :
+		1. command : isinya wajib kembali
+		2. namaShelterKembali
+		3. idPeminjam
+		4. tipePeminjam
+	return value = default
+
+Proses login
+	Butuh parameter :
+		1. command : isinya wajib CheckLogin
+		2. username
+		3. password
+	return value = default
+
+Laporan Kerusakan
+	Butuh parameter :
+		1. command : isinywa wajib laporanRusak
+		2. noSpekun
+		3. detail
+	return value = default
+
+Tukar Sepeda
+	Butuh parameter :
+		1. command : isinya wajib tukar
+		2. noSpekunAkhir
+		3. idPeminjam
+		4. tipePeminjam
+	return value = default
