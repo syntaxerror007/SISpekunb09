@@ -5,7 +5,7 @@
 	header("Access-Control-Allow-Credentials : true");
 	
 	$dbuser = 'root';
-	$dbpass = '';
+	$dbpass = 'sispekunb09';
 	$dbname = 'SISpekun';
 
 	$con = mysqli_connect('localhost', $dbuser, $dbpass, $dbname) or die('Terjadi masalah dalam koneksi ke database');
