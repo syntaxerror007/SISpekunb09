@@ -256,7 +256,7 @@
 			{
 				$usernamePenjaga = sanitize($_POST['username']);
 				$idShelterBertugas = sanitize($_POST['idShelter']);
-				$noDevice = sanitize($_POST['noDevice'])
+				$noDevice = sanitize($_POST['noDevice']);
 				$value = InsertLokasi($usernamePenjaga,$idShelterBertugas,$noDevice);
 			}
 		}
