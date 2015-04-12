@@ -8,8 +8,8 @@
             //$BulanAwal = 1;
             $Bulan = date("m");
             $Tahun = date("Y");
-            $data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
             $data['page_loc'] = "Shelter";
+            $data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
 
             $this->load->view('templates/header');
             $this->load->view('templates/navigation',$data);
@@ -23,6 +23,7 @@
             $BulanAwal = 1;
             $Bulan = date("m");
             $Tahun = date("Y");
+			
             $data['daftarPenjagaShelter'] = $this->penjaga_shelter_model-> getAllPenjagaShelter();
             $data['page_loc'] = "Daftar Penjaga";
 
@@ -43,11 +44,11 @@
 			$result = $this->penjaga_shelter_model->createNewPenjagaShelter($nama,$noKTP,$noTelp,$Alamat,$Username, $Password);
 			if ($result)
 			{
-				$data['page_loc'] = "Tambah Penjaga";
-				$this->load->view('templates/header');
-				$this->load->view('templates/navigation',$data);
-				$this->load->view('penugasanTambahPenjaga_view',$data);
-				$this->load->view('templates/footer');
+				redirect('penugasan/tambah');
+			}
+			else
+			{
+				$this->form_validation->set_message('Test');
 			}
 		}
 		
@@ -67,6 +68,10 @@
 				$this->load->view('templates/navigation',$data);
 				$this->load->view('penugasanTambahPenjaga_view',$data);
 				$this->load->view('templates/footer');
+			}
+			else
+			{
+				
 			}
 		}
 	}

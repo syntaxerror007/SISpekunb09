@@ -1,9 +1,3 @@
-<?php
-    echo "Spekun peminjaman hari ini : ".$totalPeminjamanSpekunHariIni."<br>";
-    echo "Spekun peminjaman bulan ini : ".$totalPeminjamanSpekunBulanIni."<br>";
-    echo "Spekun peminjaman tahun ini : ".$totalPeminjamanSpekunTahunIni."<br>";
-?>
-
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -26,7 +20,6 @@
                     </div>
                     <!-- /.panel -->
             </div>
-			
 			<div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">

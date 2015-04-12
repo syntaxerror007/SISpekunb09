@@ -66,12 +66,31 @@
 			$result = $this->getDaftarPeminjamanUsingDate($Tanggal, $Bulan, $Tahun);
 			return $result->num_rows();
 		}
+		
 		public function getCountPeminjamanUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
 		{
 			$result = $this->getDaftarPeminjamanUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
 			return $result->num_rows();
 		}
 
+		public function getStatistikPeminjamanMingguan()
+		{
+			$query = "SELECT Hari, count(*) as count FROM PEMINJAMAN group by Hari order by Hari";
+			return $this->db->query($query);
+		}
+		
+		public function getStatistikPeminjamanBulanan()
+		{
+			$query = "SELECT Bulan, count(*) as count FROM PEMINJAMAN group by bulan";
+			return $this->db->query($query);
+		}
+		
+		public function getStatistikPeminjamanTahunan()
+		{
+			$query = "SELECT Tahun, count(*) as count FROM PEMINJAMAN group by tahun";
+			return $this->db->query($query);
+		}
+		
 		// + getCountSpekunDipinjam() : int
 		public function getCountSpekunDipinjam()
 		{
@@ -131,6 +150,12 @@
 		{
 			$this->db->where('NPM_Mahasiswa',$NoKTM);
 			return $this->db->get($this->table);
+		}
+		
+		public function getCountPeminjamanByShelter()
+		{
+			$query = "SELECT Lokasi_Peminjaman, count(*) as count FROM PEMINJAMAN group by Lokasi_Peminjaman";
+			return $this->db->query($query);
 		}
 	}
 ?>

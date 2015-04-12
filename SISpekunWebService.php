@@ -17,6 +17,7 @@
 		$noSpekun = mysqli_real_escape_string($con, stripslashes($noSpekun));
 		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
 		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
+		$hari = date("l");
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
@@ -24,12 +25,12 @@
 		$retval;
 		if ($tipePeminjam == "Mahasiswa")
 		{
-			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,NPM_Mahasiswa) values ('$tanggal', '$bulan', '$tahun', '$jam_Peminjaman', '$namaShelterPinjam','$noSpekun','$idPeminjam')");
+			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Hari, Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,NPM_Mahasiswa) values ('$hari','$tanggal', '$bulan', '$tahun', '$jam_Peminjaman', '$namaShelterPinjam','$noSpekun','$idPeminjam')");
 			$retval = array('status' => $status);
 		}
 		else
 		{
-			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,ID_Non_Mahasiswa) values ('$tanggal', '$bulan', '$tahun', '$jam_Peminjaman','$namaShelterPinjam','$noSpekun','$idPeminjam')");
+			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Hari, Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,ID_Non_Mahasiswa) values ('$hari','$tanggal', '$bulan', '$tahun', '$jam_Peminjaman','$namaShelterPinjam','$noSpekun','$idPeminjam')");
 			
 			$retval = array('status' => $status);
 		}
@@ -77,7 +78,7 @@
 		$retval = array('status'=>$query);
 	}
 	
-	function getPeminjaman($idPeminjam,$tipePeminjam)
+	function POSTPeminjaman($idPeminjam,$tipePeminjam)
 	{
 		global $con;
 		
@@ -102,11 +103,12 @@
 		global $con;
 		$noSpekun = mysqli_real_escape_string($con, stripslashes($noSpekun));
 		$detail = mysqli_real_escape_string($con, stripslashes($detail));
+		$hari = date("l");
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
-		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$detail', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
+		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$detail', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
 	}
 	
 	function CheckLogin($username,$password) 
@@ -158,7 +160,7 @@
         'kembali',
 		'CheckLogin',
 		'laporanRusak',
-		'getPeminjaman',
+		'POSTPeminjaman',
 		'tukar'
         );
 
@@ -173,19 +175,19 @@
 		return $input;
 	}
 	$value = "";
-	if ($_SERVER['REQUEST_METHOD'] == 'GET') {	
-		if (isset($_GET['command']) && in_array($_GET['command'], $possible_url)) {			
-			$command = sanitize($_GET['command']);
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {	
+		if (isset($_POST['command']) && in_array($_POST['command'], $possible_url)) {			
+			$command = sanitize($_POST['command']);
 			if ($command == 'pinjam')
 			{
-				$namaShelterPinjam = sanitize($_GET['idShelter']);
-				$noSpekun = sanitize($_GET['noSpekun']);
-				$idPeminjam = sanitize($_GET['idPeminjam']);
-				$tipePeminjam = sanitize($_GET['tipePeminjam']);
-				$namaPeminjam = sanitize($_GET['namaPeminjam']);
+				$namaShelterPinjam = sanitize($_POST['idShelter']);
+				$noSpekun = sanitize($_POST['noSpekun']);
+				$idPeminjam = sanitize($_POST['idPeminjam']);
+				$tipePeminjam = sanitize($_POST['tipePeminjam']);
+				$namaPeminjam = sanitize($_POST['namaPeminjam']);
 				if ($tipePeminjam == "Mahasiswa")
 				{
-					$fakultasPeminjam = sanitize($_GET['fakultas']);
+					$fakultasPeminjam = sanitize($_POST['fakultas']);
 					InsertNewPeminjam($idPeminjam, $tipePeminjam, $namaPeminjam, $fakultasPeminjam);
 				}
 				else
@@ -197,38 +199,38 @@
 
 			else if ($command == 'kembali')
 			{
-				$namaShelterKembali = sanitize($_GET['namaShelterKembali']);
-				$idPeminjam = sanitize($_GET['idPeminjam']);
-				$tipePeminjam = sanitize($_GET['tipePeminjam']);
+				$namaShelterKembali = sanitize($_POST['namaShelterKembali']);
+				$idPeminjam = sanitize($_POST['idPeminjam']);
+				$tipePeminjam = sanitize($_POST['tipePeminjam']);
 				
 				$value = DoPengembalian($namaShelterKembali, $idPeminjam, $tipePeminjam);
 			}
 			else if ($command == 'CheckLogin')
 			{
-				$username = sanitize($_GET['username']);
-				$password = sanitize($_GET['password']);
+				$username = sanitize($_POST['username']);
+				$password = sanitize($_POST['password']);
 				$value = CheckLogin($username,$password);
 			}
 			else if ($command == 'laporanRusak')
 			{
-				$noSpekun = sanitize($_GET['noSpekun']);
-				$detail = sanitize($_GET['detail']);
+				$noSpekun = sanitize($_POST['noSpekun']);
+				$detail = sanitize($_POST['detail']);
 				
 				$value = LaporanRusak($noSpekun, $detail);
 			}
-			else if ($command == "getPeminjaman")
+			else if ($command == "POSTPeminjaman")
 			{
-				$idPeminjam = sanitize($_GET['idPeminjam']);
-				$tipePeminjam = sanitize($_GET['tipePeminjam']);
+				$idPeminjam = sanitize($_POST['idPeminjam']);
+				$tipePeminjam = sanitize($_POST['tipePeminjam']);
 				
-				$value = getPeminjaman($idPeminjam,$tipePeminjam);
+				$value = POSTPeminjaman($idPeminjam,$tipePeminjam);
 			}
 			else if ($command == 'tukar')
 			{
-				$noSpekunAwal = sanitize($_GET['noSpekunAwal']);
-				$noSpekunAkhir = sanitize($_GET['noSpekunAkhir']);
-				$idPeminjam = sanitize($_GET['idPeminjam']);
-				$tipePeminjam = sanitize($_GET['tipePeminjam']);
+				$noSpekunAwal = sanitize($_POST['noSpekunAwal']);
+				$noSpekunAkhir = sanitize($_POST['noSpekunAkhir']);
+				$idPeminjam = sanitize($_POST['idPeminjam']);
+				$tipePeminjam = sanitize($_POST['tipePeminjam']);
 				
 				doTukar($idPeminjam, $tipePeminjam, $noSpekunAwal, $noSpekunAkhir);
 			}
