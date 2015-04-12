@@ -61,6 +61,23 @@
 		return $retval;
 	}
 
+	function InsertLokasi($username, $idShelter,$noDevice)
+	{
+		global $con;
+		
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+
+		$username = mysqli_real_escape_string($con, stripslashes($username));
+		$idShelter = mysqli_real_escape_string($con, stripslashes($idShelter));
+		$noDevice = mysqli_real_escape_string($con, stripslashes($noDevice));
+		
+		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$Tanggal','$Bulan','$Tahun','$noDevice')");
+		
+		return array('status'=> $status);
+	}
+	
 	function DoPengembalian($namaShelterKembali, $idPeminjam, $tipePeminjam)
 	{
 		$namaShelterKembali = mysqli_real_escape_string($con, stripslashes($namaShelterKembali));
@@ -161,7 +178,8 @@
 		'CheckLogin',
 		'laporanRusak',
 		'POSTPeminjaman',
-		'tukar'
+		'tukar',
+		'insertLokasi'
         );
 
 	function sanitize($input) {
@@ -232,7 +250,14 @@
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
 				
-				doTukar($idPeminjam, $tipePeminjam, $noSpekunAwal, $noSpekunAkhir);
+				$value = doTukar($idPeminjam, $tipePeminjam, $noSpekunAwal, $noSpekunAkhir);
+			}
+			else if ($command == 'insertLokasi')
+			{
+				$usernamePenjaga = sanitize($_POST['username']);
+				$idShelterBertugas = sanitize($_POST['idShelter']);
+				$noDevice = sanitize($_POST['noDevice'])
+				$value = InsertLokasi($usernamePenjaga,$idShelterBertugas,$noDevice);
 			}
 		}
 	}

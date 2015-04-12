@@ -5,12 +5,12 @@
 		{
 			if($this->session->userdata('logged_in')){
 				$Tanggal = date("d");
-	            		$TanggalAwal = 1;
-	            		$BulanAwal = 1;
-	            		$Bulan = date("m");
-	            		$Tahun = date("Y");
-	            		$data['daftarPeminjaman'] = $this->peminjaman_model-> getDaftarSpekunKembali();
-	            		$data['page_loc'] = "Laporan Peminjaman";
+				$TanggalAwal = 1;
+				$BulanAwal = 1;
+				$Bulan = date("m");
+				$Tahun = date("Y");
+				$data['daftarPeminjaman'] = $this->peminjaman_model-> getDaftarSpekunKembali();
+				$data['page_loc'] = "Laporan Peminjaman";
 
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation', $data);
@@ -25,12 +25,12 @@
 		{
 			if($this->session->userdata('logged_in')){
 				$Tanggal = date("d");
-	                        $TanggalAwal = 1;
-	                        $BulanAwal = 1;
-	                        $Bulan = date("m");
-	                        $Tahun = date("Y");
-	                        $data['daftarKerusakanSpekun'] = $this->kerusakan_spekun_model-> getAllKerusakanSpekun();
-	                        $data['page_loc'] = "Laporan Kerusakan";
+				$TanggalAwal = 1;
+				$BulanAwal = 1;
+				$Bulan = date("m");
+				$Tahun = date("Y");
+				$data['daftarKerusakanSpekun'] = $this->kerusakan_spekun_model-> getAllKerusakanSpekun();
+				$data['page_loc'] = "Laporan Kerusakan";
 					
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation', $data);
@@ -46,18 +46,18 @@
 		{
 			if($this->session->userdata('logged_in')){
 				$Tanggal = date("d");
-	                        $TanggalAwal = 1;
-	                        $BulanAwal = 1;
-	                        $Bulan = date("m");
-	                        $Tahun = date("Y");
-	                        $data['daftarKehilanganSpekun'] = $this->peminjaman_model-> getDaftarSpekunBelumKembali();
-	                        $data['page_loc'] = "Laporan Kehilangan";
+				$TanggalAwal = 1;
+				$BulanAwal = 1;
+				$Bulan = date("m");
+				$Tahun = date("Y");
+				$data['daftarKehilanganSpekun'] = $this->peminjaman_model-> getDaftarSpekunBelumKembali();
+				$data['page_loc'] = "Laporan Kehilangan";
 
 				$this->load->view('templates/header');
-	                        $this->load->view('templates/navigation', $data);
-	                        $this->load->view('laporanKehilangan_view', $data);
-	                        $this->load->view('templates/footer');
-            }
+				$this->load->view('templates/navigation', $data);
+				$this->load->view('laporanKehilangan_view', $data);
+				$this->load->view('templates/footer');
+			}
             else{
                     redirect('auth', 'refresh');
             }
