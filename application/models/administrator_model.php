@@ -18,7 +18,7 @@ class administrator_Model extends CI_Model
                 $this->db->where('password', $password);
                 $this->db->limit(1);
                 $query = $this->db->get($this->table);
-                return ($query->num_rows() > 0) ? $query->row() : false;
+		return ($query->num_rows() == 1) ? $query->result() : false;
         }
 
         public function get_account($username)
