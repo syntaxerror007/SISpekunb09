@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 CTYPE html>
+=======
+<!DOCTYPE html>
+>>>>>>> b5e1661f16f95293eb6f13609168ad924026f380
 <html lang="en">
 
 <head>
@@ -83,4 +87,7 @@ CTYPE html>
 
 																																																																																				    </html>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5e1661f16f95293eb6f13609168ad924026f380
