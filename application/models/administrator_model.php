@@ -7,10 +7,10 @@ class administrator_Model extends CI_Model
 
         public function validate($username,$password)
         {
-                $this->db->where('username',$username);
-                $this->db->where('password',$password);
-                $this->db->from($this->table);
-                return $this->db->count_all_results() != 0;
+			$this->db->select('username');
+			$this->db->where('username',$username);
+			$this->db->where('password',$password);
+			return $this->db->get($this->table);
         }
 
         public function login($username, $password) {
