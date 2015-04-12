@@ -115,7 +115,7 @@
 	{
 		global $con;
   
-		$res = mysqli_query($con, "SELECT * FROM PENJAGA_SHELTER WHERE ID_Penjaga = '$username' and Password='$password'");
+		$res = mysqli_query($con, "SELECT * FROM PENJAGA_SHELTER WHERE Username = '$username' and Password='$password'");
 		$retval;
 		if (mysqli_num_rows($res) == 0)
 		{
