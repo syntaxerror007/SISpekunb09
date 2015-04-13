@@ -17,7 +17,7 @@
 		$noSpekun = mysqli_real_escape_string($con, stripslashes($noSpekun));
 		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
 		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
-		$hari = date("l");
+		$hari = date("N");
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
@@ -119,7 +119,7 @@
 		global $con;
 		$noSpekun = mysqli_real_escape_string($con, stripslashes($noSpekun));
 		$detail = mysqli_real_escape_string($con, stripslashes($detail));
-		$hari = date("l");
+		$hari = date("N");
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
