@@ -30,7 +30,7 @@
                                             foreach ($daftarKerusakanSpekun->result_array() as $row) { ?>
                                                 <tr class="odd gradeX">
                                                     <td class="center"><?php echo $row['No_Spekun']; ?></td>
-                                                    <td class="center"><?php echo $row['Tanggal']; ?></td>
+													<td class="center"><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun']; ?></td>
                                                     <td class="center"><?php echo $row['Detail']; ?></td>
                                                     <td class="center"><?php echo $row['status']; ?></td>
                                                 </tr>

@@ -29,8 +29,8 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
                                         <th>Tanggal</th>
+										<th>Nama Peminjam</th>
                                         <th>Nomor Spekun</th>
                                         <th>Lokasi Peminjaman</th>
                                         <th>Lokasi Pengembalian</th>
@@ -39,12 +39,21 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $i = 0;
                                         foreach ($daftarPeminjaman->result_array() as $row) { ?>
-                                            <?php $i++; ?>
                                             <tr class="odd gradeX">
-                                                <td><?php echo $i; ?></td>
                                                 <td><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun']; ?></td>
+												<td><a href="<?php echo site_url('profile/Mahasiswa/'.$row['NPM_Mahasiswa']);?>"><?php echo $row['Nama']; ?></a></td>
+                                                <td><?php echo $row['No_Spekun']; ?></td>
+                                                <td><?php echo $row['Lokasi_Peminjaman']; ?></td>
+                                                <td><?php echo $row['Lokasi_Kembali']; ?></td>
+                                                <td><?php if ($row['Status'] == null || $row['Status'] == 0) echo "Belum Kembali"; else echo "Sudah Kembali";?></td>
+                                            </tr>
+                                    <?php }?>
+                                    <?php
+                                        foreach ($daftarPeminjamanNonMahasiswa->result_array() as $row) { ?>
+                                            <tr class="odd gradeX">
+                                                <td><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun']; ?></td>
+												<td><a href="<?php echo site_url('profile/NonMahasiswa/'.$row['ID_Non_Mahasiswa']);?>"><?php echo $row['Nama']; ?></a></td>
                                                 <td><?php echo $row['No_Spekun']; ?></td>
                                                 <td><?php echo $row['Lokasi_Peminjaman']; ?></td>
                                                 <td><?php echo $row['Lokasi_Kembali']; ?></td>

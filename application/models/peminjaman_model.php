@@ -133,7 +133,15 @@
 		}	
 		public function getDaftarSpekunKembali()
 		{
-			$this->db->where('Status',1);
+			$this->db->from("MAHASISWA");
+			$this->db->where("MAHASISWA.NPM = PEMINJAMAN.NPM_MAHASISWA");
+			return $this->db->get($this->table);
+		}
+		
+		public function getDaftarSpekunKembaliNonMahasiswa()
+		{
+			$this->db->from("NON_MAHASISWA");
+			$this->db->where("NON_MAHASISWA.NO_KTP = PEMINJAMAN.ID_NON_MAHASISWA");
 			return $this->db->get($this->table);
 		}
 		
@@ -141,15 +149,15 @@
 		
 		public function getPeminjamanByKTP($NoKTP)
 		{
-			$this->db->where('ID_Non_Mahasiswa',$NoKTP);
-			return $this->db->get($this->table);
+			$this->db->where('No_KTP',$NoKTP);
+			return $this->db->get('NON_MAHASISWA');
 		}
 		// + getPeminjamByKTM(varchar) : Peminjam
 		
 		public function getPeminjamanByKTM($NoKTM)
 		{
-			$this->db->where('NPM_Mahasiswa',$NoKTM);
-			return $this->db->get($this->table);
+			$this->db->where('NPM',$NoKTM);
+			return $this->db->get('MAHASISWA');
 		}
 		
 		public function getCountPeminjamanByShelter()
