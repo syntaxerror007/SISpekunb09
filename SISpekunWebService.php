@@ -284,6 +284,7 @@
 			{
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
+				echo $idPeminjam;
 				$value = getPeminjaman($idPeminjam,$tipePeminjam);
 			}
 		}
