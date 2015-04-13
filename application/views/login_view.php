@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SI Spekun Administrator</title>
+    <title>SI Spekun Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo site_url('./bower_components/bootstrap/dist/css/bootstrap.min.css');?>" rel="stylesheet">
@@ -58,7 +58,7 @@
 								<input name="remember" type="checkbox" value="Remember Me">Remember Me
 							</label>
 						</div>
-						<input type="submit" class="btn btn-lg btn-success btn-block">Login</a>
+						<input type="Login" class="btn btn-lg btn-success btn-block">
                     </div>
                 </div>
             </div>
