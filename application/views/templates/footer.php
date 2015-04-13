@@ -88,7 +88,7 @@
 				<?php
 					$i = 0;
 					foreach ($statistikMingguan->result_array() as $row) {
-						if ($i == 6)
+						if ($i == statistikMingguan->num_rows()-1)
 						{
 							echo '['.$i.', '.$row['count'].']';
 						}
