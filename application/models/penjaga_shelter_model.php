@@ -7,7 +7,6 @@ class Penjaga_Shelter_Model extends CI_Model
 	// + getPenjagaShelterFromID(id) : Penjaga_Shelter
 	public  function getPenjagaShelterFromID($ID_Penjaga)
 	{
-		$this->db->select('Nama');
 		$this->db->where('ID_Penjaga', $ID_Penjaga);
 		return $this->db->get($this->table);
 	}

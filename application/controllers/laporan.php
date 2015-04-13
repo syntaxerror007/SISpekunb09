@@ -10,6 +10,7 @@
 				$Bulan = date("m");
 				$Tahun = date("Y");
 				$data['daftarPeminjaman'] = $this->peminjaman_model-> getDaftarSpekunKembali();
+				$data['daftarPeminjamanNonMahasiswa'] = $this->peminjaman_model->getDaftarSpekunKembaliNonMahasiswa();
 				$data['page_loc'] = "Laporan Peminjaman";
 
 				$this->load->view('templates/header');
