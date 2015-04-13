@@ -127,6 +127,25 @@
 		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$detail', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
 	}
 	
+	function getPeminjaman($idPeminjam,$tipePeminjam)
+	{
+		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
+		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+		if ($tipePeminjam == "Mahasiswa"
+		{
+			$query = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND Status = 0";
+		}
+		else
+		{
+			$query = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND Status = 0";
+		}
+		return mysqli_query($con,$query)->result_array();
+		
+	}
+	
 	function CheckLogin($username,$password) 
 	{
 		global $con;
@@ -178,7 +197,8 @@
 		'laporanRusak',
 		'POSTPeminjaman',
 		'tukar',
-		'insertLokasi'
+		'insertLokasi',
+		'getPeminjaman'
         );
 
 	function sanitize($input) {
@@ -257,6 +277,13 @@
 				$idShelterBertugas = sanitize($_POST['idShelter']);
 				$noDevice = sanitize($_POST['noDevice']);
 				$value = InsertLokasi($usernamePenjaga,$idShelterBertugas,$noDevice);
+			}
+			else if ($command == 'getPeminjaman')
+			{
+				$idPeminjam = sanitize($_POST['idPeminjam']);
+				$tipePeminjam = sanitize($_POST['tipePeminjam']);
+				$value = getPeminjaman($idPeminjam,$tipePeminjam);
+			
 			}
 		}
 	}
