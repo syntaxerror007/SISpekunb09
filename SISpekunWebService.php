@@ -283,7 +283,7 @@
 			{
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
-				die $idPeminjam. " ". $tipePeminjam;
+				die "haha".$idPeminjam. " ". $tipePeminjam;
 				$value = getPeminjaman($idPeminjam,$tipePeminjam);
 			}
 		}
