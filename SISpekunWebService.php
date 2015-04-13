@@ -142,9 +142,9 @@
 		{
 			$query = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND Status = 0");
 		}
-		die($query);
 		return mysqli_query($con,$query)->result_array();
 	}
+	
 	
 	function CheckLogin($username,$password) 
 	{
