@@ -281,9 +281,11 @@
 			}
 			else if ($command == 'getPeminjaman')
 			{
+				echo "haha ".$_POST['idPeminjam']. " ". $_POST['tipePeminjam'];
+				
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
-				die "haha".$idPeminjam. " ". $tipePeminjam;
+				die "haha ".$idPeminjam. " ". $tipePeminjam;
 				$value = getPeminjaman($idPeminjam,$tipePeminjam);
 			}
 		}
