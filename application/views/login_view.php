@@ -58,7 +58,7 @@
 								<input name="remember" type="checkbox" value="Remember Me">Remember Me
 							</label>
 						</div>
-						<input type="Submit" class="btn btn-lg btn-success btn-block" name="Login"><button>Login </button>
+						<button type="Submit" class="btn btn-lg btn-success btn-block" name="Login">Login </button>
                     </div>
                 </div>
             </div>
