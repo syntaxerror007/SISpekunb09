@@ -31,12 +31,12 @@
 	    
 	    public function getAllPenugasanAndPetugasUsingDate($Tanggal,$Bulan,$Tahun)
 	    {
-	    	$query = "Select SHELTER.Nama as NamaShelter, PENJAGA_SHELTER.Nama as NamaPenjaga, No_Device, PENJAGA_SHELTER.ID_PENJAGA as IDPenjaga, SHELTER.ID_Shelter from SHELTER, PENJAGA_SHELTER, PENUGASAN_PENJAGA_SHELTER WHERE SHELTER.ID_Shelter = PENUGASAN_PENJAGA_SHELTER.ID_Shelter AND PENUGASAN_PENJAGA_SHELTER.ID_PENJAGA = PENJAGA_SHELTER.ID_PENJAGA AND Tanggal = $Tanggal AND Bulan = $Bulan AND Tahun = $Tahun";
+	    	$query = "Select SHELTER.Nama as NamaShelter, PENJAGA_SHELTER.Nama as NamaPenjaga, No_Device, PENJAGA_SHELTER.ID_PENJAGA as IDPenjaga, SHELTER.ID_Shelter from SHELTER, PENJAGA_SHELTER, PENUGASAN_PENJAGA_SHELTER WHERE SHELTER.ID_Shelter = PENUGASAN_PENJAGA_SHELTER.ID_Shelter AND PENUGASAN_PENJAGA_SHELTER.ID_PENJAGA = PENJAGA_SHELTER.Username AND Tanggal = $Tanggal AND Bulan = $Bulan AND Tahun = $Tahun";
 			return $this->db->query($query);
 	    }
 	    public function getAllPenugasanAndPetugas()
 	    {
-	    	$query = "Select SHELTER.Nama as NamaShelter, PENJAGA_SHELTER.Nama as NamaPenjaga, No_Device, PENJAGA_SHELTER.ID_PENJAGA as IDPenjaga, SHELTER.ID_Shelter from SHELTER, PENJAGA_SHELTER, PENUGASAN_PENJAGA_SHELTER WHERE SHELTER.ID_Shelter = PENUGASAN_PENJAGA_SHELTER.ID_Shelter AND PENUGASAN_PENJAGA_SHELTER.ID_PENJAGA = PENJAGA_SHELTER.ID_PENJAGA";
+	    	$query = "Select SHELTER.Nama as NamaShelter, PENJAGA_SHELTER.Nama as NamaPenjaga, No_Device, PENJAGA_SHELTER.ID_PENJAGA as IDPenjaga, SHELTER.ID_Shelter from SHELTER, PENJAGA_SHELTER, PENUGASAN_PENJAGA_SHELTER WHERE SHELTER.ID_Shelter = PENUGASAN_PENJAGA_SHELTER.ID_Shelter AND PENUGASAN_PENJAGA_SHELTER.ID_PENJAGA = PENJAGA_SHELTER.Username";
 			return $this->db->query($query);
 	    }
 	    // + getAllPenjagaShelter() : List<Penjaga_Shelter>
