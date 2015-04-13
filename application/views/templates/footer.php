@@ -88,7 +88,7 @@
 				<?php
 					$i = 0;
 					foreach ($statistikMingguan->result_array() as $row) {
-						if ($i == statistikMingguan->num_rows()-1)
+						if ($i == $statistikMingguan->num_rows()-1)
 						{
 							echo '['.$i.', '.$row['count'].']';
 						}
@@ -108,7 +108,7 @@
 				$i=0;
 				foreach ($statistikBulanan->result_array() as $row)
 				{
-					if ($i == 11)
+					if ($i == $statistikBulanan->num_rows()-1)
 						echo '{label: namaBulan['.$row["Bulan"].'], data:'.$row["count"].'}';
 					else
 						echo '{label: namaBulan['.$row["Bulan"].'], data:'.$row["count"].'},';
