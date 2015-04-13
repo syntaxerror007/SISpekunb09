@@ -134,7 +134,7 @@
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
-		die $idPeminjam;
+		die($idPeminjam);
 		if ($tipePeminjam == "Mahasiswa")
 		{
 			$query = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND (Status = NULL OR Status = 0)  AND MAHASISWA.NPM=".$idPeminjam);
