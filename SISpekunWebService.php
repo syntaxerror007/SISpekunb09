@@ -129,6 +129,7 @@
 	
 	function getPeminjaman($idPeminjam,$tipePeminjam)
 	{
+		echo $idPeminjam;
 		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
 		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
 		$tanggal = date("d");
@@ -284,7 +285,6 @@
 			{
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
-				echo $idPeminjam;
 				$value = getPeminjaman($idPeminjam,$tipePeminjam);
 			}
 		}
