@@ -74,7 +74,7 @@
 		$noDevice = mysqli_real_escape_string($con, stripslashes($noDevice));
 		
 		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
-		return array('status'=> $status);
+		 return array('status'=> $status);
 	}
 	
 	function DoPengembalian($namaShelterKembali, $idPeminjam, $tipePeminjam)
@@ -86,9 +86,9 @@
 		if ($tipePeminjam == "Mahasiswa")
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' AND Status = 0");
 		else
-			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
-		%retval = mysqli_num_rows($query);
-		//$retval = array('status'=>$query);
+			//$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
+			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1 WHERE ID_Peminjaman = 54");
+		$retval = array('status'=>$query);
 		return $retval;
 	}
 	
