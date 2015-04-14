@@ -92,7 +92,7 @@
 		if($query)
 			$retval = array('status'=>'1');
 		else
-			$retval = array('status'=>'0');
+			$retval = mysqli_error();
 		return $retval;
 	}
 	
