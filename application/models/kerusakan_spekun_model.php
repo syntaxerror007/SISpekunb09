@@ -32,6 +32,13 @@
 			$result = $this->db->query($query);
 			return $result->num_rows();
 		}
+		
+		public function getSpekunRusakUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
+		{
+			$query = "SELECT * FROM KERUSAKAN_SPEKUN WHERE tahun <= ".$tahunAkhir." AND tahun >= ". $tahunAwal." AND bulan <= ".$bulanAkhir." AND bulan >= ".$bulanAwal." AND Tanggal <= ".$tanggalAkhir. " AND Tanggal >= ".$tanggalAwal."";
+			return $this->db->query($query);
+		}
+		
 		// + createLaporanKerusakan(IDSpekun,detail):boolean
 		public function createLaporanKerusakan($ID_Spekun_Rusak, $Detail, $Tanggal, $Bulan, $Tahun, $No_Spekun)
 		{
