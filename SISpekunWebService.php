@@ -145,7 +145,7 @@
 			//while($row = mysqli_fetch_assoc($result))
 			//	$test[] = $row;
 			//return json_encode($test);
-			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE $idPeminjam = NPM_Mahasiswa and $idPeminjam = MAHASISWA.NPM and status = 0");
+			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE '$idPeminjam' = NPM_Mahasiswa and '$idPeminjam' = MAHASISWA.NPM and status = 0");
 			return $dataPeminjam->fetch_array();
 		}
 		else
@@ -155,7 +155,7 @@
 			// while($row = mysqli_fetch_assoc($result))
 				// $test[] = $row;
 			// return json_encode($test);
-			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE $idPeminjam = NPM_Mahasiswa and $idPeminjam = MAHASISWA.NPM and status = 0");
+			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE '$idPeminjam' = NPM_Mahasiswa and '$idPeminjam' = MAHASISWA.NPM and status = 0");
 			return $dataPeminjam->fetch_array();
 		}
 		
