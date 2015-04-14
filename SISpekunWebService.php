@@ -79,10 +79,6 @@
 	
 	function DoPengembalian($namaShelterKembali, $idPeminjam, $tipePeminjam)
 	{
-		$namaShelterKembali = mysqli_real_escape_string($con, stripslashes($namaShelterKembali));
-		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
-		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
-
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
@@ -131,14 +127,17 @@
 	{
 		global $con;
 		
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
 		$res;
 		if ($tipePeminjam == "Mahasiswa")
 		{
-			$res = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND (PEMINJAMAN.Status = NULL OR PEMINJAMAN.Status = 0) AND MAHASISWA.NPM = '$idPeminjam'");
+			$res = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND (PEMINJAMAN.Status = NULL OR PEMINJAMAN.Status = 0) AND MAHASISWA.NPM = '$idPeminjam' AND PEMINJAMAN.Tanggal = '$tanggal' AND PEMINJAMAN.Bulan = '$bulan' AND PEMINJAMAN.Tahun = '$tahun'");
 		}
 		else
 		{
-			$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.No_KTP = PEMINJAMAN.ID_Non_Mahasiswa AND (PEMINJAMAN.Status = NULL or PEMINJAMAN.Status = 0) AND NON_MAHASISWA.No_KTP = '$idPeminjam'");
+			$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.No_KTP = PEMINJAMAN.ID_Non_Mahasiswa AND (PEMINJAMAN.Status = NULL or PEMINJAMAN.Status = 0) AND NON_MAHASISWA.No_KTP = '$idPeminjam' AND PEMINJAMAN.Tanggal = '$tanggal' AND PEMINJAMAN.Bulan = '$bulan' AND PEMINJAMAN.Tahun = '$tahun'");
 		}
 		
 		if($res == false) {
