@@ -109,7 +109,7 @@
 		}
 		else
 		{
-			$dataPeminjam = mysqli_query($con, "PEMINJAMAN.No_Spekun FROM PEMINJAMAN, Non_MAHASISWA WHERE $idPeminjam = NPM_Mahasiswa and $idPeminjam = Non_Mahasiswa.ID_Non_Mahasiswa and Peminjaman.ID_Non_Mahasiswa = $idPeminjam and status = 0");
+			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, Non_MAHASISWA WHERE $idPeminjam = NPM_Mahasiswa and $idPeminjam = Non_Mahasiswa.ID_Non_Mahasiswa and Peminjaman.ID_Non_Mahasiswa = $idPeminjam and status = 0");
 			return $dataPeminjam->fetch_array();
 		}
 	}
@@ -138,11 +138,11 @@
 		//die("haha ".$idPeminjam);
 		if ($tipePeminjam == "Mahasiswa")
 		{
-			$query = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND (Status = NULL OR Status = 0)  AND MAHASISWA.NPM=".$idPeminjam");
+			$query = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND (Status = NULL OR Status = 0)  AND MAHASISWA.NPM=$idPeminjam");
 		}
 		else
 		{
-			$query = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND (Status = NULL or Status = 0) AND NON_MAHASISWA.No_KTP=".$idPeminjam");
+			$query = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND (Status = NULL or Status = 0) AND NON_MAHASISWA.No_KTP=$idPeminjam");
 		}
 		
 		return $query;
