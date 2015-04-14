@@ -84,15 +84,16 @@
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
 		//return $namaShelterKembali.$idPeminjam.$tipePeminjam;
+		$query;
+		$retval;
 		if ($tipePeminjam == "Mahasiswa")
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' AND Status = 0");
 		else
-			//$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
-			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1 WHERE ID_Peminjaman = 54;");
+			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
 		if($query)
 			$retval = array('status'=>'1');
 		else
-			$retval = mysqli_error();
+			$retval = array('status'=>'0');
 		return $retval;
 	}
 	
