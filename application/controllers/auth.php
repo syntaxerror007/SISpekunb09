@@ -2,15 +2,16 @@
 
 class Auth extends CI_Controller {
 	
-	function index()
+	function index($msg = NULL)
 	{
+		$data['msg'] = $msg;
 		if($this->session->userdata('logged_in')){
 			redirect('home','refresh');
 		}
 		else
 		{
 			$this->load->helper(array('form'));
-			$this->load->view('login_view');
+			$this->load->view('login_view', $data);
 		}
 	}
 	function logout()
