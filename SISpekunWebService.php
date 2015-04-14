@@ -161,9 +161,11 @@
 		}
 		
 		if($res === false)
-			return mysqli_error($res);
+			//return mysqli_error($res);
+			return "FUCK";
 		else
-			return $res;
+			//return $res;
+			return "FUCKING YES";
 	}
 	
 	
