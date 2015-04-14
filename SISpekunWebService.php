@@ -160,12 +160,18 @@
 			// return $dataPeminjam->fetch_array();
 		}
 		
-		if($res == false)
+		if($res == false) {
 			//return mysqli_error($res);
 			return "FUCK";
-		else
+		}
+		else {
 			//return $res;
-			return mysqli_num_rows($res);
+			$rows = array();
+			while($row = mysqli_fetch_assoc($res)) {
+				$rows[] = $r;
+			}
+			return $rows;
+		}
 	}
 	
 	
