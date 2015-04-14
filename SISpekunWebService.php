@@ -160,7 +160,7 @@
 			// return $dataPeminjam->fetch_array();
 		}
 		
-		if($res === false)
+		if($res == false)
 			//return mysqli_error($res);
 			return "FUCK";
 		else
