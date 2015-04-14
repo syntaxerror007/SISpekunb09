@@ -156,12 +156,11 @@
 		}
 		else {
 			//return $res;
-			//$rows = array();
-			//while($row = mysqli_fetch_assoc($res)) {
-			//	$rows[] = $row;
-			//}
-			$row = mysqli_fetch_assoc($res)
-			return $row;
+			$rows = array();
+			while($row = mysqli_fetch_assoc($res)) {
+				$rows[] = $row;
+			}
+			return $rows;
 		}
 	}
 	
