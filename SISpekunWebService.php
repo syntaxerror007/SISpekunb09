@@ -88,7 +88,7 @@
 		else
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
 		$retval = array('status'=>$query);
-		return "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$Tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0";
+		return $retval;
 	}
 	
 	function POSTPeminjaman($idPeminjam,$tipePeminjam)
@@ -124,7 +124,7 @@
 		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$detail', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
 	}
 	
-	//FIXED
+	//FIXEDy
 	function getPeminjaman($idPeminjam,$tipePeminjam)
 	{
 		global $con;
