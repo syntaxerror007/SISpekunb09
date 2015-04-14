@@ -77,6 +77,7 @@
 		 return array('status'=> $status);
 	}
 	
+	//FIXED
 	function DoPengembalian($namaShelterKembali, $idPeminjam, $tipePeminjam)
 	{
 		global $con;
@@ -130,8 +131,7 @@
 	function LaporanRusak($noSpekun, $informasi)
 	{
 		global $con;
-		$noSpekun = mysqli_real_escape_string($con, stripslashes($noSpekun));
-		$detail = mysqli_real_escape_string($con, stripslashes($detail));
+		
 		$hari = date("N");
 		$tanggal = date("d");
 		$bulan = date("m");
@@ -170,7 +170,7 @@
 		}
 	}
 	
-	
+	//FIXED
 	function CheckLogin($username,$password) 
 	{
 		global $con;
