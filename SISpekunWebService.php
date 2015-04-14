@@ -165,7 +165,7 @@
 			return "FUCK";
 		else
 			//return $res;
-			return "FUCKING YES";
+			return mysqli_num_rows($res);
 	}
 	
 	
