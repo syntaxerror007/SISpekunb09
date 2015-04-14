@@ -49,13 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-<<<<<<< HEAD
-$db['default']['username'] = 'root'; 
-$db['default']['password'] = 'sispekunb09';
-=======
 $db['default']['username'] = 'root';
-$db['default']['password'] = '';
->>>>>>> 415790f2155325279a1fcbd16142ee16a398613d
+$db['default']['password'] = 'sispekunb09';
 $db['default']['database'] = 'SISpekun';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
