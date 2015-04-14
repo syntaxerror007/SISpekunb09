@@ -55,12 +55,18 @@
 			return $this->db->get($this->table);
 		}
 		// + getDaftarPeminjamanUsingInterval(StartDate,EndDate) : List<Peminjaman>
-		public function getDaftarPeminjamanUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
+		public function getDaftarPeminjamanMahasiswaUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
 		{
-			$query = "SELECT * FROM PEMINJAMAN WHERE tahun <= ".$tahunAkhir." AND tahun >= ". $tahunAwal." AND bulan <= ".$bulanAkhir." AND bulan >= ".$bulanAwal." AND Tanggal <= ".$tanggalAkhir. " AND Tanggal >= ".$tanggalAwal;
+			$query = "SELECT * FROM PEMINJAMAN, MAHASISWA WHERE PEMINJAMAN.NPM_MAHASISWA =MAHASISWA.NPM and tahun <= ".$tahunAkhir." AND tahun >= ". $tahunAwal." AND bulan <= ".$bulanAkhir." AND bulan >= ".$bulanAwal." AND Tanggal <= ".$tanggalAkhir. " AND Tanggal >= ".$tanggalAwal;
 			return $this->db->query($query);
 		}
 
+		public function getDaftarPeminjamanNonMahasiswaUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
+		{
+			$query = "SELECT * FROM PEMINJAMAN, MAHASISWA WHERE PEMINJAMAN.NPM_MAHASISWA =MAHASISWA.NPM and tahun <= ".$tahunAkhir." AND tahun >= ". $tahunAwal." AND bulan <= ".$bulanAkhir." AND bulan >= ".$bulanAwal." AND Tanggal <= ".$tanggalAkhir. " AND Tanggal >= ".$tanggalAwal;
+			return $this->db->query($query);
+		}
+		
 		public function getCountPeminjamanUsingDate($Tanggal, $Bulan, $Tahun)
 		{
 			$result = $this->getDaftarPeminjamanUsingDate($Tanggal, $Bulan, $Tahun);

@@ -45,7 +45,7 @@
 		
 		public function PeminjamanPerTanggal($start = null,$end = null)
 		{
-			//if($this->session->userdata('logged_in')){
+			if($this->session->userdata('logged_in')){
 				$tanggalAwal = "";
 				$tanggalAkhir = "";
 				$bulanAkhir = "";
@@ -65,7 +65,7 @@
 					$tahunAwal = date("Y");
 				}
 				
-				if ($end != null)
+				if ($end != null || $end == "")
 				{
 					$data = explode('-',$end,4);
 					$tanggalAkhir = $data[0];
@@ -111,10 +111,8 @@
 				$tanggalAkhir = $this->input->post("tanggalAkhir");
 				$bulanAkhir = $this->input->post("bulanAkhir");
 				$tahunAkhir = $this->input->post("tahunAkhir");
-				
 				if ($tanggalAkhir == -1 || $bulanAkhir == -1 || $tahunAkhir == -1)
 				{
-					$params+="current";
 				}
 				else{
 					$params = $params.$tanggalAkhir."-".$bulanAkhir."-".$tahunAkhir;
