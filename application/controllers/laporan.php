@@ -65,7 +65,7 @@
 					$tahunAwal = date("Y");
 				}
 				
-				if ($end != null || $end == "")
+				if ($end != null || $end != "")
 				{
 					$data = explode('-',$end,4);
 					$tanggalAkhir = $data[0];
@@ -78,8 +78,8 @@
 					$tahunAkhir = date("Y");
 				}
 				
-				$data['daftarPeminjaman'] = $this->peminjaman_model->getDaftarPeminjamanUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
-				$data['daftarPeminjamanNonMahasiswa'] = $this->peminjaman_model->getDaftarPeminjamanUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
+				$data['daftarPeminjaman'] = $this->peminjaman_model->getDaftarPeminjamanMahasiswaUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
+				$data['daftarPeminjamanNonMahasiswa'] = $this->peminjaman_model->getDaftarPeminjamanNonMahasiswaUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
 				$data['page_loc'] = "Laporan Peminjaman";
 
 				$this->load->view('templates/header');
@@ -91,8 +91,55 @@
                     redirect('auth', 'refresh');
             }
 		}
+		public function KerusakanPerTanggal($start = null,$end = null)
+		{
+			if($this->session->userdata('logged_in')){
+				$tanggalAwal = "";
+				$tanggalAkhir = "";
+				$bulanAkhir = "";
+				$bulanAwal = "";
+				$tahunAkhir = "";
+				$tahunAwal = "";
+				if ($start != null)
+				{
+					$data = explode('-',$start,4);
+					$tanggalAwal = $data[0];
+					$bulanAwal = $data[1];
+					$tahunAwal = $data[2];
+				}
+				else{
+					$tanggalAwal = date("d");
+					$bulanAwal = date("m");
+					$tahunAwal = date("Y");
+				}
+				
+				if ($end != null || $end != "")
+				{
+					$data = explode('-',$end,4);
+					$tanggalAkhir = $data[0];
+					$bulanAkhir = $data[1];
+					$tahunAkhir = $data[2];
+				}
+				else{
+					$tanggalAkhir = date("d");
+					$bulanAkhir = date("m");
+					$tahunAkhir = date("Y");
+				}
+				
+				$data['daftarKerusakanSpekun'] = $this->kerusakan_spekun_model-> getSpekunRusakUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
+				$data['page_loc'] = "Laporan Kerusakan";
+					
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation', $data);
+				$this->load->view('laporanKerusakan_view', $data);
+				$this->load->view('templates/footer');
+			}
+            else{
+                    redirect('auth', 'refresh');
+            }
+		}
 		
-		public function getTanggal()
+		public function getTanggal($page)
 		{
 			if($this->session->userdata('logged_in')){
 					
@@ -118,7 +165,12 @@
 					$params = $params.$tanggalAkhir."-".$bulanAkhir."-".$tahunAkhir;
 				
 				}
-				redirect('laporan/PeminjamanPerTanggal/'.$params,'refresh');
+				if ($page == "peminjaman"){
+					redirect('laporan/PeminjamanPerTanggal/'.$params,'refresh');
+				}
+				else if ($page == "kerusakan"){
+					redirect('laporan/KerusakanPerTanggal/'.$params,'refresh');
+				}
 			}
 			else{
                     redirect('auth', 'refresh');

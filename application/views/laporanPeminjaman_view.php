@@ -11,14 +11,21 @@
 			<!--INI TABEL-->
                 <div class="panel panel-default">
                     <div class="row">
-						<div class='col-lg-4'>
-							<form action="<?php echo site_url('laporan/getTanggal'); ?>" method="POST">
+						<div class='col-lg-12'>
+							<form action="<?php echo site_url('laporan/getTanggal/peminjaman'); ?>" method="POST">
 								<div class="form-group">
-									<div id="calendar-container-awal"></div>
-									<br>
-									<div id="calendar-container-akhir"></div>
+									<div class="col-lg-6">
+										<h5>Masukkan tanggal awal</h5>
+										<div id="calendar-container-awal"></div>
+									</div>
+									<div class="col-lg-6">
+										<h5>Masukkan tanggal akhir</h5>
+										<div id="calendar-container-akhir"></div>
+									</div>
+									<div class="col-lg-4">
+										<input type="submit">
+									</div>
 								</div>
-								<input type="submit">
 							</form>
 						</div>
 					</div>
@@ -171,6 +178,7 @@
 		}
 
 		sel_month.onchange = recalculateDays;
+		sel_month2.onchange = recalculateDays;
 
 		generateYears();
 		generateMonths();
