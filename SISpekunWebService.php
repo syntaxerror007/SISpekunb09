@@ -168,7 +168,7 @@
 			//return $res;
 			$rows = array();
 			while($row = mysqli_fetch_assoc($res)) {
-				$rows[] = $r;
+				$rows[] = $row;
 			}
 			return $rows;
 		}
