@@ -192,13 +192,11 @@
 	
 	function doTukar($idPeminjam, $tipePeminjam, $noSpekunAkhir)
 	{
-		
 		global $con;
 		
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
-		$query;
 		if ($tipePeminjam == "Mahasiswa") {
 			$query = "UPDATE PEMINJAMAN SET No_Spekun = '$noSpekunAkhir' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' and Status = 0";
 			if(mysqli_query($con, $query)) {
