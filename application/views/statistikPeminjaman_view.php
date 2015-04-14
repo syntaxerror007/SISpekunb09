@@ -8,7 +8,7 @@
 			<div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a href="statistic_days.html">Days</a>
+                            <b>Days</b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -23,7 +23,7 @@
 			<div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a href="statistic_month.html">Month</a>
+                           <b>Month</b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -39,7 +39,7 @@
 				<div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a href="statistic_years.html">Years</a>
+                           <b>Years</b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -58,7 +58,7 @@
 				<div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">                            
-							<a href="peminjaman_shelter.html">Shelter</a>
+							<b><a href="<?php echo site_url('statistik/shelter'); ?>">Shelter</a></b>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

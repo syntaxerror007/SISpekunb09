@@ -46,7 +46,8 @@
                     </div>
                     <div class="panel-body">
 						<?php echo validation_errors(); ?>
-						<?php echo form_open('verifylogin/check_database'); ?>
+						<form action='<?php echo base_url();?>verifylogin/check_database' method='post' name='check_database'>
+						<?php //echo form_open('verifylogin/check_database'); ?>
 						<div class="form-group">
 							<input class="form-control" placeholder="Username" name="username" type="username" id="username" autofocus>
 						</div>

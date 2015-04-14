@@ -21,11 +21,7 @@ class administrator_Model extends CI_Model
 			return ($query->num_rows() == 1) ? $query->result() : false;
         }
 
-        public function get_account($username)
-        {
-                $this->db->where('username',$username);
-                return $this->db->get($this->table);
-        }
+        
 }
 ?>
 

@@ -12,13 +12,12 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo site_url(''); ?>./dist/js/sb-admin-2.js"></script>
 	
-	
-    
     <!-- Flot Charts JavaScript -->
     <script src="<?php echo site_url('./bower_components/flot/excanvas.min.js'); ?>"></script>
     <script src="<?php echo site_url('./bower_components/flot/jquery.flot.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo site_url('./bower_components/flot/jquery.flot.pie.js'); ?>"></script>
     <script src="<?php echo site_url('./bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js'); ?>"></script>
+	
 	<?php if ($page_loc == "Statistik Kerusakan" || $page_loc == 'Statistik Peminjaman') {?>
 	<script>
 		//Flot Line Chart
@@ -233,13 +232,6 @@
 	</script>
 	<?php }?>
 	
-	
-	<!-- Calendar Picker -->
-	<script type="text/javascript">
-		$(function () {
-			$('#datetimepicker1').datetimepicker();
-		});
-	</script>
 	
 </body>
 

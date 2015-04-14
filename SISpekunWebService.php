@@ -130,7 +130,6 @@
 	function getPeminjaman($idPeminjam,$tipePeminjam)
 	{
 		global $con;
-		
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
