@@ -86,7 +86,7 @@
 		//return $namaShelterKembali.$idPeminjam.$tipePeminjam;
 		if ($tipePeminjam == "Mahasiswa") {
 			$query = "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' AND Status = 0";
-			if(mysqli_query($con, $query) {
+			if(mysqli_query($con, $query)) {
 				return array('status'=>'1');
 			}
 			else {
@@ -95,20 +95,13 @@
 		}
 		else {
 			$query = "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0";
-			if(mysqli_query($con, $query) {
+			if(mysqli_query($con, $query)) {
 				return array('status'=>'1');
 			}
 			else {
 				return array('status'=>'0');
 			}
 		}
-			
-		//return $query;
-		if($query)
-			$retval = array('status'=>'1');
-		else
-			$retval = array('status'=>'0');
-		return $retval;
 	}
 	
 	function POSTPeminjaman($idPeminjam,$tipePeminjam)
