@@ -79,10 +79,6 @@
 	
 	function DoPengembalian($namaShelterKembali, $idPeminjam, $tipePeminjam)
 	{
-		$namaShelterKembali = mysqli_real_escape_string($con, stripslashes($namaShelterKembali));
-		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
-		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
-		
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
