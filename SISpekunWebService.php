@@ -87,7 +87,8 @@
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' AND Status = 0");
 		else
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
-		$retval = array('status'=>$query);
+		%retval = mysqli_num_rows($query);
+		//$retval = array('status'=>$query);
 		return $retval;
 	}
 	
