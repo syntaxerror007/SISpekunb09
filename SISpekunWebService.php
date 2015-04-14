@@ -167,7 +167,7 @@
 		else {
 			//return $res;
 			$rows = array();
-			while($row = mysqli_fetch_assoc($res)) {
+			while($row = mysql_fetch_assoc($res)) {
 				$rows[] = $r;
 			}
 			return $rows;
