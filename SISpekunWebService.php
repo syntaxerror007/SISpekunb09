@@ -130,13 +130,14 @@
 	function getPeminjaman($idPeminjam,$tipePeminjam)
 	{
 		global $con;
-		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
-		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
+		// $idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
+		// $tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
 		//echo $idPeminjam;
 		// $tanggal = date("d");
 		// $bulan = date("m");
 		// $tahun = date("Y");
 		//die("haha ".$idPeminjam);
+		$res;
 		if ($tipePeminjam == "Mahasiswa")
 		{
 			$res = mysqli_query($con, "SELECT * FROM PENJAGA_SHELTER");
@@ -147,8 +148,6 @@
 			// return json_encode($test);
 			// $dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE '$idPeminjam' = NPM_Mahasiswa and '$idPeminjam' = MAHASISWA.NPM and status = 0");
 			// return $dataPeminjam->fetch_array();
-			
-			return $res;
 		}
 		else
 		{
@@ -159,10 +158,9 @@
 			// return json_encode($test);
 			// $dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE '$idPeminjam' = NPM_Mahasiswa and '$idPeminjam' = MAHASISWA.NPM and status = 0");
 			// return $dataPeminjam->fetch_array();
-			return $res;
 		}
 		
-		return $query;
+		return $res;
 	}
 	
 	
