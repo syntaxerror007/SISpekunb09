@@ -139,7 +139,7 @@
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
 		return "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$informasi', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')";
-		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$informasi', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
+		//return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$informasi', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
 	}
 	
 	//FIXED
