@@ -46,6 +46,7 @@ $route['penugasan/tambah'] = 'penugasan/tambah_penjaga';
 $route['penugasan/penjaga'] = 'penugasan/daftar_penjaga';
 $route['statistik/kerusakan'] = "statistik/statistik_kerusakan";
 $route['statistik/peminjaman'] = "statistik/statistik_peminjaman";
+$route['statistik/shelter'] = "statistik/statistik_shelter";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 

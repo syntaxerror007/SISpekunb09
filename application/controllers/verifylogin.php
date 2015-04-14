@@ -37,9 +37,15 @@ class VerifyLogin extends CI_Controller {
 		}
 		else
 		{
+			$this->session->set_flashdata('login_error',TRUE); //does not add the non valid login to the session
+            //$this->form_validation->set_message('Sorry %s is not correct.');
+            //redirect('admin');
+			//$this->session->set_flashdata('login_error',TRUE);
 			$this->form_validation->set_message('check_database', 'Invalid username or password');
 			redirect('auth','refresh');
 		}
+		
+		
 	}
 }
 ?>

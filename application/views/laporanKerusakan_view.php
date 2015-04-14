@@ -21,7 +21,6 @@
 							</div>
 						</div>
 					</div>
-					
                         <div class="panel-heading">
                             Laporan Kerusakan Sepeda Kuning
                         </div>
