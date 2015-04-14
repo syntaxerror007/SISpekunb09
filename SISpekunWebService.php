@@ -146,8 +146,8 @@
 		}
 		else
 		{
-			$res = mysqli_query($con, "SELECT Nama FROM NON_MAHASISWA WHERE No_KTP = '$idPeminjam'");
-			//$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.No_KTP = PEMINJAMAN.NPM_Mahasiswa AND (PEMINJAMAN.Status = NULL or PEMINJAMAN.Status = 0) AND NON_MAHASISWA.No_KTP=$idPeminjam");
+			//$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama FROM NON_MAHASISWA WHERE NON_MAHASISWA.No_KTP = '$idPeminjam'");
+			$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.No_KTP = PEMINJAMAN.ID_Non_Mahasiswa AND (PEMINJAMAN.Status = NULL or PEMINJAMAN.Status = 0) AND NON_MAHASISWA.No_KTP = '$idPeminjam'");
 		}
 		
 		if($res == false) {
