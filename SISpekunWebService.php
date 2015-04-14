@@ -142,17 +142,21 @@
 			$query = mysqli_query($con, "SELECT * FROM MAHASISWA WHERE MAHASISWA.NPM = $idPeminjam");
 			//$query = mysqli_query($con, "SELECT MAHASISWA.Nama as NamaPeminjam, MAHASISWA.NPM as Identitas, PEMINJAMAN.No_Spekun FROM MAHASISWA,PEMINJAMAN WHERE MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND (Status = NULL OR Status = 0) AND MAHASISWA.NPM=$idPeminjam");
 			//AND PEMINJAMAN.Tanggal = $tanggal AND PEMINJAMAN.Bulan = $bulan AND PEMINJAMAN.Tahun = $tahun
-			while($row = mysqli_fetch_assoc($result))
-				$test[] = $row;
-			return json_encode($test);
+			//while($row = mysqli_fetch_assoc($result))
+			//	$test[] = $row;
+			//return json_encode($test);
+			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE $idPeminjam = NPM_Mahasiswa and $idPeminjam = MAHASISWA.NPM and status = 0");
+			return $dataPeminjam->fetch_array();
 		}
 		else
 		{
 			$query = mysqli_query($con, "SELECT * FROM MAHASISWA WHERE MAHASISWA.NPM = $idPeminjam");
 			//$query = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND (Status = NULL or Status = 0) AND NON_MAHASISWA.No_KTP=$idPeminjam");
-			while($row = mysqli_fetch_assoc($result))
-				$test[] = $row;
-			return json_encode($test);
+			// while($row = mysqli_fetch_assoc($result))
+				// $test[] = $row;
+			// return json_encode($test);
+			$dataPeminjam = mysqli_query($con, "SELECT PEMINJAMAN.No_Spekun FROM PEMINJAMAN, MAHASISWA WHERE $idPeminjam = NPM_Mahasiswa and $idPeminjam = MAHASISWA.NPM and status = 0");
+			return $dataPeminjam->fetch_array();
 		}
 		
 		return $query;
