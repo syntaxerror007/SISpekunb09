@@ -10,6 +10,7 @@
 
 	$con = mysqli_connect('localhost', $dbuser, $dbpass, $dbname) or die('Terjadi masalah dalam koneksi ke database');
 	
+	//FIXED
 	function InsertNewPeminjaman($namaShelterPinjam,$noSpekun,$idPeminjam,$tipePeminjam) {
 		global $con;
 
@@ -37,6 +38,7 @@
 		return $retval;
 	}
 	
+	//FIXED
 	function InsertNewPeminjam($idPeminjam, $tipePeminjam, $namaPeminjam, $fakultasPeminjam)
 	{
 		global $con;
@@ -61,6 +63,7 @@
 		return $retval;
 	}
 
+	//FIXED
 	function InsertLokasi($username, $idShelter,$noDevice)
 	{
 		global $con;
@@ -74,7 +77,7 @@
 		$noDevice = mysqli_real_escape_string($con, stripslashes($noDevice));
 		
 		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
-		 return array('status'=> $status);
+		return array('status'=> $status);
 	}
 	
 	//FIXED
@@ -105,9 +108,7 @@
 			}
 		}
 	}
-	"UPDATE PEMINJAMAN 
-	SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' 
-	WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0";
+	
 	function POSTPeminjaman($idPeminjam,$tipePeminjam)
 	{
 		global $con;
@@ -137,7 +138,7 @@
 		$bulan = date("m");
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
-		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$detail', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
+		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$informasi', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
 	}
 	
 	//FIXED
