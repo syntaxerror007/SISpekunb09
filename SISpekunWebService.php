@@ -83,12 +83,12 @@
 		$bulan = date("m");
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
-		return "FUCK ".$namaShelterKembali;		
 		if ($tipePeminjam == "Mahasiswa")
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$Tahun' AND NPM_Mahasiswa = '$idPeminjam' AND Status = 0");
 		else
 			$query = mysqli_query($con, "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$namaShelterKembali' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$Tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0");
 		$retval = array('status'=>$query);
+		return $retval;
 	}
 	
 	function POSTPeminjaman($idPeminjam,$tipePeminjam)
