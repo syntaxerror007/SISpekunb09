@@ -130,7 +130,7 @@
 	function getPeminjaman($idPeminjam,$tipePeminjam)
 	{
 		global $con;
-		// $idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
+		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
 		// $tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
 		//echo $idPeminjam;
 		// $tanggal = date("d");
