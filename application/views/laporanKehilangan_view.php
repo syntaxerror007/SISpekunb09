@@ -9,9 +9,22 @@
     <div class="row">
         <!--INI TABEL-->
         <div class="panel panel-default">
+
             <div class="panel-heading">
                 Daftar sepeda kuning yang belum ditemukan
             </div>
+			<div class="row">
+				<div class='col-lg-4'>
+					<div class="form-group">
+						<div class='input-group date' id='datetimepicker1'>
+							<input type='text' class="form-control" />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+					
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">

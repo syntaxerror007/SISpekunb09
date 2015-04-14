@@ -11,6 +11,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo site_url(''); ?>./dist/js/sb-admin-2.js"></script>
+	
+	
     
     <!-- Flot Charts JavaScript -->
     <script src="<?php echo site_url('./bower_components/flot/excanvas.min.js'); ?>"></script>
@@ -230,6 +232,15 @@
 		}));
 	</script>
 	<?php }?>
+	
+	
+	<!-- Calendar Picker -->
+	<script type="text/javascript">
+		$(function () {
+			$('#datetimepicker1').datetimepicker();
+		});
+	</script>
+	
 </body>
 
 </html>
