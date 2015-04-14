@@ -152,7 +152,7 @@
 		else
 		{
 			//$res = mysqli_query($con, "SELECT Nama FROM NON_MAHASISWA");
-			$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.NPM = PEMINJAMAN.NPM_Mahasiswa AND (PEMINJAMAN.Status = NULL or PEMINJAMAN.Status = 0) AND NON_MAHASISWA.No_KTP=$idPeminjam");
+			$res = mysqli_query($con, "SELECT NON_MAHASISWA.Nama as NamaPeminjam, NON_MAHASISWA.No_KTP as Identitas, PEMINJAMAN.No_Spekun, NON_MAHASISWA.PEKERJAAN as Pekerjaan FROM NON_MAHASISWA,PEMINJAMAN WHERE NON_MAHASISWA.No_KTP = PEMINJAMAN.NPM_Mahasiswa AND (PEMINJAMAN.Status = NULL or PEMINJAMAN.Status = 0) AND NON_MAHASISWA.No_KTP=$idPeminjam");
 			// while($row = mysqli_fetch_assoc($result))
 				// $test[] = $row;
 			// return json_encode($test);
