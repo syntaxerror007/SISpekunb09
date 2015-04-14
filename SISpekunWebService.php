@@ -195,19 +195,28 @@
 		
 		global $con;
 		
-		$idPeminjam = mysqli_real_escape_string($con, stripslashes($idPeminjam));
-		$tipePeminjam = mysqli_real_escape_string($con, stripslashes($tipePeminjam));
-		$noSpekunAkhir = mysqli_real_escape_string($con, stripslashes($noSpekunAkhir));
-		
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
-		
-		if ($tipePeminjam == "Mahasiswa")
-			$query = mysqli_query($con,"UPDATE PEMINJAMAN SET No_Spekun = $noSpekunAkhir WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$Tahun' AND NPM_Mahasiswa = '$idPeminjam' and Status = '0'");
-		else
-			$query = mysqli_query($con,"UPDATE PEMINJAMAN SET No_Spekun = $noSpekunAkhir WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$Tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = '0'");
-		return array('status'=>$query);
+		$query;
+		if ($tipePeminjam == "Mahasiswa") {
+			$query = "UPDATE PEMINJAMAN SET No_Spekun = '$noSpekunAkhir' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' and Status = 0";
+			if(mysqli_query($con, $query)) {
+				return array('status'=>'1');
+			}
+			else {
+				return array('status'=>'0');
+			}
+		}
+		else {
+			$query = "UPDATE PEMINJAMAN SET No_Spekun = '$noSpekunAkhir' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0";
+			if(mysqli_query($con, $query)) {
+				return array('status'=>'1');
+			}
+			else {
+				return array('status'=>'0');
+			}
+		}
 	}
 
 
