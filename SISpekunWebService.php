@@ -160,7 +160,10 @@
 			// return $dataPeminjam->fetch_array();
 		}
 		
-		return $res;
+		if($res === false)
+			return mysqli_error($res);
+		else
+			return $res;
 	}
 	
 	
