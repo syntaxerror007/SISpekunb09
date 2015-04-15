@@ -184,6 +184,41 @@
 		}
 	}
 	
+	function getRequest($latestRequestId)
+	{
+		global $con;
+		
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+		$res;
+		$res = mysqli_query($con, "SELECT ID, Shelter_Peminta, Jumlah_Request from REQUEST_SEPEDA where ID > $latestRequestId AND Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun'");
+		
+		if($res == false) {
+			return mysqli_error($res);
+		}
+		else {
+			$rows = array();
+			while($row = mysqli_fetch_assoc($res)) {
+				$rows[] = $row;
+			}
+			return $rows;
+		}
+	}
+
+	function addRequest($idShelterPeminta, $jumlahRequest)
+	{
+		global $con;
+		
+		$hari = date("N");
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+		$res;
+		$res = mysqli_query($con, "INSERT INTO REQUEST_SEPEDA (Shelter_Peminta, Jumlah_Request, Tanggal, Bulan, Tahun, Hari) VALUES ('$idShelterPeminta',$jumlahRequest, '$tanggal','$bulan','$tahun','$hari')");
+		
+		return array('status'=> convertToAngka($res));
+	}
 	//FIXED
 	function CheckLogin($username,$password) 
 	{
@@ -245,7 +280,9 @@
 		'POSTPeminjaman',
 		'tukar',
 		'insertLokasi',
-		'getPeminjaman'
+		'getPeminjaman',
+		'getRequestSepeda',
+		'requestSepeda'
         );
 
 	function sanitize($input) {
@@ -330,6 +367,17 @@
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
 				$value = getPeminjaman($idPeminjam,$tipePeminjam);
+			}
+			else if ($command == 'getRequestSepeda')
+			{
+				$lastRequestId = sanitize($_POST['idRequest']);
+				$value = getRequest($lastRequestId);
+			}
+			else if($command == 'requestSepeda')
+			{
+				$idShelterPeminta = sanitize($_POST['idShelter']);
+				$jumlahRequest = sanitize($_POST['jumlah']);
+				$value = addRequest($idShelterPeminta, $jumlahRequest);
 			}
 		}
 	}

@@ -17,4 +17,17 @@
 		<input type="text" placeholder="noDevice" name="noDevice"/><br>
 		<input type="submit" />
 	</form>
+	Request
+	<form action="SISpekunWebService.php" method="POST">
+		<input type="hidden" value="requestSepeda" name="command"/>
+		<input type="text" placeholder="idShelter" name="idShelter"/><br>
+		<input type="text" placeholder="jumlah" name="jumlah"/><br>
+		<input type="submit" />
+	</form>
+	Get Request
+	<form action="SISpekunWebService.php" method="POST">
+		<input type="hidden" value="getRequestSepeda" name="command"/>
+		<input type="text" placeholder="idRequest" name="idRequest"/><br>
+		<input type="submit" />
+	</form>
 </body>
