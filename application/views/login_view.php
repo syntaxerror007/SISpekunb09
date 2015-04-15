@@ -45,9 +45,7 @@
                         <h3 class="panel-title">Silahkan Login</h3>
                     </div>
                     <div class="panel-body" id='login_form'>
-						<?php echo validation_errors(); ?>
 						<form action='<?php echo base_url();?>verifylogin/check_database' method='post' name='check_database'>
-						<?php //if(! is_null($msg)) echo $msg;?>
 						<?php //echo form_open('verifylogin/check_database'); ?>
 						<div class="form-group">
 							<input class="form-control" placeholder="Username" name="username" type="username" id="username" autofocus>
@@ -61,6 +59,7 @@
 							</label>
 						</div>
 						<button type="Submit" class="btn btn-lg btn-success btn-block" name="Login">Login </button>
+						<div style="color:red" align="center"><?php if(! is_null($error_message)) echo $error_message;?></div>
                     </div>
                 </div>
             </div>

@@ -136,7 +136,14 @@
 			//$this->db->where('Status', NULL);			
 			//return $this->db->get($this->table);	
 			return $this->db->query($query);	
+		}
+		
+		public function getDaftarSpekunBelumKembaliUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
+		{
+			$query = "SELECT * FROM PEMINJAMAN WHERE (Status IS NULL OR Status = '0') AND Tanggal = '".$Tanggal."' and Bulan = '".$Bulan."' and Tahun = '".$Tahun."'";
+			return $this->db->query($query);	
 		}	
+		
 		public function getDaftarSpekunKembali()
 		{
 			$this->db->from("MAHASISWA");

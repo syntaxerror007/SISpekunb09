@@ -50,6 +50,7 @@
                 </div>
                 <!-- /.table-responsive -->                        
             </div>
+			<?php if (isset($error_message) && $error_message != '') { echo "<script>alert('".$error_message."');</script>";} ?>
             <!-- /.panel-body -->
         </div>
         <!-- /.panel -->
