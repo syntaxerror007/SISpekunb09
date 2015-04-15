@@ -4,11 +4,6 @@
 		public function index()
 		{
 			if($this->session->userdata('logged_in')){
-				$Tanggal = date("d");
-				$TanggalAwal = 1;
-				$BulanAwal = 1;
-				$Bulan = date("m");
-				$Tahun = date("Y");
 				$data['daftarPeminjaman'] = $this->peminjaman_model-> getDaftarSpekunKembali();
 				$data['daftarPeminjamanNonMahasiswa'] = $this->peminjaman_model->getDaftarSpekunKembaliNonMahasiswa();
 				$data['page_loc'] = "Laporan Peminjaman";
@@ -25,11 +20,6 @@
 		public function Kerusakan()
 		{
 			if($this->session->userdata('logged_in')){
-				$Tanggal = date("d");
-				$TanggalAwal = 1;
-				$BulanAwal = 1;
-				$Bulan = date("m");
-				$Tahun = date("Y");
 				$data['daftarKerusakanSpekun'] = $this->kerusakan_spekun_model-> getAllKerusakanSpekun();
 				$data['page_loc'] = "Laporan Kerusakan";
 					
@@ -149,7 +139,7 @@
 				$params = "";
 				if ($tanggalAwal == -1 || $bulanAwal == -1 || $tahunAwal == -1)
 				{
-					$params+="current/";
+							$params+="current/";
 				}
 				else{
 					$params = $params.$tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';

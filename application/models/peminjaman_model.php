@@ -171,6 +171,11 @@
 			$query = "SELECT Lokasi_Peminjaman, count(*) as count FROM PEMINJAMAN group by Lokasi_Peminjaman";
 			return $this->db->query($query);
 		}
+		public function getCountPeminjamanByShelterUsingTanggal($tanggal, $bulan, $tahun)
+		{
+			$query = "SELECT Lokasi_Peminjaman, count(*) as count from PEMINJAMAN WHERE Tanggal='$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' group by Lokasi_Peminjaman";
+			return $this->db->query($query);
+		}
 	}
 ?>
 
