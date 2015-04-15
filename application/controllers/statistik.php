@@ -36,11 +36,11 @@
 					$params+="current/";
 				}
 				else{
-					$params = $params.$tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';
+					$params = $tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';
 				}
-				
+
 				if ($page == "peminjaman"){
-					redirect('statistik/PeminjamanPerTanggal/'.$params,'refresh');
+					redirect('statistik/statistik_peminjaman/'.$params,'refresh');
 				}
 				else if ($page == "kerusakan"){
 					redirect('laporan/KerusakanPerTanggal/'.$params,'refresh');
@@ -60,16 +60,34 @@
 				{
 
 					$arr = explode('-',$tanggalRequest,4);
-					$tanggal = $data[0];
-					$bulan = $data[1];
-					$tahun = $data[2];
+					$tanggal = $arr[0];
+					$bulan = $arr[1];
+					$tahun = $arr[2];
 
+					if ($tahun > date("Y"))
+					{
+						$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/peminjaman/','refresh');
+					}
+					else if ($bulan > date("m") && $tahun == date("Y"))
+					 {
+					 	$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/peminjaman/','refresh');
+					 }
+					else if ($tanggal > date("d") && $bulan == date("m") && $tahun == date("Y"))
+				 	{
+				 		$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/peminjaman/','refresh');
+				 	}
+					
 					$data['isTanggal'] = true;
-					$data['statistikPeminjaman_fromTanggal'] = $this->peminjaman_model->getCountPeminjamanByShelterUsingTanggal($tanggal, $bulan, $tahun);
+					$data['statistikPeminjamanPerShelter'] = $this->peminjaman_model->getCountPeminjamanByShelterUsingTanggal($tanggal, $bulan, $tahun);
 				}
 				else
 				{
-				
+					$data['error_message'] = $this->session->userdata('error_message');
+					$this->session->unset_userdata('error_message');
+
 					$data['statistikMingguan'] = $this->peminjaman_model-> getStatistikPeminjamanMingguan();
 
 					$data['statistikBulanan'] = $this->peminjaman_model-> getStatistikPeminjamanBulanan();

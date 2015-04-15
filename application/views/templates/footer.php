@@ -43,6 +43,7 @@
 			hari[6] = "Sabtu";
 			hari[7] = "Minggu";
 		$(document).ready( $(function() {
+			<?php if (!isset($isTanggal)) { ?>
 			var ticksHari = [<?php
 				$i=0;
 				if ($statistikMingguan->num_rows() != 0)
@@ -194,7 +195,13 @@
 				?>]
 			};
 			$.plot($("#flot-bar-chart-tahun"), [barData], barOptions);
+			<?php }?>
+
 			<?php if ($page_loc != "Statistik Kerusakan") { ?>
+				<?php if ($statistikPeminjamanPerShelter->num_rows() == 0) { ?>
+					document.getElementById("error_message_shelter").innerHTML = "<div class='row'><h3>Tidak ada Peminjaman pada hari ini</h3></div>";
+					document.getElementById("panel_shelter").style.display = 'none';
+				<?php }?>
 			var dataShelter = [<?php
 				$i=0;
 				foreach ($statistikPeminjamanPerShelter->result_array() as $row)
