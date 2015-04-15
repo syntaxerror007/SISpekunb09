@@ -76,6 +76,7 @@
                 <!-- /.panel -->
 			<!--END OF TABEL-->	
 			
+			<?php if (isset($error_message) && $error_message != '') { echo "<script>alert('".$error_message."');</script>";} ?>
             </div>
             <!-- /.col-lg-12 -->
         <!-- /.row -->
@@ -128,22 +129,34 @@
 		}
 
 		function recalculateDays() {
-			var month_index = sel_month.value,
+			var date_index = sel_day.value;
+			var date_index2 = sel_day2.value;
+			
+			var month_index = sel_month.value, month_index2 = sel_month2.value,
 				df = document.createDocumentFragment(), df2 = document.createDocumentFragment();
 			if (month_index == -1)
 			{
-				month_index = 0;
+				month_index = 1;
 			}
+			if (month_index2 == -1)
+			{
+				month_index2 = 1;
+			}
+			
 			df.appendChild(createOption("Pilih Tanggal",-1));
 			df2.appendChild(createOption("Pilih Tanggal",-1));
-			for (var i = 0, l = calendar[month_index][1]; i < l; i++) {
+			for (var i = 0, l = calendar[month_index-1][1]; i < l; i++) {
 				df.appendChild(createOption(i + 1, i+1));
+			}
+			for (var i = 0, l = calendar[month_index2-1][1]; i < l; i++) {
 				df2.appendChild(createOption(i + 1, i+1));
 			}
 			clearChildren(sel_day);
 			sel_day.appendChild(df);
+			sel_day.selectedIndex = date_index;
 			clearChildren(sel_day2);
 			sel_day2.appendChild(df2);
+			sel_day2.selectedIndex = date_index2;
 		}
 		
 		function generateYears() {
@@ -191,5 +204,6 @@
 		cont2.appendChild(sel_day2);
 		cont2.appendChild(sel_month2);
 		cont2.appendChild(sel_year2);
+		
 	</script>
 </div>

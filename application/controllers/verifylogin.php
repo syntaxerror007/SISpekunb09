@@ -10,7 +10,6 @@ class VerifyLogin extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
 		
-		
 		if($this->form_validation->run() == FALSE)
 		{
 			$this->load->view('login_view');
@@ -19,8 +18,6 @@ class VerifyLogin extends CI_Controller {
 		{
 			redirect('home', 'refresh');
 		}
-		
-			
 	}
 
 	function check_database()
@@ -32,28 +29,18 @@ class VerifyLogin extends CI_Controller {
 		//query the database
 		$result = $this->administrator_model->validate($username, $password);
 		
-		
 		if($result->num_rows() != 0)
 		{
 			$sess_array = array(
 				'username' => $result->result_array()[0]);
 			$this->session->set_userdata('logged_in', $sess_array);
 			redirect('home','refresh');
-			
 		}
 		else
 		{
-			//$msg = '<font color=red>Invalid username and/or password.</font><br />';
-            //$this->index($msg);
-			$this->form_validation->set_message('check_database', '<div class="alert alert-error">Invalid username or password</div>');
+			$this->session->set_userdata('error_message', '<div class="alert alert-error">Invalid username or password</div>');
 			redirect('auth','refresh');
 		}
-		
-		
-		
-		
-		
-		
 	}
 }
 ?>

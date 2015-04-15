@@ -10,6 +10,12 @@
 
 	$con = mysqli_connect('localhost', $dbuser, $dbpass, $dbname) or die('Terjadi masalah dalam koneksi ke database');
 	
+	function convertToAngka($value)
+	{
+		if ($value)
+			return '1';
+		return '0';
+	}
 	//FIXED
 	function InsertNewPeminjaman($namaShelterPinjam,$noSpekun,$idPeminjam,$tipePeminjam) {
 		global $con;
@@ -27,13 +33,13 @@
 		if ($tipePeminjam == "Mahasiswa")
 		{
 			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Hari, Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,NPM_Mahasiswa) values ('$hari','$tanggal', '$bulan', '$tahun', '$jam_Peminjaman', '$namaShelterPinjam','$noSpekun','$idPeminjam')");
-			$retval = array('status' => $status);
+			$retval = array('status' => convertToAngka($status));
 		}
 		else
 		{
 			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Hari, Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,ID_Non_Mahasiswa) values ('$hari','$tanggal', '$bulan', '$tahun', '$jam_Peminjaman','$namaShelterPinjam','$noSpekun','$idPeminjam')");
 			
-			$retval = array('status' => $status);
+			$retval = array('status' => convertToAngka($status));
 		}
 		return $retval;
 	}
@@ -52,18 +58,19 @@
 		if ($tipePeminjam == "Mahasiswa")
 		{
 			$status = mysqli_query($con, "INSERT INTO MAHASISWA VALUES ('$namaPeminjam','$idPeminjam','$fakultasPeminjam')");
-			$retval = array('status'=> $status);
+			$retval = array('status'=> convertToAngka($status));
 		}
 		else
 		{
 			$status = mysqli_query($con, "INSERT INTO NON_MAHASISWA (Nama, No_KTP, Pekerjaan) VALUES ('$namaPeminjam','$idPeminjam','$tipePeminjam')");
-			$retval = array('status'=> $status);
+			$retval = array('status'=> convertToAngka($status));
 		}
 		
 		return $retval;
 	}
 
 	//FIXED
+	// return value = 0 gagal, 1 berhasil, -12 sudah set_lokasi sebelumnya, lokasi disimpan di lokasi
 	function InsertLokasi($username, $idShelter,$noDevice)
 	{
 		global $con;
@@ -75,9 +82,13 @@
 		$username = mysqli_real_escape_string($con, stripslashes($username));
 		$idShelter = mysqli_real_escape_string($con, stripslashes($idShelter));
 		$noDevice = mysqli_real_escape_string($con, stripslashes($noDevice));
-		
+		$checkLokasi = mysqli_query($con, "SELECT * FROM PENUGASAN_PENJAGA_SHELTER WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND ID_Penjaga = '$username'");
+		if (mysqli_num_rows($checkLokasi)!= 0)
+		{
+			return array('status'=>'-12','Lokasi'=>mysqli_fetch_row($checkLokasi)[0]);
+		}
 		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
-		return array('status'=> $status);
+		return array('status'=> convertToAngka($status));
 	}
 	
 	//FIXED
@@ -140,7 +151,7 @@
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
 		$noSpekun = str_pad($noSpekun, 4, '0', STR_PAD_LEFT);
-		return array('status' => mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$informasi', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')"));
+		return array('status' => convertToAngka(mysqli_query($con, "INSERT INTO KERUSAKAN_SPEKUN (Detail, Hari, Tanggal, Bulan, Tahun, No_Spekun) VALUES ('$informasi', '$hari', '$tanggal', '$bulan', '$tahun', '$noSpekun')")));
 	}
 	
 	//FIXED
@@ -184,7 +195,8 @@
 		{
 			$retval = array('status'=>'0');
 		}
-		else{
+		else
+		{
 			$retval = array('status'=>'1');
 		}
 		return $retval;
