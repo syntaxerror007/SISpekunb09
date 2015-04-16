@@ -3,6 +3,7 @@
 	{
 		
 		public $table = 'PEMINJAMAN';
+		
 		// getAllPeminjaman() : List<Peminjaman>
 		public function getAllPeminjaman()
 		{
@@ -181,6 +182,46 @@
 		public function getCountPeminjamanByShelterUsingTanggal($tanggal, $bulan, $tahun)
 		{
 			$query = "SELECT Lokasi_Peminjaman, count(*) as count from PEMINJAMAN WHERE Tanggal='$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' group by Lokasi_Peminjaman";
+			return $this->db->query($query);
+		}
+		
+		//Untuk total peminjaman di setiap shelter
+		public function getCountPeminjamanPerShelter()
+		{
+			$query = "SELECT Nama,(SELECT COUNT(*) FROM PEMINJAMAN WHERE PEMINJAMAN.Lokasi_Peminjaman = SHELTER.nama) AS count FROM SHELTER";
+			return $this->db->query($query);
+		}
+		
+		//untuk total peminjaman berdasarkan Date
+		public function getCountPeminjamanPerShelterByUsingDate($tanggal, $bulan, $tahun)
+		{
+			$query = "SELECT Nama,(SELECT COUNT(*) FROM PEMINJAMAN WHERE PEMINJAMAN.Lokasi_Peminjaman = SHELTER.nama AND Tanggal='$tanggal' AND Bulan='$bulan' AND Tahun='$tahun') AS count FROM SHELTER";
+			return $this->db->query($query);
+		}
+		
+		//untuk total pengembalian di setiap shelter
+		public function getCountPengembalianPerShelter()
+		{
+			$query = "SELECT Nama,(SELECT COUNT(*) FROM PEMINJAMAN WHERE PEMINJAMAN.Lokasi_Kembali = SHELTER.nama) AS count FROM SHELTER";
+			return $this->db->query($query);
+		}
+		
+		//untuk total pengembalian berdasarkan date
+		public function getCountPengembalianPerShelterByUsingDate($tanggal, $bulan, $tahun)
+		{
+			$query = "SELECT Nama,(SELECT COUNT(*) FROM PEMINJAMAN WHERE PEMINJAMAN.Lokasi_Kembali = SHELTER.nama AND Tanggal='$tanggal' AND Bulan='$bulan' AND Tahun='$tahun') AS count FROM SHELTER";
+			return $this->db->query($query);
+		}
+		
+		public function getAllPeminjamanByShelterUsingDate($tanggal,$bulan,$tahun)
+		{
+			$query = "SELECT Lokasi_Peminjaman, Count(*) as count from PEMINJAMAN WHERE Tanggal = $tanggal AND Bulan = $bulan and Tahun = $tahun group by Lokasi_Peminjaman";
+			return $this->db->query($query);
+		}
+		
+		public function getAllPengembalianByShelterUsingDate($tanggal,$bulan,$tahun)
+		{
+			$query = "SELECT Lokasi_Kembali, Count(*) as count from PEMINJAMAN WHERE Tanggal = $tanggal AND Bulan = $bulan and Tahun = $tahun AND Status = 1 group by Lokasi_Kembali";
 			return $this->db->query($query);
 		}
 	}

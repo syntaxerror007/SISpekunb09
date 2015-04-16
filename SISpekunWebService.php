@@ -32,11 +32,23 @@
 		$retval;
 		if ($tipePeminjam == "Mahasiswa")
 		{
+			$query = mysqli_query($con,"SELECT * FROM PEMINJAMAN WHERE Tanggal = $tanggal AND Bulan = $bulan and Tahun = $tahun and (Status = 0 OR Status is NULL) and NPM_Mahasiswa = '$idPeminjam'"); 
+			if (mysqli_num_rows($query) != 0)
+			{
+				return array('status' => "-12");
+			}
+			
 			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Hari, Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,NPM_Mahasiswa) values ('$hari','$tanggal', '$bulan', '$tahun', '$jam_Peminjaman', '$namaShelterPinjam','$noSpekun','$idPeminjam')");
 			$retval = array('status' => convertToAngka($status));
 		}
 		else
 		{
+			$query = mysqli_query($con,"SELECT * FROM PEMINJAMAN WHERE Tanggal = $tanggal AND Bulan = $bulan and Tahun = $tahun and (Status = 0 OR Status is NULL) and ID_Non_Mahasiswa = '$idPeminjam'"); 
+			if (mysqli_num_rows($query) != 0)
+			{
+				return array('status' => "-12");
+			}
+			
 			$status = mysqli_query($con, "INSERT INTO PEMINJAMAN (Hari, Tanggal, Bulan, Tahun, Jam_Peminjaman, Lokasi_Peminjaman,No_Spekun,ID_Non_Mahasiswa) values ('$hari','$tanggal', '$bulan', '$tahun', '$jam_Peminjaman','$namaShelterPinjam','$noSpekun','$idPeminjam')");
 			
 			$retval = array('status' => convertToAngka($status));
@@ -70,7 +82,6 @@
 	}
 
 	//FIXED
-	// return value = 0 gagal, 1 berhasil, -12 sudah set_lokasi sebelumnya, lokasi disimpan di lokasi
 	function InsertLokasi($username, $idShelter,$noDevice)
 	{
 		global $con;
@@ -83,12 +94,15 @@
 		$idShelter = mysqli_real_escape_string($con, stripslashes($idShelter));
 		$noDevice = mysqli_real_escape_string($con, stripslashes($noDevice));
 		$checkLokasi = mysqli_query($con, "SELECT * FROM PENUGASAN_PENJAGA_SHELTER WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND ID_Penjaga = '$username'");
-		if (mysqli_num_rows($checkLokasi)!= 0)
+		if (mysqli_num_rows($checkLokasi)== 0)
 		{
-			return array('status'=>'-12','Lokasi'=>mysqli_fetch_row($checkLokasi)[0]);
+			$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
+			return array('status'=> convertToAngka($status));
 		}
-		$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
-		return array('status'=> convertToAngka($status));
+		else
+		{
+			return array('status'=> '-12');
+		}
 	}
 	
 	//FIXED
@@ -226,13 +240,25 @@
   
 		$res = mysqli_query($con, "SELECT * FROM PENJAGA_SHELTER WHERE Username = '$username' and Password='$password'");
 		$retval;
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+		
 		if (mysqli_num_rows($res) == 0)
 		{
 			$retval = array('status'=>'0');
 		}
 		else
 		{
-			$retval = array('status'=>'1');
+			$checkLokasi = mysqli_query($con, "SELECT * FROM PENUGASAN_PENJAGA_SHELTER WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND ID_Penjaga = '$username'");
+			if (mysqli_num_rows($checkLokasi)!= 0)
+			{
+				return array('status'=>'-12','Lokasi'=>mysqli_fetch_row($checkLokasi)[0]);
+			}
+			else
+			{
+				$retval = array('status'=>'1');
+			}
 		}
 		return $retval;
 	}
@@ -245,7 +271,7 @@
 		$bulan = date("m");
 		$tahun = date("Y");
 		if ($tipePeminjam == "Mahasiswa") {
-			$query = "UPDATE PEMINJAMAN SET No_Spekun = '$noSpekunAkhir' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND NPM_Mahasiswa = '$idPeminjam' and Status = 0";
+			$query = "UPDATE PEMINJAMAN SET No_Spekun = $noSpekunAkhir WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND NPM_Mahasiswa = '$idPeminjam' and Status = 0";
 			if(mysqli_query($con, $query)) {
 				return array('status'=>'1');
 			}
@@ -254,7 +280,7 @@
 			}
 		}
 		else {
-			$query = "UPDATE PEMINJAMAN SET No_Spekun = '$noSpekunAkhir' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0";
+			$query = "UPDATE PEMINJAMAN SET No_Spekun = $noSpekunAkhir WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND ID_Non_Mahasiswa = '$idPeminjam' AND Status = 0";
 			if(mysqli_query($con, $query)) {
 				return array('status'=>'1');
 			}
@@ -353,7 +379,7 @@
 				$idPeminjam = sanitize($_POST['idPeminjam']);
 				$tipePeminjam = sanitize($_POST['tipePeminjam']);
 				
-				$value = doTukar($idPeminjam, $tipePeminjam, $noSpekunAwal, $noSpekunAkhir);
+				$value = doTukar($idPeminjam, $tipePeminjam, $noSpekunAkhir);
 			}
 			else if ($command == 'insertLokasi')
 			{

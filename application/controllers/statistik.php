@@ -1,17 +1,46 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Statistik extends CI_Controller {
-		public function statistik_kerusakan()
+		public function statistik_kerusakan($tanggalRequest = null)
 		{
 			if($this->session->userdata('logged_in')){
 				$data['page_loc'] = "Statistik Kerusakan";
 				
-				$data['statistikMingguan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanMingguan();
+				if ($tanggalRequest != null)
+				{
 
-				$data['statistikBulanan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanBulanan();
+					$arr = explode('-',$tanggalRequest,4);
+					$tanggal = $arr[0];
+					$bulan = $arr[1];
+					$tahun = $arr[2];
 
-				$data['statistikTahunan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanTahunan();
+					if ($tahun > date("Y"))
+					{
+						$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/kerusakan/','refresh');
+					}
+					else if ($bulan > date("m") && $tahun == date("Y"))
+					 {
+					 	$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/kerusakan/','refresh');
+					 }
+					else if ($tanggal > date("d") && $bulan == date("m") && $tahun == date("Y"))
+				 	{
+				 		$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/kerusakan/','refresh');
+				 	}
+					
+					$data['isTanggal'] = true;
+					$data['statistikKerusakan'] = $this->kerusakan_spekun_model->getSpekunRusakFromTanggal($tanggal, $bulan, $tahun);
+				}
+				else
+				{
+					$data['statistikMingguan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanMingguan();
 
+					$data['statistikBulanan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanBulanan();
+
+					$data['statistikTahunan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanTahunan();
+				}
 	                  
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation',$data);
@@ -33,7 +62,6 @@
 				$params = "";
 				if ($tanggalAwal == -1 || $bulanAwal == -1 || $tahunAwal == -1)
 				{
-					$params+="current/";
 				}
 				else{
 					$params = $tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';
@@ -43,7 +71,10 @@
 					redirect('statistik/statistik_peminjaman/'.$params,'refresh');
 				}
 				else if ($page == "kerusakan"){
-					redirect('laporan/KerusakanPerTanggal/'.$params,'refresh');
+					redirect('statistik/statistik_kerusakan/'.$params,'refresh');
+				}
+				else if ($page == "statistik") {
+					redirect('statistik/statistik_shelter/'.$params,'refresh');
 				}
 			}
 			else{
@@ -109,26 +140,52 @@
 			}
 		}
 		
-		public function statistik_shelter()
+		public function statistik_shelter($tanggalRequest = null)
 		{
 			if($this->session->userdata('logged_in')){
-				$Tanggal = date("d");
-				$TanggalAwal = 1;
-				$BulanAwal = 1;
-				$Bulan = date("m");
-				$Tahun = date("Y");
-				$data['page_loc'] = "Statistik Kerusakan";
+				$data['page_loc'] = "Statistik Shelter";
+					
+				if ($tanggalRequest != null)
+				{
+
+					$arr = explode('-',$tanggalRequest,4);
+					$tanggal = $arr[0];
+					$bulan = $arr[1];
+					$tahun = $arr[2];
+
+					
+					if ($tahun > date("Y"))
+					{
+						$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/peminjaman/','refresh');
+					}
+					else if ($bulan > date("m") && $tahun == date("Y"))
+					 {
+					 	$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/peminjaman/','refresh');
+					 }
+					else if ($tanggal > date("d") && $bulan == date("m") && $tahun == date("Y"))
+				 	{
+				 		$this->session->set_userdata('error_message','Tanggal tidak boleh lebih besar dari tanggal sekarang');
+						redirect('statistik/peminjaman/','refresh');
+				 	}
+					$data['daftarPeminjaman'] = $this->peminjaman_model->getAllPeminjamanByShelterUsingDate($tanggal,$bulan,$tahun);
+					$data['daftarPengembalian'] = $this->peminjaman_model->getAllPengembalianByShelterUsingDate($tanggal,$bulan,$tahun);
+				}
+				else
+				{
+					$tanggal = date("d");
+					$bulan =  date("m");
+					$tahun = date("Y");
+					$data['page_loc'] = "Statistik Shelter";
+					
+					$data['daftarPeminjaman'] = $this->peminjaman_model->getAllPeminjamanByShelterUsingDate($tanggal,$bulan,$tahun);
+					$data['daftarPengembalian'] = $this->peminjaman_model->getAllPengembalianByShelterUsingDate($tanggal,$bulan,$tahun);
+				}
 				
-				$data['statistikMingguan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanMingguan();
-
-				$data['statistikBulanan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanBulanan();
-
-				$data['statistikTahunan'] = $this->kerusakan_spekun_model-> getStatistikKerusakanTahunan();
-
-	                  
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation',$data);
-				$this->load->view('statistikShelter_view.php',$data);
+				$this->load->view('statistikShelter_view',$data);
 				$this->load->view('templates/footer',$data);
 			}
 			else

@@ -39,6 +39,11 @@
 			return $this->db->query($query);
 		}
 		
+		public function getSpekunRusakFromTanggal($tanggal,$bulan,$tahun)
+		{
+			$query = "SELECT * FROM KERUSAKAN_SPEKUN WHERE tahun = $tahun and Tanggal = $tanggal and Bulan = $bulan";
+			return $this->db->query($query);
+		}
 		// + createLaporanKerusakan(IDSpekun,detail):boolean
 		public function createLaporanKerusakan($ID_Spekun_Rusak, $Detail, $Tanggal, $Bulan, $Tahun, $No_Spekun)
 		{

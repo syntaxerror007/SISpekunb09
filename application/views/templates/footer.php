@@ -17,31 +17,162 @@
     <script src="<?php echo site_url('./bower_components/flot/jquery.flot.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo site_url('./bower_components/flot/jquery.flot.pie.js'); ?>"></script>
     <script src="<?php echo site_url('./bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js'); ?>"></script>
-	
+	<script>
+		var namaBulan = [];
+		namaBulan[1] = "Januari";
+		namaBulan[2] = "Februari";
+		namaBulan[3] = "Maret";
+		namaBulan[4] = "April";
+		namaBulan[5] = "Mei";
+		namaBulan[6] = "Juni";
+		namaBulan[7] = "Juli";
+		namaBulan[8] = "Agustus";
+		namaBulan[9] = "September";
+		namaBulan[10] = "Oktober";
+		namaBulan[11] = "November";
+		namaBulan[12] = "Desember";
+		var hari = [];
+		hari[1] = "Senin";
+		hari[2] = "Selasa";
+		hari[3] = "Rabu";
+		hari[4] = "Kamis";
+		hari[5] = "Jumat";
+		hari[6] = "Sabtu";
+		hari[7] = "Minggu";
+	</script>
+	<?php if ($page_loc == "Statistik Shelter") { ?>
+		<script>
+			$(document).ready( $(function() {
+				var ticksHari = [<?php
+									$i=0;
+									if ($daftarPeminjaman->num_rows() != 0)
+									{
+										foreach ($daftarPeminjaman->result_array() as $row)
+										{
+											if ($i == $daftarPeminjaman->num_rows()-1)
+												echo '['.$i.',"'.$row['Lokasi_Peminjaman'].'"]';
+											else
+												echo '['.$i.',"'.$row['Lokasi_Peminjaman'].'"],';
+											$i++;
+										}
+									}
+								?>];
+				var barOptions = {
+					series: {
+						bars: {
+							align:"center",
+							show: true
+						}
+					},
+					grid: {
+						hoverable: true
+					},
+					legend: {
+						show: false
+					},
+					tooltip: true,
+					tooltipOpts: {
+						content: "Shelter: %x, Jumlah: %y"
+					},
+					xaxis: {
+						axisLabel: "Shelter",
+						axisLabelUseCanvas: true,
+						axisLabelFontSizePixels: 12,
+						axisLabelFontFamily: 'Verdana, Arial',
+						axisLabelPadding: 10,
+						ticks: ticksHari
+					}
+				};
+				var barData = {
+					label: "bar",
+					data: [
+					<?php
+						$i = 0;
+						foreach ($daftarPeminjaman->result_array() as $row) {
+							if ($i == $daftarPeminjaman->num_rows()-1)
+							{
+								echo '['.$i.', '.$row['count'].']';
+							}
+							else
+							{
+								echo '['.$i.', '.$row['count'].'],';
+							}
+							$i++;
+						}
+					?>
+					]
+				};
+				$.plot($("#flot-bar-chart-peminjaman"), [barData], barOptions);
+				
+				
+				var ticksHari = [<?php
+									$i=0;
+									if ($daftarPengembalian->num_rows() != 0)
+									{
+										foreach ($daftarPengembalian->result_array() as $row)
+										{
+											if ($i == $daftarPengembalian->num_rows()-1)
+												echo '['.$i.',"'.$row['Lokasi_Kembali'].'"]';
+											else
+												echo '['.$i.',"'.$row['Lokasi_Kembali'].'"],';
+											$i++;
+										}
+									}
+								?>];
+				var barOptions = {
+					series: {
+						bars: {
+							align:"center",
+							show: true
+						}
+					},
+					grid: {
+						hoverable: true
+					},
+					legend: {
+						show: false
+					},
+					tooltip: true,
+					tooltipOpts: {
+						content: "Shelter: %x, Jumlah: %y"
+					},
+					xaxis: {
+						axisLabel: "Shelter",
+						axisLabelUseCanvas: true,
+						axisLabelFontSizePixels: 12,
+						axisLabelFontFamily: 'Verdana, Arial',
+						axisLabelPadding: 10,
+						ticks: ticksHari
+					}
+				};
+				var barData = {
+					label: "bar",
+					data: [
+					<?php
+						$i = 0;
+						foreach ($daftarPengembalian->result_array() as $row) {
+							if ($i == $daftarPengembalian->num_rows()-1)
+							{
+								echo '['.$i.', '.$row['count'].']';
+							}
+							else
+							{
+								echo '['.$i.', '.$row['count'].'],';
+							}
+							$i++;
+						}
+					?>
+					]
+				};
+				$.plot($("#flot-bar-chart-pengembalian"), [barData], barOptions);
+				
+			}));
+		</script>
+	<?php } ?>
 	<?php if ($page_loc == "Statistik Kerusakan" || $page_loc == 'Statistik Peminjaman') {?>
 	<script>
 		//Flot Line Chart
-			var namaBulan = [];
-			namaBulan[1] = "Januari";
-			namaBulan[2] = "Februari";
-			namaBulan[3] = "Maret";
-			namaBulan[4] = "April";
-			namaBulan[5] = "Mei";
-			namaBulan[6] = "Juni";
-			namaBulan[7] = "Juli";
-			namaBulan[8] = "Agustus";
-			namaBulan[9] = "September";
-			namaBulan[10] = "Oktober";
-			namaBulan[11] = "November";
-			namaBulan[12] = "Desember";
-			var hari = [];
-			hari[1] = "Senin";
-			hari[2] = "Selasa";
-			hari[3] = "Rabu";
-			hari[4] = "Kamis";
-			hari[5] = "Jumat";
-			hari[6] = "Sabtu";
-			hari[7] = "Minggu";
+			
 		$(document).ready( $(function() {
 			<?php if (!isset($isTanggal)) { ?>
 			var ticksHari = [<?php

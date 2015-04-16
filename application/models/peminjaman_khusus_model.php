@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	class peminjaman_khusus_model extends CI_Model 
 	{
-		public $table = 'Peminjaman_Khusus';
+		public $table = 'PEMINJAMAN_KHUSUS';
 		
 		public function createNewPeminjamanKhusus($jumlahSpekun, $jamAwal, $jamAkhir, $pesan, $organisasi, $nama, $tahun, $tanggal, $bulan)
 		{
