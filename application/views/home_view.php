@@ -107,6 +107,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
+                                <?php if ($penugasanHariIni->num_rows() == 0) echo "<h1>Belum ada penugasan hari ini</h1>"; else {?>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
@@ -133,6 +134,7 @@
                                         <?php } ?>
                                     </tbody>
                                 </table>
+                                <?php } ?>
                             </div>
                             <!-- /.table-responsive -->
                         </div>
