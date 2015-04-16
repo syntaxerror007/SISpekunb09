@@ -42,7 +42,7 @@
 				$bulanAwal = "";
 				$tahunAkhir = "";
 				$tahunAwal = "";
-				if ($start != null)
+				if ($start != null || $end != "")
 				{
 					$data = explode('-',$start,4);
 					$tanggalAwal = $data[0];
@@ -90,7 +90,7 @@
 				$bulanAwal = "";
 				$tahunAkhir = "";
 				$tahunAwal = "";
-				if ($start != null)
+				if ($start != null || $end != "")
 				{
 					$data = explode('-',$start,4);
 					$tanggalAwal = $data[0];
@@ -139,7 +139,6 @@
 				$params = "";
 				if ($tanggalAwal == -1 || $bulanAwal == -1 || $tahunAwal == -1)
 				{
-							$params+="current/";
 				}
 				else{
 					$params = $params.$tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';
@@ -160,6 +159,9 @@
 				}
 				else if ($page == "kerusakan"){
 					redirect('laporan/KerusakanPerTanggal/'.$params,'refresh');
+				} else if ($page == "kehilangan")
+				{
+					redirect('laporan/KehilanganPerTanggal/'.$params,'refresh');
 				}
 			}
 			else{
@@ -176,6 +178,53 @@
 				$Bulan = date("m");
 				$Tahun = date("Y");
 				$data['daftarKehilanganSpekun'] = $this->peminjaman_model-> getDaftarSpekunBelumKembali();
+				$data['page_loc'] = "Laporan Kehilangan";
+
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation', $data);
+				$this->load->view('laporanKehilangan_view', $data);
+				$this->load->view('templates/footer');
+			}
+            else{
+                    redirect('auth', 'refresh');
+            }
+		}
+		public function KehilanganPerTanggal($start = null,$end = null)
+		{
+			if($this->session->userdata('logged_in')){
+				$tanggalAwal = "";
+				$tanggalAkhir = "";
+				$bulanAkhir = "";
+				$bulanAwal = "";
+				$tahunAkhir = "";
+				$tahunAwal = "";
+				if ($start != null || $end != "")
+				{
+					$data = explode('-',$start,4);
+					$tanggalAwal = $data[0];
+					$bulanAwal = $data[1];
+					$tahunAwal = $data[2];
+				}
+				else{
+					$tanggalAwal = date("d");
+					$bulanAwal = date("m");
+					$tahunAwal = date("Y");
+				}
+				
+				if ($end != null || $end != "")
+				{
+					$data = explode('-',$end,4);
+					$tanggalAkhir = $data[0];
+					$bulanAkhir = $data[1];
+					$tahunAkhir = $data[2];
+				}
+				else{
+					$tanggalAkhir = date("d");
+					$bulanAkhir = date("m");
+					$tahunAkhir = date("Y");
+				}
+				
+				$data['daftarKehilanganSpekun'] = $this->peminjaman_model->getDaftarSpekunBelumKembaliUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
 				$data['page_loc'] = "Laporan Kehilangan";
 
 				$this->load->view('templates/header');
