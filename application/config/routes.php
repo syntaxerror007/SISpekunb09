@@ -40,8 +40,10 @@
 $route['formulir/doInsert'] = 'PeminjamanKhusus_controller/doInsert';
 $route['formulir'] = 'PeminjamanKhusus_controller';
 $route['penugasan/profile/(:any)'] = 'penugasan/getProfilePetugas/$1';
+$route['laporan/peminjaman']='laporan/Peminjaman';
 $route['laporan/kerusakan']='laporan/Kerusakan';
 $route['laporan/kehilangan']='laporan/kehilangan';
+$route['penugasan/shelter'] = 'penugasan/laporan_penugasan';
 $route['penugasan/tambah'] = 'penugasan/tambah_penjaga';
 $route['penugasan/penjaga'] = 'penugasan/daftar_penjaga';
 $route['statistik/kerusakan'] = "statistik/statistik_kerusakan";

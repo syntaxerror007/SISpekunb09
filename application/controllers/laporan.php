@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Laporan extends CI_Controller {
-		public function index()
+		public function Peminjaman()
 		{
 			if($this->session->userdata('logged_in')){
 				$data['daftarPeminjaman'] = $this->peminjaman_model-> getDaftarSpekunKembali();

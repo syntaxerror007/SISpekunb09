@@ -39,7 +39,7 @@
                 <a href="#"><i class="fa fa-wrench fa-fw"></i> Laporan <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="<?php echo site_url('laporan'); ?>" class="<?php if ($page_loc == 'Laporan Peminjaman') echo 'active'; ?>">Peminjaman</a>
+                        <a href="<?php echo site_url('laporan/peminjaman'); ?>" class="<?php if ($page_loc == 'Laporan Peminjaman') echo 'active'; ?>">Peminjaman</a>
                     </li>
                     <li>
                         <a href="<?php echo site_url('laporan/kerusakan'); ?>" class="<?php if ($page_loc == 'Laporan Kerusakan') echo 'active'; ?>">Kerusakan</a>
@@ -67,7 +67,7 @@
                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Penugasan<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="<?php echo site_url('penugasan'); ?>" class="<?php if ($page_loc == 'Shelter') echo 'active'; ?>">Shelter</a>
+                        <a href="<?php echo site_url('penugasan/shelter'); ?>" class="<?php if ($page_loc == 'Shelter') echo 'active'; ?>">Shelter</a>
                     </li>
                     <li>
                         <a href="<?php echo site_url('penugasan/penjaga'); ?>" class="<?php if ($page_loc == 'Daftar Penjaga') echo 'active'; ?>" >Daftar Penjaga Shelter</a>

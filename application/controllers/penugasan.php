@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Penugasan extends CI_Controller {
-		public function index()
+		public function laporan_penugasan()
 		{
 			if($this->session->userdata('logged_in')){
 	            $Tanggal = date("d");

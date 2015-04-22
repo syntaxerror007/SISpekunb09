@@ -37,4 +37,24 @@
 		<input type="text" placeholder="idRequest" name="idRequest"/><br>
 		<input type="submit" />
 	</form>
+	
+	KEMBALI SEPEDA
+	<form action="SISpekunWebService.php" method="POST">
+		<input type="hidden" value="kembali" name="command"/>
+		<input type="text" placeholder="shelter kembali" name="namaShelterKembali"/><br>
+		<input type="text" placeholder="id peminjam" name="idPeminjam"/><br>
+		<input type="text" placeholder="tipe peminjam" name="tipePeminjam"/><br>
+		<input type="submit" />
+	</form>
+	
+	PEMINJAMAN SEPEDA
+	<form action="SISpekunWebService.php" method="POST">
+		<input type="hidden" value="pinjam" name="command"/>
+		<input type="text" placeholder="shelter pinjam" name="idShelter"/><br>
+		<input type="text" placeholder="id peminjam" name="idPeminjam"/><br>
+		<input type="text" placeholder="tipe peminjam" name="tipePeminjam"/><br>
+		<input type="text" placeholder="nama peminjam" name="namaPeminjam"/><br>
+		<input type="text" placeholder="nomor spekun" name="noSpekun"/><br>
+		<input type="submit" />
+	</form>
 </body>
