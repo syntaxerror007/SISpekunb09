@@ -90,9 +90,7 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a href="<?php echo site_url('formulir'); ?>"><i class="fa fa-table fa-fw"></i> Formulir Peminjaman</a>
-            </li>
+           
 
         </ul>
     </div>
