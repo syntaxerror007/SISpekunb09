@@ -47,8 +47,8 @@
 										echo "<div class='form-group'>";
 										echo "<label>Jumlah Spekun</label>";
 										$data = array(
-													  'name'        => 'jumlah',
-													  'id'          => 'jumlah',
+													  'name'        => 'Jumlah',
+													  'id'          => 'Jumlah',
 													  'placeholder' => 'Jumlah Spekun',
 													  'class'		=> 'form-control',
 													  'type'		=> 'number'

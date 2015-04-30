@@ -39,11 +39,11 @@ class PeminjamanKhusus_controller extends CI_Controller{
 		$result = $this->peminjaman_khusus_model->createNewPeminjamanKhusus($jumlah,$awal,$akhir,$keterangan,$organisasi,$namaKegiatan,date("Y"),date("d"),date("m"));
 		if ($result)
 		{
-			redirect('formulir');
+			redirect('peminnjamanKhusus/formulir');
 		}
 		else
 		{
-			redirect('formulir');
+			redirect('peminjamanKhusus/formulir');
 			
 		}
 	}

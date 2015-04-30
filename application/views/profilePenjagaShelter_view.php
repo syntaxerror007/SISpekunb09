@@ -54,6 +54,8 @@
                                 </tbody>
 								<?php } ?>
                             </table>
+							<button onclick="myFunction()">Nonaktifkan Petugas</button> <br>
+								<a href="editPetugas_view.php">Edit Data Petugas</a>
                         </div>
                     </div>
                     <!-- /.panel-body -->

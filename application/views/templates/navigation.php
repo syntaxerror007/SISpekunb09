@@ -78,9 +78,20 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a href="<?php echo site_url('formulir'); ?>"><i class="fa fa-table fa-fw"></i> Formulir Peminjaman</a>
+			<li>
+                <a href="#"><i class="fa fa-table fa-fw"></i> Peminjaman Khusus<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+						<a href="<?php echo site_url('peminjamanKhusus/formulir'); ?>" class="<?php if ($page_loc == 'formulir peminjaman') echo 'active'; ?>">Formulir Peminjaman</a>
+					</li>
+                    <li>
+						<a href="<?php echo site_url('peminjamanKhusus/list'); ?>" class="<?php if ($page_loc == 'List Peminjaman Khusus') echo 'active'; ?>">List Peminjaman Khusus</a>
+					</li>
+                </ul>
+                <!-- /.nav-second-level -->
             </li>
+			
+            
 
         </ul>
     </div>

@@ -17,6 +17,20 @@
     <script src="<?php echo site_url('./bower_components/flot/jquery.flot.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo site_url('./bower_components/flot/jquery.flot.pie.js'); ?>"></script>
     <script src="<?php echo site_url('./bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js'); ?>"></script>
+	
+	<script>
+		function myFunction() {
+			var x;
+			if (confirm("Anda akan Menonaktifkan Petugas ini") == true) {
+				x = "You pressed OK!";
+			} 
+			else {
+				x = "You pressed Cancel!";
+			}
+			document.getElementById("demo").innerHTML = x;
+		}
+	</script>
+	
 	<script>
 		var namaBulan = [];
 		namaBulan[1] = "Januari";
