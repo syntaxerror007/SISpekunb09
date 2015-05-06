@@ -97,7 +97,7 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label>Nama Peminjaman</label>
-                                            <input class="form-control" placeholder="Nama Peminjam">
+                                            <input class="form-control" placeholder="Nama Peminjam" >
                                         </div>
                                         <div class="form-group">
                                             <label>Fakultas</label>
@@ -117,7 +117,7 @@
                                         </div>
 										<div class="form-group">
                                             <label>Jam Akhir</label>
-                                             <input class="form-control" placeholder="Jam Akhir">
+                                             <input class="form-control"  placeholder="Jam Akhir">
                                         </div>
 										
 										<div class="form-group">
