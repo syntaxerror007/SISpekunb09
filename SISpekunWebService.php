@@ -17,6 +17,7 @@
 		return '0';
 	}
 	//FIXED
+	// return -11 jika sepeda sudah dipinjam
 	function InsertNewPeminjaman($namaShelterPinjam,$noSpekun,$idPeminjam,$tipePeminjam) {
 		global $con;
 
@@ -30,6 +31,10 @@
 		$tahun = date("Y");
 		$jam_Peminjaman = date("h:i:s");
 		$retval;
+		$querySepeda = mysqli_query($con, "SELECT * FROM PEMINJAMAN WHERE No_Spekun = $noSpekun AND (Status = 0 OR Status is NULL)");
+		if (mysqli_num_rows($query) != 0) {
+			return array('status' => '-11');
+		}
 		if ($tipePeminjam == "Mahasiswa")
 		{
 			$query = mysqli_query($con,"SELECT * FROM PEMINJAMAN WHERE Tanggal = $tanggal AND Bulan = $bulan and Tahun = $tahun and (Status = 0 OR Status is NULL) and NPM_Mahasiswa = '$idPeminjam'"); 

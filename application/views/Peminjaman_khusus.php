@@ -26,7 +26,8 @@
 													  'name'        => 'NamaKegiatan',
 													  'id'          => 'NamaKegiatan',
 													  'placeholder' => 'Nama Kegiatan',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'	=> 'required'
 													);
 										
 										echo form_input($data);
@@ -38,7 +39,8 @@
 													  'name'        => 'Organisasi',
 													  'id'          => 'Organisasi',
 													  'placeholder' => 'Organisasi',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'	=> 'required'
 													);
 
 										echo form_input($data);
@@ -51,7 +53,8 @@
 													  'id'          => 'Jumlah',
 													  'placeholder' => 'Jumlah Spekun',
 													  'class'		=> 'form-control',
-													  'type'		=> 'number'
+													  'type'		=> 'number',
+													  'required'	=> 'required'
 													);
 
 										echo form_input($data);
@@ -63,9 +66,10 @@
 													  'name'        => 'JamAwal',
 													  'id'          => 'JamAwal',
 													  'placeholder' => 'Jam Awal',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'	=> 'required',
+													  'type'		=> 'time'
 													);
-
 										echo form_input($data);
 										echo "</div>";
 										echo "<div class='form-group'>";
@@ -74,7 +78,9 @@
 													  'name'        => 'JamAkhir',
 													  'id'          => 'JamAkhir',
 													  'placeholder' => 'Jam Akhir',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'	=> 'required',
+													  'type'		=> 'time'
 													);
 
 										echo form_input($data);
@@ -85,7 +91,8 @@
 													  'name'        => 'Keterangan',
 													  'id'          => 'Keterangan',
 													  'placeholder' => 'Keterangan',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'	=> 'required'
 													);
 
 										echo form_input($data);

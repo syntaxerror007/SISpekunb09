@@ -39,15 +39,7 @@
 			$keterangan = $this->input->post("Keterangan");
 			
 			$result = $this->peminjaman_khusus_model->createNewPeminjamanKhusus($jumlah,$awal,$akhir,$keterangan,$organisasi,$namaKegiatan,date("Y"),date("d"),date("m"));
-			if ($result)
-			{
-				redirect('peminjamanKhusus/formulir');
-			}
-			else
-			{
-				redirect('peminjamanKhusus/formulir');
-				
-			}
+			redirect('peminjamanKhusus/formulir');
 		}
 			
 		
