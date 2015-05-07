@@ -70,7 +70,7 @@
 			$Alamat = $this->input->post("Alamat");
 			$Password = $this->input->post("Password");
 			$Username = $this->input->post("Username");
-			$result = $this->penjaga_shelter_model->createNewPenjagaShelter($nama,$noKTP,$noTelp,$Alamat,$Username, $Password);
+			$result = $this->penjaga_shelter_model->createNewPenjagaShelter($nama,$noKTP,$noTelp,$Alamat,$Username,$Password,date('Y-m-d'));
 			if ($result)
 			{
 				redirect('penugasan/tambah');

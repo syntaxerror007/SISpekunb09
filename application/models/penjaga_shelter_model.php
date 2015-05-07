@@ -25,7 +25,7 @@ class Penjaga_Shelter_Model extends CI_Model
 	}
 	// + createNewPenjagaShelter(Penjaga_Shelter)
 	
-	public function createNewPenjagaShelter($namaPenjaga,$NoKTP,$NoTelp,$Alamat,$Username,$Password)
+	public function createNewPenjagaShelter($namaPenjaga,$NoKTP,$NoTelp,$Alamat,$Username,$Password,$tanggal)
 	{
 		$data = array(
 				'Nama' => $namaPenjaga,
@@ -34,8 +34,11 @@ class Penjaga_Shelter_Model extends CI_Model
 				'Alamat' => $Alamat,
 				'Username' => $Username,
 				'Password' => $Password,
+				'Mulai_Bekerja' => $tanggal,
 				'Status' => 1);
 		return $this->db->insert($this->table,$data);
 	}
+	
+
 }
 ?>
