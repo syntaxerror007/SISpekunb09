@@ -132,27 +132,30 @@
 		public function getTanggal($page)
 		{
 			if($this->session->userdata('logged_in')){
+				$startDate = $this->input->post("start-date");
+				$endDate = $this->input->post("end-date");
+				if ($startDate == "")
+				{
+					$startDate = date('d-m-Y');
+					$params = $startDate;
+					$endDate = date('d-m-Y');
+					$params = $params + "/" + $endDate;
+				} else if($endDate == "") {
+					$startDate = date('d-m-Y', strtotime($startDate));
+					$params = $startDate;
+					$endDate = date('d-m-Y');
+					$params = $params + "/" + $endDate;
+				} else {
+					$startDate = date('d-m-Y', strtotime($startDate));
+					$endDate = date('d-m-Y', strtotime($endDate));
 					
-				$tanggalAwal = $this->input->post("tanggalAwal");
-				$bulanAwal = $this->input->post("bulanAwal");
-				$tahunAwal = $this->input->post("tahunAwal");
-				$params = "";
-				if ($tanggalAwal == -1 || $bulanAwal == -1 || $tahunAwal == -1)
-				{
-				}
-				else{
-					$params = $params.$tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';
-				}
-				
-				$tanggalAkhir = $this->input->post("tanggalAkhir");
-				$bulanAkhir = $this->input->post("bulanAkhir");
-				$tahunAkhir = $this->input->post("tahunAkhir");
-				if ($tanggalAkhir == -1 || $bulanAkhir == -1 || $tahunAkhir == -1)
-				{
-				}
-				else{
-					$params = $params.$tanggalAkhir."-".$bulanAkhir."-".$tahunAkhir;
-				
+					if ($startDate > $endDate) {
+						die("wa");
+					}
+					$startDate = date('d-m-Y', strtotime($startDate));
+					$params = $startDate;
+					$endDate = date('d-m-Y', strtotime($endDate));
+					$params = $params . "/" . $endDate;
 				}
 				if ($page == "peminjaman"){
 					redirect('laporan/PeminjamanPerTanggal/'.$params,'refresh');
