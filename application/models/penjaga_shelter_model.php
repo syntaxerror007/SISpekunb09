@@ -33,7 +33,8 @@ class Penjaga_Shelter_Model extends CI_Model
 				'No_Hp' => $NoTelp,
 				'Alamat' => $Alamat,
 				'Username' => $Username,
-				'Password' => $Password);
+				'Password' => $Password,
+				'Status' => 1);
 		return $this->db->insert($this->table,$data);
 	}
 }

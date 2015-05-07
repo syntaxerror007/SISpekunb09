@@ -26,7 +26,8 @@
 													  'name'        => 'NamaPenjaga',
 													  'id'          => 'NamaPenjaga',
 													  'placeholder' => 'Nama Penjaga',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'		=> 'required'
 													);
 										
 										echo form_input($data);
@@ -38,7 +39,8 @@
 													  'name'        => 'Username',
 													  'id'          => 'Username',
 													  'placeholder' => 'Username',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'		=> 'required'
 													);
 
 										echo form_input($data);
@@ -51,7 +53,8 @@
 													  'id'          => 'Password',
 													  'placeholder' => 'Password',
 													  'class'		=> 'form-control',
-													  'type'		=> 'password'
+													  'type'		=> 'password',
+													  'required'		=> 'required'
 													);
 
 										echo form_input($data);
@@ -63,7 +66,8 @@
 													  'name'        => 'NoKTP',
 													  'id'          => 'NoKTP',
 													  'placeholder' => 'Nomor Tanda Pengenal',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'		=> 'required'
 													);
 
 										echo form_input($data);
@@ -74,7 +78,8 @@
 													  'name'        => 'NoTelp',
 													  'id'          => 'NoTelp',
 													  'placeholder' => 'Nomor Telepon',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'		=> 'required'
 													);
 
 										echo form_input($data);
@@ -85,7 +90,8 @@
 													  'name'        => 'Alamat',
 													  'id'          => 'Alamat',
 													  'placeholder' => 'Alamat',
-													  'class'		=> 'form-control'
+													  'class'		=> 'form-control',
+													  'required'		=> 'required'
 													);
 
 										echo form_input($data);
