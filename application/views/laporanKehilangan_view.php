@@ -15,21 +15,11 @@
             <div class="row">
                 <div class='col-lg-12'>
                     <div class="form-group">
-                        <form action="<?php echo site_url('laporan/getTanggal/kehilangan'); ?>" method="POST">
-                            <div class="form-group">
-                                <div class="col-lg-6">
-                                    <h5>Masukkan tanggal awal</h5>
-                                    <div id="calendar-container-awal"></div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h5>Masukkan tanggal akhir</h5>
-                                    <div id="calendar-container-akhir"></div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <input type="submit">
-                                </div>
-                            </div>
-                        </form>
+						<form action="<?php echo site_url('laporan/getTanggal/peminjaman'); ?>" method="POST">
+							<input type="date" id="start-date" name="start-date" />
+							<input type="date" id="end-date" name="end-date" />
+							<input type="submit" value="submit"/>
+						</form>
                     </div>
                 </div>
             </div>

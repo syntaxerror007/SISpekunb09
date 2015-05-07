@@ -17,7 +17,11 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-8">
-									<?php echo validation_errors(); ?>
+								
+								<!--TODO harap berikan tampilan yang menarik -->
+									<?php 
+										echo $error_message;
+									?>
                                     <?php
 										echo form_open('penugasan/doInsert');
 										echo "<div class='form-group'>";

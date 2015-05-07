@@ -73,11 +73,13 @@
 			$result = $this->penjaga_shelter_model->createNewPenjagaShelter($nama,$noKTP,$noTelp,$Alamat,$Username,$Password,date('Y-m-d'));
 			if ($result)
 			{
+				$this->session->set_userdata('PenugasanError', "Data berhasil dimasukkan");
 				redirect('penugasan/tambah');
 			}
 			else
 			{
-				$this->form_validation->set_message('Test');
+				$this->session->set_userdata('PenugasanError',"Data gagal dimasukkan");
+				redirect('penugasan/tambah');
 			}
 		}
 		
@@ -91,7 +93,11 @@
 				$this->form_validation->set_rules('Alamat', 'Alamat', 'trim|required|xss_clean');
 				$this->form_validation->set_rules('Password', 'Password', 'trim|required|xss_clean');
 				$this->form_validation->set_rules('Username', 'Username', 'trim|required|xss_clean');
-				
+				$data['error_message'] = "";
+				if ($this->session->userdata('PenugasanError') != "") {
+					$data['error_message'] = $this->session->userdata('PenugasanError');
+					$this->session->unset_userdata('PenugasanError');
+				}
 				if ($this->form_validation->run() == FALSE)
 				{
 					$this->load->view('templates/header');

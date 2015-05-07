@@ -48,8 +48,8 @@
                                                     <td><?php echo $row['Nama']; ?></a></td>
                                                     <td><?php echo $row['Organisasi'];?></td>
                                                     <td><?php echo $row['Jumlah_Spekun'];?></td>
-                                                    <td><?php echo $row['Tanggal'];?></td>
-                                                    <td><?php echo $row['Keterangan'];?></td>
+                                                    <td><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun'];?></td>
+													<td><?php echo $row['Keterangan'];?></td>
                                                 </tr>
                                         <?php }?>
                                     </tbody>

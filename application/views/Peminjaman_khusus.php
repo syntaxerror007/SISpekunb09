@@ -29,7 +29,6 @@
 													  'class'		=> 'form-control',
 													  'required'	=> 'required'
 													);
-										
 										echo form_input($data);
 										echo "</div>";
 										
@@ -42,7 +41,6 @@
 													  'class'		=> 'form-control',
 													  'required'	=> 'required'
 													);
-
 										echo form_input($data);
 										echo "</div>";
 										
@@ -56,7 +54,19 @@
 													  'type'		=> 'number',
 													  'required'	=> 'required'
 													);
-
+										echo form_input($data);
+										echo "</div>";
+										
+										echo "<div class='form-group'>";
+										echo "<label>Tanggal</label>";
+										$data = array(
+													  'name'        => 'Tanggal',
+													  'id'          => 'Tanggal',
+													  'placeholder' => 'Tanggal Acara',
+													  'class'		=> 'form-control',
+													  'type'		=> 'date',
+													  'required'	=> 'required'
+													);
 										echo form_input($data);
 										echo "</div>";
 										
@@ -72,6 +82,7 @@
 													);
 										echo form_input($data);
 										echo "</div>";
+										
 										echo "<div class='form-group'>";
 										echo "<label>Jam Akhir(HH:mm)</label>";
 										$data = array(
@@ -82,9 +93,9 @@
 													  'required'	=> 'required',
 													  'type'		=> 'time'
 													);
-
 										echo form_input($data);
 										echo "</div>";
+										
 										echo "<div class='form-group'>";
 										echo "<label>Keterangan</label>";
 										$data = array(
@@ -94,7 +105,6 @@
 													  'class'		=> 'form-control',
 													  'required'	=> 'required'
 													);
-
 										echo form_input($data);
 										echo "</div>";
 										

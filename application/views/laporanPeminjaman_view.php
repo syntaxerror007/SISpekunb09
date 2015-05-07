@@ -22,6 +22,7 @@
 					
                     <!-- /.panel-heading -->
                     <div class="panel-body">
+						<?php echo $error_message; ?>
                         <div class="dataTable_wrapper">
                         	<?php if ($daftarPeminjaman->num_rows() == 0) { echo "<h1>Tidak ada peminjaman</h1>";} else { ?>
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
