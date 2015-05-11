@@ -109,11 +109,40 @@
 				{
 					
 				}
+				
 			}
 			else
 			{
 				redirect('auth','refresh');
 			}
 		}
+		
+		public function updateStatus()
+		{
+			if($this->session->userdata('logged_in')){
+				$nama = $this->input->post("NamaPenjaga");
+				$noKTP = $this->input->post("NoKTP");
+				$noTelp = $this->input->post("NoTelp");
+				$Alamat = $this->input->post("Alamat");
+				$Password = $this->input->post("Password");
+				$Username = $this->input->post("Username");
+				$result = $this->penjaga_shelter_model->updateStatusPenjagaShelter($id, date('Y-m-d'));
+				if ($result)
+				{
+					$this->session->set_userdata('PenugasanError', "Status berhasil diubah");
+					redirect('penugasan/profile/(:any)');
+				}
+				else
+				{
+					$this->session->set_userdata('PenugasanError',"Status gagal diubah");
+					redirect('penugasan/profile/(:any)');
+				}
+			} 
+			else
+			{
+				redirect('auth','refresh');
+			}
+		}
+		
 	}
 ?>

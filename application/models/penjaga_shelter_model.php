@@ -17,12 +17,7 @@ class Penjaga_Shelter_Model extends CI_Model
 		return $this->db->get($this->table);
 	}
 	
-	// + updateStatusPenjagaShelter(Penjaga_Shelter, status) : boolean
-	public function updateStatusPenjagaShelter($ID_Penjaga, $Status)
-	{
-		$query = "update PENJAGA_SHELTER set status =".$Status." where ID_Penjaga = ".$ID_Penjaga."";
-		return $this->db->get($this->table);
-	}
+	
 	// + createNewPenjagaShelter(Penjaga_Shelter)
 	
 	public function createNewPenjagaShelter($namaPenjaga,$NoKTP,$NoTelp,$Alamat,$Username,$Password,$tanggal)
@@ -38,6 +33,26 @@ class Penjaga_Shelter_Model extends CI_Model
 				'Status' => 1);
 		return $this->db->insert($this->table,$data);
 	}
+	
+	// + updateStatusPenjagaShelter(Penjaga_Shelter, status) : boolean
+	/*
+	public function updateStatusPenjagaShelter($ID_Penjaga, $Status)
+	{
+		$query = "update PENJAGA_SHELTER set status =".$Status." where ID_Penjaga = ".$ID_Penjaga."";
+		return $this->db->get($this->table);
+	}
+	*/
+	
+	public function updateStatusPenjagaShelter($id, $tanggal)
+		{
+			$data = array(
+				   'Status' => 0 ,
+				   'Selesai_Bekerja' => $tanggal ,
+				   );
+			$this->db->where('ID_Penjaga',$id);
+			$this->db->update($this->table,$data);
+		}
+		
 	
 
 }
