@@ -310,10 +310,10 @@
 		$bulan = date("m");
 		$tahun = date("Y");
 		
-		$res = mysqli_query($con, "SELECT No_Spekun from PEMINJAMAN where  AND Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND (Status = 0 OR Status is NULL)");
+		$res = mysqli_query($con, "SELECT No_Spekun from PEMINJAMAN where Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND (Status = 0 OR Status is NULL)");
 		
 		if($res == false) {
-			return array('status' => '0');
+			return array();
 		}
 		else {
 			$rows = array();
