@@ -316,7 +316,12 @@
 			return "[]";
 		}
 		else {
-			return mysqli_fetch_array($res);
+			$rows = [];
+			while($row = mysqli_fetch_array($result))
+			{
+				$rows[] = $row;
+			}
+			return $rows;
 		}
 	}
 	
