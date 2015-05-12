@@ -32,7 +32,7 @@
 		$jam_Peminjaman = date("h:i:s");
 		$retval;
 		$querySepeda = mysqli_query($con, "SELECT * FROM PEMINJAMAN WHERE No_Spekun = $noSpekun AND (Status = 0 OR Status is NULL)");
-		if (mysqli_num_rows($query) != 0) {
+		if (mysqli_num_rows($querySepeda) != 0) {
 			return array('status' => '-11');
 		}
 		if ($tipePeminjam == "Mahasiswa")
