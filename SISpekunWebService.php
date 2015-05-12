@@ -316,11 +316,7 @@
 			return array();
 		}
 		else {
-			$rows = array();
-			while($row = mysqli_fetch_assoc($res)) {
-				$rows[] = $row;
-			}
-			return $rows;
+			return mysqli_fetch_array($res);
 		}
 	}
 	
