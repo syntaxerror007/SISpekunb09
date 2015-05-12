@@ -87,7 +87,7 @@
 	}
 
 	//FIXED
-	function InsertLokasi($username, $idShelter,$noDevice)
+	function InsertLokasi($username, $idShelter, $noDevice)
 	{
 		global $con;
 		
@@ -101,8 +101,16 @@
 		$checkLokasi = mysqli_query($con, "SELECT * FROM PENUGASAN_PENJAGA_SHELTER WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND ID_Penjaga = '$username'");
 		if (mysqli_num_rows($checkLokasi)== 0)
 		{
-			$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
-			return array('status'=> convertToAngka($status));
+			$checkLokasi2 = mysqli_query($con, "SELECT * FROM PENUGASAN_PENJAGA_SHELTER WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND ID_Shelter = '$idShelter'");
+			if (mysqli_num_rows($checkLokasi2) == 0)
+			{
+				$status = mysqli_query($con, "INSERT INTO PENUGASAN_PENJAGA_SHELTER VALUES ('$idShelter','$username','$tanggal','$bulan','$tahun','$noDevice')");
+				return array('status'=> convertToAngka($status));
+			}
+			else
+			{
+				return array('status'=> '-11');
+			}
 		}
 		else
 		{
