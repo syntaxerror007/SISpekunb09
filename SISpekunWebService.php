@@ -313,7 +313,7 @@
 		$res = mysqli_query($con, "SELECT No_Spekun from PEMINJAMAN where Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND (Status = 0 OR Status is NULL)");
 		
 		if($res == false) {
-			return array();
+			return "[]";
 		}
 		else {
 			return mysqli_fetch_array($res);
