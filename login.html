@@ -57,4 +57,17 @@
 		<input type="text" placeholder="nomor spekun" name="noSpekun"/><br>
 		<input type="submit" />
 	</form>
+	
+	Ubah Status Spekun Belom Kembali
+	<form action="SISpekunWebService.php" method="POST">
+		<input type="hidden" value="ubahSpekunBelumKembali" name="command"/>
+		<input type="text" placeholder="Nomor Spekun" name="no_spekun"/></br>
+		<input type="submit" />
+	</form>
+	
+	Get Daftar Spekun Belum Kembali
+	<form action="SISpekunWebService.php" method="POST">
+		<input type="hidden" value="akhirHari" name="command"/>
+		<input type="submit"/></br>
+	</form>
 </body>

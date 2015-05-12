@@ -218,7 +218,6 @@
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
-		$res;
 		$res = mysqli_query($con, "SELECT ID, Shelter_Peminta, Jumlah_Request from REQUEST_SEPEDA where ID > $latestRequestId AND Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun'");
 		
 		if($res == false) {
@@ -303,7 +302,45 @@
 		}
 	}
 
-
+	function checkSpekunBelumKembali()
+	{
+		global $con;
+		
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+		
+		$res = mysqli_query($con, "SELECT No_Spekun from PEMINJAMAN where  AND Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND (Status = 0 OR Status is NULL)");
+		
+		if($res == false) {
+			return array('status' => '0');
+		}
+		else {
+			$rows = array();
+			while($row = mysqli_fetch_assoc($res)) {
+				$rows[] = $row;
+			}
+			return $rows;
+		}
+	}
+	
+	function ubahStatusAkhirHari($noSpekun)
+	{
+		global $con;
+		
+		$tanggal = date("d");
+		$bulan = date("m");
+		$tahun = date("Y");
+		$jam_pengembalian = date("h:i:s");
+		
+		$query = "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND No_Spekun = '$noSpekun' AND Status = 0";
+		if(mysqli_query($con, $query)) {
+			return array('status'=>'1');
+		}
+		else {
+			return array('status'=>'0');
+		}
+	}
 	
 	
 	//Bagian untuk memanggil method yang sesuai
@@ -321,7 +358,9 @@
 		'insertLokasi',
 		'getPeminjaman',
 		'getRequestSepeda',
-		'requestSepeda'
+		'requestSepeda',
+		'akhirHari',
+		'ubahSpekunBelumKembali'
         );
 
 	function sanitize($input) {
@@ -417,6 +456,15 @@
 				$idShelterPeminta = sanitize($_POST['idShelter']);
 				$jumlahRequest = sanitize($_POST['jumlah']);
 				$value = addRequest($idShelterPeminta, $jumlahRequest);
+			}
+			else if ($command == 'akhirHari')
+			{
+				$value = checkSpekunBelumKembali();
+			}
+			else if($command == 'ubahSpekunBelumKembali')
+			{
+				$no_spekun = sanitize($_POST['no_spekun']);
+				$value = ubahStatusAkhirHari($no_spekun);
 			}
 		}
 	}
