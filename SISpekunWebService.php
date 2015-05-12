@@ -317,7 +317,7 @@
 		}
 		else {
 			$rows = [];
-			while($row = mysqli_fetch_array($result))
+			while($row = mysqli_fetch_array($res))
 			{
 				$rows[] = $row;
 			}
