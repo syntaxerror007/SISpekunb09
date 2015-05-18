@@ -1,14 +1,26 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Penugasan extends CI_Controller {
-		public function laporan_penugasan()
+		public function laporan_penugasan($date = null)
 		{
 			if($this->session->userdata('logged_in')){
-	            $Tanggal = date("d");
-	            $Bulan = date("m");
-	            $Tahun = date("Y");
+				if ($date == null)
+				{
+					$Tanggal = date("d");
+					$Bulan = date("m");
+					$Tahun = date("Y");
+					$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
+				}
+				else 
+				{
+					$date = explode('-',$date,4);
+					$Tanggal = $date[0];
+					$Bulan = $date[1];
+					$Tahun = $date[2];
+					$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugasUsingDate($Tanggal,$Bulan,$Tahun);
+				}
+				
 	            $data['page_loc'] = "Shelter";
-	            $data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
 
 	            $this->load->view('templates/header');
 	            $this->load->view('templates/navigation',$data);
@@ -20,6 +32,21 @@
 				redirect('auth','refresh');
 			}
 		}
+		
+		
+		public function getTanggal($page)
+		{
+			if($this->session->userdata('logged_in')){
+				$startDate = $this->input->post("start-date");
+				$startDate = date('d-m-Y', strtotime($startDate));
+				
+				redirect('penugasan/shelter/'.$startDate);
+			}
+			else{
+                    redirect('auth', 'refresh');
+            }
+		}
+		
 		public function daftar_penjaga()
 		{
 			if($this->session->userdata('logged_in')){

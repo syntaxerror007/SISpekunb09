@@ -12,7 +12,7 @@
 				<!--INI TABEL-->
                     <div class="panel panel-default">
                         <div class="row">
-							<form action="<?php echo site_url(''); ?>" method="POST">
+							<form action="<?php echo site_url('penugasan/getTanggal'); ?>" method="POST">
 								<div class="form-group">
 									<div class="col-lg-12">
 										<h5>Masukkan tanggal</h5>
