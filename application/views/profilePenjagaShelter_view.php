@@ -49,13 +49,24 @@
 									</tr>
 									<tr>
 										<td>Status</td>
-										<td><?php if ($row['Status'] == NULL || $row['Status'] == "") { echo "Aktif"; }else {echo "Tidak Aktif";} ?></td>
+										<td><?php if ($row['Status'] == NULL || $row['Status'] == "" || $row['Status'] == '0') { echo "Tidak Aktif"; }else {echo "Aktif";} ?></td>
 									</tr>
                                 </tbody>
 								<?php } ?>
                             </table>
-							<button onclick="myFunction()">Nonaktifkan Petugas</button> <br>
-								<a href="editPetugas_view.php">Edit Data Petugas</a>
+							<a href="<?php if ($row['Status'] == NULL || $row['Status'] == "" || $row['Status'] == '0') {
+												echo site_url("penugasan/updateStatus/".$profilePenjagaShelter->result_array()[0]["ID_Penjaga"]."/1");
+										   }
+										   else {
+												echo site_url("penugasan/updateStatus/".$profilePenjagaShelter->result_array()[0]["ID_Penjaga"]."/0");
+										   }?>
+							"><?php if ($row['Status'] == NULL || $row['Status'] == "" || $row['Status'] == '0') {
+												echo "Aktifkan Petugas";
+										   }
+										   else {
+												echo "Nonaktifkan Petugas";
+										   }?></a> <br>
+							<a href="">Edit Data Petugas</a>
                         </div>
                     </div>
                     <!-- /.panel-body -->

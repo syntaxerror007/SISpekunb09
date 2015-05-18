@@ -43,11 +43,11 @@ class Penjaga_Shelter_Model extends CI_Model
 	}
 	*/
 	
-	public function updateStatusPenjagaShelter($id, $tanggal)
+	public function updateStatusPenjagaShelter($id, $status)
 		{
 			$data = array(
-				   'Status' => 0 ,
-				   'Selesai_Bekerja' => $tanggal ,
+				   'Status' => $status ,
+				   'Selesai_Bekerja' => date("Y-m-d")
 				   );
 			$this->db->where('ID_Penjaga',$id);
 			$this->db->update($this->table,$data);
