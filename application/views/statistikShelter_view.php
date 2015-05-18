@@ -12,10 +12,10 @@
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <h5>Masukkan tanggal</h5>
-                                <div id="calendar-container"></div>
+								<input type="date" id="start-date" name="start-date" />
                             </div>
                             <div class="col-lg-4">
-                                <input type="submit">
+                                <input type="submit" value="Lihat">
                             </div>
                         </div>
                     </form>

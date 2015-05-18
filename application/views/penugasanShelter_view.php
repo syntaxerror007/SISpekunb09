@@ -12,15 +12,17 @@
 				<!--INI TABEL-->
                     <div class="panel panel-default">
                         <div class="row">
-							<div class='col-lg-4'>
+							<form action="<?php echo site_url(''); ?>" method="POST">
 								<div class="form-group">
-									<div class='input-group date' id='datetimepicker1'>
-										<input type='text' class="form-control" />
-										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-										</span>
+									<div class="col-lg-12">
+										<h5>Masukkan tanggal</h5>
+										<input type="date" id="start-date" name="start-date" />
+									</div>
+									<div class="col-lg-4">
+										<input type="submit" value="Lihat"/>
 									</div>
 								</div>
-							</div>
+							</form>
 						</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

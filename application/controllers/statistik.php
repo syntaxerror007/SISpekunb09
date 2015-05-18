@@ -55,26 +55,17 @@
 		public function getTanggal($page)
 		{
 			if($this->session->userdata('logged_in')){
-					
-				$tanggalAwal = $this->input->post("tanggal");
-				$bulanAwal = $this->input->post("bulan");
-				$tahunAwal = $this->input->post("tahun");
-				$params = "";
-				if ($tanggalAwal == -1 || $bulanAwal == -1 || $tahunAwal == -1)
-				{
-				}
-				else{
-					$params = $tanggalAwal."-".$bulanAwal."-".$tahunAwal.'/';
-				}
-
+				$startDate = $this->input->post("start-date");
+				$startDate = date('d-m-Y', strtotime($startDate));
+				
 				if ($page == "peminjaman"){
-					redirect('statistik/statistik_peminjaman/'.$params,'refresh');
+					redirect('statistik/statistik_peminjaman/'.$startDate,'refresh');
 				}
 				else if ($page == "kerusakan"){
-					redirect('statistik/statistik_kerusakan/'.$params,'refresh');
+					redirect('statistik/statistik_kerusakan/'.$startDate,'refresh');
 				}
 				else if ($page == "statistik") {
-					redirect('statistik/statistik_shelter/'.$params,'refresh');
+					redirect('statistik/statistik_shelter/'.$startDate,'refresh');
 				}
 			}
 			else{

@@ -5,8 +5,6 @@
 		{
 			if($this->session->userdata('logged_in')){
 	            $Tanggal = date("d");
-	            //$TanggalAwal = 1;
-	            //$BulanAwal = 1;
 	            $Bulan = date("m");
 	            $Tahun = date("Y");
 	            $data['page_loc'] = "Shelter";
