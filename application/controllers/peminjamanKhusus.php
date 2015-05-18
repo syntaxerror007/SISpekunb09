@@ -55,15 +55,17 @@
 			$awal = $this->input->post("JamAwal");
 			$akhir = $this->input->post("JamAkhir");
 			$keterangan = $this->input->post("Keterangan");
+			$date = $this->input->post("Tanggal");
+			$date = explode('-',$date,4);
 			
-			$result = $this->peminjaman_khusus_model->createNewPeminjamanKhusus($jumlah,$awal,$akhir,$keterangan,$organisasi,$namaKegiatan,date("Y"),date("d"),date("m"));
+			$result = $this->peminjaman_khusus_model->createNewPeminjamanKhusus($jumlah,$awal,$akhir,$keterangan,$organisasi,$namaKegiatan,$date[0],$date[1],$date[2]);
 			if ($result)
 			{
 				redirect('peminnjamanKhusus/reviewFormulir');
 			}
 			else
 			{
-				redirect('peminjamanKhusus/formulir');
+				redirect('peminjamanKhusus/reviewFormulir');
 				
 			}
 		}
@@ -85,7 +87,7 @@
 			}
 			else
 			{
-				redirect('peminjamanKhusus/formulir');
+				redirect('peminjamanKhusus/reviewFormulir');
 			}
 			
 		}
