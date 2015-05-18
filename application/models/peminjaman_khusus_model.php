@@ -47,5 +47,11 @@
 			$query = "SELECT * FROM PEMINJAMAN_KHUSUS ORDER BY Id_Peminjaman_Khusus DESC LIMIT 1";
 			return $this->db->query($query);
 		}
+		
+		public function getPeminjamanKhususByID($id)
+		{
+			$query = "SELECT * FROM PEMINJAMAN_KHUSUS WHERE Id_Peminjaman_Khusus = $id";
+			return $this->db->query($query);
+		}
 	}	
 ?>

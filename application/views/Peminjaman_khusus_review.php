@@ -1,7 +1,7 @@
 <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Your Input</h1>
+                <h1 class="page-header">Data yang baru Anda masukkan</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -13,7 +13,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover">
                                 <thead>
 									<?php foreach($peminjamanTerakhir->result_array() as $row) {?>
                                     <tr>
@@ -56,6 +56,7 @@
                             </table>
 		                </div>
                     </div>
+					<a href="<?php echo base_url().'peminjamanKhusus/editPeminjamanKhusus/'.$peminjamanTerakhir->result_array()[0]['Id_Peminjaman_Khusus']; ?>">Ubah</a>
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->

@@ -33,7 +33,7 @@
 		{
 			if($this->session->userdata('logged_in')){
 			
-				$data['peminjamanTerakhir'] = $this->peminjaman_khusus_model-> getLastPeminjamanKhusus();
+				$data['peminjamanTerakhir'] = $this->peminjaman_khusus_model->getLastPeminjamanKhusus();
 				$data['page_loc'] = "formulir peminjaman";
 
 				$this->load->view('templates/header');
@@ -57,7 +57,37 @@
 			$keterangan = $this->input->post("Keterangan");
 			
 			$result = $this->peminjaman_khusus_model->createNewPeminjamanKhusus($jumlah,$awal,$akhir,$keterangan,$organisasi,$namaKegiatan,date("Y"),date("d"),date("m"));
-			redirect('peminjamanKhusus/formulir');
+			if ($result)
+			{
+				redirect('peminnjamanKhusus/reviewFormulir');
+			}
+			else
+			{
+				redirect('peminjamanKhusus/formulir');
+				
+			}
+		}
+		
+		function doUpdate()
+		{
+			$id = $this->input->post("Id");
+			$namaKegiatan = $this->input->post("NamaKegiatan");
+			$organisasi = $this->input->post("Organisasi");
+			$jumlah = $this->input->post("Jumlah");
+			$awal = $this->input->post("JamAwal");
+			$akhir = $this->input->post("JamAkhir");
+			$keterangan = $this->input->post("Keterangan");
+			
+			$result = $this->peminjaman_khusus_model->updatePeminjamanKhusus($jumlah,$awal,$akhir,$keterangan,$organisasi,$namaKegiatan,date("Y"),date("d"),date("m"));
+			if ($result)
+			{
+				redirect('peminjamanKhusus/reviewFormulir');
+			}
+			else
+			{
+				redirect('peminjamanKhusus/formulir');
+			}
+			
 		}
 			
 		
@@ -79,5 +109,15 @@
             }
 		}
 
+		public function editPeminjamanKhusus($id)
+		{
+			$data['peminjaman'] = $this->peminjaman_khusus_model->getPeminjamanKhususByID($id);
+			$data['page_loc'] = "formulir peminjaman";
+			
+			$this->load->view('templates/header');
+			$this->load->view('templates/navigation',$data);
+			$this->load->view('PeminjamanKhusus_edit_view',$data);
+			$this->load->view('templates/footer');
+		}
 	}
 ?>

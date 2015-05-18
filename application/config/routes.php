@@ -37,18 +37,18 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['formulir/doInsert'] = 'PeminjamanKhusus_controller/doInsert';
-$route['formulir'] = 'PeminjamanKhusus_controller';
-$route['penugasan/profile/(:any)'] = 'penugasan/getProfilePetugas/$1';
 $route['laporan/peminjaman']='laporan/Peminjaman';
 $route['laporan/kerusakan']='laporan/Kerusakan';
 $route['laporan/kehilangan']='laporan/kehilangan';
+$route['penugasan/profile/(:any)'] = 'penugasan/getProfilePetugas/$1';
 $route['penugasan/shelter'] = 'penugasan/laporan_penugasan';
 $route['penugasan/tambah'] = 'penugasan/tambah_penjaga';
 $route['penugasan/penjaga'] = 'penugasan/daftar_penjaga';
 $route['statistik/kerusakan'] = "statistik/statistik_kerusakan";
 $route['statistik/peminjaman'] = "statistik/statistik_peminjaman";
 $route['statistik/shelter'] = "statistik/statistik_shelter";
+$route['formulir/doInsert'] = 'PeminjamanKhusus/doInsert';
+$route['peminjamanKhusus/editPeminjamanKhusus/(:any)'] = 'peminjamanKhusus/editPeminjamanKhusus/$1';
 $route['peminjamanKhusus/reviewFormulir'] = 'peminjamanKhusus/reviewFormulir';
 $route['peminjamanKhusus/formulir'] = "peminjamanKhusus/formulir";
 $route['peminjamanKhusus/list'] = "peminjamanKhusus/listPeminjamanKhusus";
