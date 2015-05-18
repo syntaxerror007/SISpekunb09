@@ -8,7 +8,6 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
-			
 			<!--INI TABEL-->
                 <div class="panel panel-default">
                     <!-- /.panel-heading -->
@@ -16,53 +15,51 @@
                         <div class="dataTable_wrapper">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
-								
-									<?php foreach($profilePenjagaShelter->result_array() as $row) {?>
+									<?php foreach($peminjamanTerakhir->result_array() as $row) {?>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th><?php echo $row['Username']; ?></th>
+                                        <th>Nama Kegiatan</th>
+                                        <th><?php echo $row['Nama']; ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
 									<tr>
-										<td>Nomor KTP</td>
-										<td><?php echo $row['No_KTP']; ?></td>
+										<td>Organisasi</td>
+										<td><?php echo $row['Organisasi']; ?></td>
 									</tr>
+									
 									<tr>
-										<td>Nomor Telepon</td>
-										<td><?php echo $row['No_HP']; ?></td>
+										<td>Jumlah Spekun</td>
+										<td><?php echo $row['Jumlah_Spekun']; ?></td>
 									</tr>
+									
 									<tr>
-										<td>Mulai Bekerja</td>
-										<td><?php echo $row['Mulai_Bekerja']; ?></td>
+										<td>Tanggal Acara</td>
+										<td><?php echo $row['Tanggal'] ."-". $row['Bulan'] ."-". $row['Tahun']; ?></td>
 									</tr>
+									
 									<tr>
-										<td>Selesai Bekerja</td>
-										<td><?php if ($row['Selesai_Bekerja'] == NULL || $row['Selesai_Bekerja'] == "")
-													{
-														echo "Masih Bekerja";
-													}
-												  else
-												  {
-														echo $row['Selesai_Bekerja'];
-												  } ?></td>
+										<td>Jam Awal</td>
+										<td><?php echo $row['Jam_Awal']; ?></td>
 									</tr>
+									
 									<tr>
-										<td>Status</td>
-										<td><?php if ($row['Status'] == NULL || $row['Status'] == "") { echo "Aktif"; }else {echo "Tidak Aktif";} ?></td>
+										<td>Jam Akhir</td>
+										<td><?php echo $row['Jam_Akhir']; ?></td>
+									</tr>
+									
+									<tr>
+										<td>Keterangan</td>
+										<td><?php echo $row['Keterangan']; ?></td>
 									</tr>
                                 </tbody>
 								<?php } ?>
                             </table>
-							<button onclick="myFunction()">Nonaktifkan Petugas</button> <br>
-								<a href="editPetugas_view.php">Edit Data Petugas</a>
-                        </div>
+		                </div>
                     </div>
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
 			<!--END OF TABEL-->	
-			
             </div>
             <!-- /.col-lg-12 -->
         <!-- /.row -->

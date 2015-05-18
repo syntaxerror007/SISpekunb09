@@ -28,6 +28,24 @@
 				redirect('auth','refresh');
 			}
 		}
+		
+		public function reviewFormulir()
+		{
+			if($this->session->userdata('logged_in')){
+			
+				$data['peminjamanTerakhir'] = $this->peminjaman_khusus_model-> getLastPeminjamanKhusus();
+				$data['page_loc'] = "formulir peminjaman";
+
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation', $data);
+				$this->load->view('Peminjaman_khusus_review', $data);
+				$this->load->view('templates/footer');
+			}
+            else{
+                    redirect('auth', 'refresh');
+            }
+		}
+
 	
 		function doInsert()
 		{

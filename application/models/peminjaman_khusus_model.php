@@ -41,5 +41,11 @@
 		{
 			return $this->db->get($this->table);
 		}
+		
+		public function getLastPeminjamanKhusus()
+		{
+			$query = "SELECT * FROM PEMINJAMAN_KHUSUS ORDER BY Id_Peminjaman_Khusus DESC LIMIT 1";
+			return $this->db->query($query);
+		}
 	}	
 ?>

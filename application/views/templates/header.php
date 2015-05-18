@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>SI Spekun</title>
+	<link rel="shortcut icon" href="http://mahasiswa.cs.ui.ac.id/~rika.amalia/SISpekun_Logo.png"/>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo site_url('./bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">

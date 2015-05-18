@@ -49,6 +49,7 @@ $route['penugasan/penjaga'] = 'penugasan/daftar_penjaga';
 $route['statistik/kerusakan'] = "statistik/statistik_kerusakan";
 $route['statistik/peminjaman'] = "statistik/statistik_peminjaman";
 $route['statistik/shelter'] = "statistik/statistik_shelter";
+$route['peminjamanKhusus/reviewFormulir'] = 'peminjamanKhusus/reviewFormulir';
 $route['peminjamanKhusus/formulir'] = "peminjamanKhusus/formulir";
 $route['peminjamanKhusus/list'] = "peminjamanKhusus/listPeminjamanKhusus";
 $route['default_controller'] = "home";
