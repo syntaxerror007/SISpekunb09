@@ -142,6 +142,23 @@
 			}
 		}
 		
+		public function reviewTambahPenjaga()
+		{
+			if($this->session->userdata('logged_in')){
+			
+				$data['peminjamanTerakhir'] = $this->penjaga_shelter_model->getLastPeminjamanKhusus();
+				$data['page_loc'] = "fTambah Penjaga";
+
+				$this->load->view('templates/header');
+				$this->load->view('templates/navigation', $data);
+				$this->load->view('penugasanReviewTambahPenjaga_view', $data);
+				$this->load->view('templates/footer');
+			}
+            else{
+                    redirect('auth', 'refresh');
+            }
+		}
+		
 		public function updateStatus()
 		{
 			if($this->session->userdata('logged_in')){
@@ -168,6 +185,8 @@
 				redirect('auth','refresh');
 			}
 		}
+		
+		
 		
 	}
 ?>

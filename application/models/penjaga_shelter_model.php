@@ -53,7 +53,11 @@ class Penjaga_Shelter_Model extends CI_Model
 			$this->db->update($this->table,$data);
 		}
 		
-	
+	public function getLastPeminjamanKhusus()
+		{
+			$query = "SELECT * FROM PENJAGA_SHELTER ORDER BY ID_Penjaga DESC LIMIT 1";
+			return $this->db->query($query);
+		}
 
 }
 ?>

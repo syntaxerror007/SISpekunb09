@@ -44,6 +44,7 @@ $route['penugasan/profile/(:any)'] = 'penugasan/getProfilePetugas/$1';
 $route['penugasan/shelter/(:any)'] = 'penugasan/laporan_penugasan/$1';
 $route['penugasan/shelter'] = 'penugasan/laporan_penugasan';
 $route['penugasan/tambah'] = 'penugasan/tambah_penjaga';
+$route['penugasan/tambah/review'] = 'penugasan/reviewTambahPenjaga';
 $route['penugasan/penjaga'] = 'penugasan/daftar_penjaga';
 $route['statistik/kerusakan'] = "statistik/statistik_kerusakan";
 $route['statistik/peminjaman'] = "statistik/statistik_peminjaman";
