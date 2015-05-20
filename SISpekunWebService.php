@@ -345,7 +345,7 @@
 		}
 	}
 	
-	function ubahStatusAkhirHari($noSpekun)
+	function ubahStatusAkhirHari($noSpekun, $lokasiKembali)
 	{
 		global $con;
 		
@@ -354,7 +354,7 @@
 		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
 		
-		$query = "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian' WHERE Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND No_Spekun = '$noSpekun' AND Status = 0";
+		$query = "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$lokasiKembali' WHERE No_Spekun = '$noSpekun' AND Status = 0";
 		if(mysqli_query($con, $query)) {
 			return array('status'=>'1');
 		}
@@ -486,7 +486,8 @@
 			else if($command == 'ubahSpekunBelumKembali')
 			{
 				$no_spekun = sanitize($_POST['no_spekun']);
-				$value = ubahStatusAkhirHari($no_spekun);
+				$lokasiKembali = sanitize($_POST['lokasiKembali']);
+				$value = ubahStatusAkhirHari($no_spekun, $lokasiKembali);
 			}
 			else if($command == 'getNamaPeminjam')
 			{
