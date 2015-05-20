@@ -282,6 +282,10 @@
 		$tanggal = date("d");
 		$bulan = date("m");
 		$tahun = date("Y");
+		$querySepeda = mysqli_query($con, "SELECT * FROM PEMINJAMAN WHERE No_Spekun = $noSpekunAkhir AND (Status = 0 OR Status is NULL)");
+		if (mysqli_num_rows($querySepeda) != 0) {
+			return array('status' => '-11');
+		}
 		if ($tipePeminjam == "Mahasiswa") {
 			$query = "UPDATE PEMINJAMAN SET No_Spekun = $noSpekunAkhir WHERE Tanggal = $tanggal AND Bulan = $bulan AND Tahun = $tahun AND NPM_Mahasiswa = '$idPeminjam' and Status = 0";
 			if(mysqli_query($con, $query)) {
@@ -349,9 +353,6 @@
 	{
 		global $con;
 		
-		$tanggal = date("d");
-		$bulan = date("m");
-		$tahun = date("Y");
 		$jam_pengembalian = date("h:i:s");
 		
 		$query = "UPDATE PEMINJAMAN SET Status = 1, Jam_Kembali = '$jam_pengembalian', Lokasi_Kembali = '$lokasiKembali' WHERE No_Spekun = '$noSpekun' AND Status = 0";
