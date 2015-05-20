@@ -316,12 +316,7 @@
 			return array('status'=>'0', '[]');
 		}
 		else {
-			$rows = [];
-			while($row = mysqli_fetch_array($res))
-			{
-				$rows[] = $row;
-			}
-			return array('status'=>'1', $rows);
+			return array('status'=>'1', $res->fetch_array());
 		}
 	}
 	
