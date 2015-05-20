@@ -10,6 +10,15 @@
     <meta name="author" content="">
 
     <title>SI Spekun</title>
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+	  
+	<!-- jQuery -->
+	<script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	  
+	<!-- DataTables -->
+	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+	
 	<link rel="shortcut icon" href="http://mahasiswa.cs.ui.ac.id/~rika.amalia/SISpekun_Logo.png"/>
 
     <!-- Bootstrap Core CSS -->
@@ -27,21 +36,10 @@
     <!-- Morris Charts CSS -->
     <link href="<?php echo site_url('./bower_components/morrisjs/morris.css');?>" rel="stylesheet">
 	
-	<!-- DataTables CSS 
-    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS 
-    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet"> -->
-
     <!-- Custom Fonts -->
     <link href="<?php echo site_url('./bower_components/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet" type="text/css">
+	
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
