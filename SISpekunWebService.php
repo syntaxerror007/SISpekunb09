@@ -321,7 +321,7 @@
 			{
 				$rows[] = $row;
 			}
-			return array('status'='1', $rows);
+			return array('status'=>'1', $rows);
 		}
 	}
 	
