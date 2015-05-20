@@ -66,7 +66,7 @@
 										   else {
 												echo "Nonaktifkan Petugas";
 										   }?></a> <br>
-							<a href="">Edit Data Petugas</a>
+							<a href="<?php echo site_url("penugasan/edit/".$row['ID_Penjaga']); ?>">Edit Data Petugas</a>
                         </div>
                     </div>
                     <!-- /.panel-body -->

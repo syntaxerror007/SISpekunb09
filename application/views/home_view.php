@@ -7,21 +7,21 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.KOTAK-KOTAK DI ATAS -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
+            <div class="row">            
+				<div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $totalSpekunRusak; ?></div>
-                                    <div>Spekun Rusak</div>
+                                    <div class="huge"><?php echo $totalSpekunDipinjam; ?></div>
+                                    <div>Spekun Dipinjam</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="<?php echo site_url('laporan/kerusakan'); ?>">
+                        <a href="<?php echo site_url('laporan/peminjaman'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<?php echo site_url('laporan/kerusakan'); ?>">
+                        <a href="<?php echo site_url('laporan/peminjaman'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -52,7 +52,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+				<div class="col-lg-3 col-md-6">
                     <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="<?php echo site_url('laporan/kerusakan'); ?>">
+                        <a href="<?php echo site_url('statistik/peminjaman'); ?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -74,16 +74,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
+				<div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
+                                    <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $totalSpekunDipinjam; ?></div>
-                                    <div>Spekun Dipinjam</div>
+                                    <div class="huge"><?php echo $totalSpekunRusak; ?></div>
+                                    <div>Spekun Rusak</div>
                                 </div>
                             </div>
                         </div>
@@ -96,6 +96,7 @@
                         </a>
                     </div>
                 </div>
+				
             </div>
 			
             <div class="row">

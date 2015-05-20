@@ -7,10 +7,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?php echo site_url('home'); ?>">SI Spekun</a>
+        
     </div>
     <!-- /.navbar-header -->
-
+	
+    <ul class="nav navbar-top-links navbar-left">
+        <li>
+			
+			<a class="navbar-brand"  href="<?php echo site_url('home'); ?>"><img src="http://mahasiswa.cs.ui.ac.id/~rika.amalia/SISpekun_Logo.png" alt="SISpekun_Logo" style="height:35px"/>SI Spekun</a>
+       </li>
+   </ul>
     <ul class="nav navbar-top-links navbar-right">
         <li>
            <a href="<?php echo site_url('auth/logout'); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -21,17 +27,6 @@
    <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
-            <li class="sidebar-search">
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-                <!-- /input-group -->
-            </li>
             <li>
                 <a href="<?php echo site_url('home'); ?>" class="<?php if ($page_loc == 'Dashboard') echo 'active'; ?>" ><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>

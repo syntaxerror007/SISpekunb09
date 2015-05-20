@@ -40,6 +40,7 @@
 $route['laporan/peminjaman']='laporan/Peminjaman';
 $route['laporan/kerusakan']='laporan/Kerusakan';
 $route['laporan/kehilangan']='laporan/kehilangan';
+$route['penugasan/edit/(:any)'] = 'penugasan/editPenjagaShelter/$1';
 $route['penugasan/profile/(:any)'] = 'penugasan/getProfilePetugas/$1';
 $route['penugasan/shelter/(:any)'] = 'penugasan/laporan_penugasan/$1';
 $route['penugasan/shelter'] = 'penugasan/laporan_penugasan';

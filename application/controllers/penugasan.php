@@ -111,22 +111,22 @@
 		
 		public function doUpdate()
 		{
+			$id = $this->input->post("IdPenjaga");
 			$nama = $this->input->post("NamaPenjaga");
 			$noKTP = $this->input->post("NoKTP");
 			$noTelp = $this->input->post("NoTelp");
 			$Alamat = $this->input->post("Alamat");
-			$Password = $this->input->post("Password");
 			$Username = $this->input->post("Username");
-			$result = $this->penjaga_shelter_model->createNewPenjagaShelter($nama,$noKTP,$noTelp,$Alamat,$Username,$Password,date('Y-m-d'));
-			if ($result)
+			$result = $this->penjaga_shelter_model->updatePenjagaShelter($id,$nama,$noKTP,$noTelp,$Alamat,$Username);
+			if (!$result)
 			{
-				$this->session->set_userdata('PenugasanError', "Data berhasil dimasukkan");
-				redirect('penugasan/tambah/review');
+				$this->session->set_userdata('PenugasanError', "Data berhasil diubah");
+				redirect('penugasan/profile/'.$id);
 			}
 			else
 			{
-				$this->session->set_userdata('PenugasanError',"Data gagal dimasukkan");
-				redirect('penugasan/tambah');
+				$this->session->set_userdata('PenugasanError',"Data gagal diubah");
+				redirect('penugasan/edit/'.$id);
 			}
 		}
 		
@@ -134,7 +134,8 @@
 		{
 			if($this->session->userdata('logged_in')){
 				$data['page_loc'] = "Daftar Penjaga";
-				$data['profilePenjagaShelter'] = $this->penjaga_shelter_model->getPenjagaShelterFromID($idPetugas);
+				$data['profilePenjagaShelter'] = $this->penjaga_shelter_model->getPenjagaShelterFromID($id);
+				$data['error_message'] = "";
 				
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation',$data);

@@ -44,20 +44,31 @@ class Penjaga_Shelter_Model extends CI_Model
 	*/
 	
 	public function updateStatusPenjagaShelter($id, $status)
-		{
-			$data = array(
-				   'Status' => $status ,
-				   'Selesai_Bekerja' => date("Y-m-d")
-				   );
-			$this->db->where('ID_Penjaga',$id);
-			$this->db->update($this->table,$data);
-		}
+	{
+		$data = array(
+			   'Status' => $status ,
+			   'Selesai_Bekerja' => date("Y-m-d")
+			   );
+		$this->db->where('ID_Penjaga',$id);
+		$this->db->update($this->table,$data);
+	}
 		
 	public function getLastPeminjamanKhusus()
-		{
-			$query = "SELECT * FROM PENJAGA_SHELTER ORDER BY ID_Penjaga DESC LIMIT 1";
-			return $this->db->query($query);
-		}
-
+	{
+		$query = "SELECT * FROM PENJAGA_SHELTER ORDER BY ID_Penjaga DESC LIMIT 1";
+		return $this->db->query($query);
+	}
+	public function updatePenjagaShelter($id,$namaPenjaga,$NoKTP,$NoTelp,$Alamat,$Username)
+	{
+			$data = array(
+				'Nama' => $namaPenjaga,
+				'No_KTP' => $NoKTP,
+				'No_Hp' => $NoTelp,
+				'Alamat' => $Alamat,
+				'Username' => $Username
+				);
+			$this->db->where('ID_Penjaga',$id);
+			$this->db->update($this->table,$data);
+	}
 }
 ?>
