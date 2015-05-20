@@ -313,14 +313,14 @@
 		$res = mysqli_query($con, "SELECT P.Hari, P.Tanggal, P.Bulan, P.Tahun, P.Jam_Peminjaman, P.Lokasi_Peminjaman, P.No_Spekun, P.NPM_Mahasiswa, P.ID_Non_Mahasiswa from PEMINJAMAN P where (Status = 0 OR Status is NULL)");
 		
 		if($res == false) {
-			return array('status'=>'0', '[]');
+			return array('status'=>'0', 'result'=>'[]');
 		}
 		else {
 			$rows = array();
 			while($row = mysqli_fetch_assoc($res)) {
 				$rows[] = $row;
 			}
-			return array('status'=>'1', $rows);
+			return array('status'=>'1', 'result'=>$rows);
 		}
 	}
 	
