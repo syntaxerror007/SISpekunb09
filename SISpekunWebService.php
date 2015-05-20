@@ -310,10 +310,10 @@
 		$bulan = date("m");
 		$tahun = date("Y");
 		
-		$res = mysqli_query($con, "SELECT No_Spekun from PEMINJAMAN where Tanggal = '$tanggal' AND Bulan = '$bulan' AND Tahun = '$tahun' AND (Status = 0 OR Status is NULL)");
+		$res = mysqli_query($con, "SELECT P.Hari, P.Tanggal, P.Bulan, P.Tahun, P.Jam_Peminjaman, P.Lokasi_Peminjaman, P.No_Spekun, P.NPM_Mahasiswa, P.ID_Non_Mahasiswa from PEMINJAMAN P where (Status = 0 OR Status is NULL)");
 		
 		if($res == false) {
-			return "[]";
+			return array('status'=>'0', '[]');
 		}
 		else {
 			$rows = [];
@@ -321,7 +321,7 @@
 			{
 				$rows[] = $row;
 			}
-			return $rows;
+			return array('status'='1', $rows);
 		}
 	}
 	
