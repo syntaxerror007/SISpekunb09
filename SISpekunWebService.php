@@ -381,7 +381,8 @@
 		'getRequestSepeda',
 		'requestSepeda',
 		'akhirHari',
-		'ubahSpekunBelumKembali'
+		'ubahSpekunBelumKembali',
+		'getNamaPeminjam'
         );
 
 	function sanitize($input) {
