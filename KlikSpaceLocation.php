@@ -22,18 +22,12 @@
 		global $con;
 		//die('haha');
   		//die("SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
-		$res = mysqli_query($con, "SELECT * FROM Location WHERE CityId == '$id'");
+		$res = mysqli_query($con, "SELECT * FROM Location WHERE CityId == $id");
 
 		$retval;
 
-		if (mysqli_num_rows($res) == 0)
-		{
-			$retval = array('status'=>'ERR', 'msg'=>'Invalid username or password.');
-		}
-		else
-		{
-			$retval = array_merge(array("status"=>"OK", "msg" => "Login Success.", "key" => $sessionKey),mysqli_fetch_assoc($res));
-		}
+		$retval = array(mysqli_fetch_assoc($res));
+		
 		return $retval;
 	}
 	
