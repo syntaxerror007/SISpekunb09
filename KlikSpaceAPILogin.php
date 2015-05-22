@@ -69,7 +69,6 @@
 	}
 	$value = "";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {	
-		die ($_POST['user']);	
 		$username = sanitize($_POST['user']);
 		$password = sanitize($_POST['pwd']);
 		$value = CheckLogin($username,$password);
