@@ -56,7 +56,8 @@
                             </table>
 		                </div>
                     </div>
-					<a href="<?php echo base_url().'peminjamanKhusus/editPeminjamanKhusus/'.$peminjamanTerakhir->result_array()[0]['Id_Peminjaman_Khusus']; ?>">Ubah</a>
+					<a href="<?php echo base_url().'peminjamanKhusus/editPeminjamanKhusus/'.$peminjamanTerakhir->result_array()[0]['Id_Peminjaman_Khusus']; ?>">Ubah</a> | 
+					<a href="<?php echo base_url().'peminjamanKhusus/list'?>">Selesai</a>
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->

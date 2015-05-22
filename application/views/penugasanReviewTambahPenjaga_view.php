@@ -15,7 +15,7 @@
                         <div class="dataTable_wrapper">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
-									<?php foreach($peminjamanTerakhir->result_array() as $row) {?>
+									<?php $row = $peminjamanTerakhir->result_array()[0];?>
                                     <tr>
                                         <th>Nama Penjaga</th>
                                         <th><?php echo $row['Nama']; ?></th>
@@ -47,14 +47,14 @@
 										<td><?php if ($row['Status'] == 0 ) echo "Tidak Aktif"; else echo "Aktif"; ?></td>
 									</tr>
                                 </tbody>
-								<?php } ?>
                             </table>
 		                </div>
                     </div>
+                    <a href="<?php echo base_url().'penugasan/edit/'.$row['ID_Penjaga']; ?>">Ubah</a> |
+                    <a href="<?php echo base_url().'penugasan/penjaga';?>">Selesai</a>
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-			<!--END OF TABEL-->	
             </div>
             <!-- /.col-lg-12 -->
         <!-- /.row -->
