@@ -22,8 +22,8 @@
 		global $con;
 		//die('haha');
   		//die("SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
-  		die("SELECT * FROM Location WHERE CityId == $id");
-		$res = mysqli_query($con, "SELECT * FROM Location WHERE CityId == $id");
+  		//die("SELECT * FROM Location WHERE CityId == $id");
+		$res = mysqli_query($con, "SELECT * FROM Location WHERE CityId = $id");
 
 		$retval;
 
