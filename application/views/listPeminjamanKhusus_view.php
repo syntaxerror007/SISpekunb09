@@ -3,7 +3,10 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">List Peminjaman Khusus</h1>
+                    <div class = "page-header">
+						<h1>Daftar Peminjaman Khusus</i></h1>
+						<h4>Daftar Seluruh Peminjaman Khusus Sepeda Kuning</h4>
+					</div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -13,17 +16,6 @@
                 
                 <!--INI TABEL-->
                     <div class="panel panel-default">
-                        <div class="row">
-                            <div class='col-lg-4'>
-                                <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control" />
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">

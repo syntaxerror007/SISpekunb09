@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>SI Spekun</title>
-<<<<<<< Updated upstream
+
 	<!-- DataTables CSS -->
 	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 	  
@@ -21,9 +21,9 @@
 	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 	
 	<link rel="shortcut icon" href="http://mahasiswa.cs.ui.ac.id/~rika.amalia/SISpekun_Logo.png"/>
-=======
+
 	<link rel="shortcut icon" src="<?php echo base_url(). "assets/spekun.png"; ?>"/>
->>>>>>> Stashed changes
+
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo site_url('./bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">

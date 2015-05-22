@@ -6,7 +6,7 @@
 	
 	$dbuser = 'root';
 	$dbpass = 'sispekunb09';
-	$dbname = 'SISpekun';
+	$dbname = 'klikspace';
 
 	$con = mysqli_connect('localhost', $dbuser, $dbpass, $dbname) or die('Terjadi masalah dalam koneksi ke database');
 	
@@ -20,8 +20,9 @@
 	function CheckLogin($username,$password) 
 	{
 		global $con;
-  		die("SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
-		$res = mysqli_query($con, "SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
+		//die('haha');
+  		//die("SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
+		$res = mysqli_query($con, "SELECT * FROM User WHERE email = '$username' and password_field='$password'");
 		$retval;
 
 		if (mysqli_num_rows($res) == 0)
@@ -30,8 +31,7 @@
 		}
 		else
 		{
-			die (mysql_fetch_array($res));
-			$retval = array_merge(array("status"=>"OK", "msg" => "Login Success.", "key" => $sessionKey), mysql_fetch_array($res));
+			$retval = array_merge(array("status"=>"OK", "msg" => "Login Success.", "key" => $sessionKey),mysqli_fetch_assoc($res));
 		}
 		return $retval;
 	}

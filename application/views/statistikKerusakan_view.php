@@ -1,7 +1,10 @@
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Statistik Kerusakan</h1>
+                   <div class = "page-header">
+						<h1>Statistik Kerusakan</h1>
+						<h4>Data Seluruh Kasus Kerusakan Sepeda Kuning Untuk Setiap Hari, Setiap Bulan, dan Setiap Tahun<</h4>
+					</div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
