@@ -68,6 +68,7 @@
 
 		return $input;
 	}
+	
 	$value = "";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {	
 		$username = sanitize($_POST['user']);
