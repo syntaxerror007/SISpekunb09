@@ -20,16 +20,16 @@
 	function getLocationFromId($id) 
 	{
 		global $con;
-		//die('haha');
-  		//die("SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
-  		//die("SELECT * FROM Location WHERE CityId == $id");
 		$res = mysqli_query($con, "SELECT * FROM Location WHERE CityId = $id");
 
 		$retval;
 
-		$retval = array(mysqli_fetch_assoc($res));
-
-		return $retval;
+		$rows = array();
+		while($row = mysqli_fetch_assoc($res)) {
+			$rows[] = $row;
+		}
+		
+		return $rows;
 	}
 	
 	//Bagian untuk memanggil method yang sesuai
