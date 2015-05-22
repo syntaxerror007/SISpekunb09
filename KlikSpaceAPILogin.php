@@ -23,6 +23,7 @@
 		//die('haha');
   		//die("SELECT * FROM User WHERE user_field = '$username' and password_field='$password'");
 		$res = mysqli_query($con, "SELECT * FROM User WHERE email = '$username' and password_field='$password'");
+
 		$retval;
 
 		if (mysqli_num_rows($res) == 0)
