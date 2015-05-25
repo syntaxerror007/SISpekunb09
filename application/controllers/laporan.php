@@ -224,6 +224,9 @@
 				$Tahun = date("Y");
 				$data['daftarKehilanganSpekun'] = $this->peminjaman_model-> getDaftarSpekunBelumKembali();
 				$data['page_loc'] = "Laporan Kehilangan";
+				$data['error_message'] =  $this->session->userdata('ErrorTanggalLaporan');
+				$this->session->unset_userdata("ErrorTanggalLaporan");
+				
 
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation', $data);
