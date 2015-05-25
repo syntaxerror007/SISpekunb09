@@ -2,7 +2,10 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Laporan Kerusakan</h1>
+			<div class = "page-header">
+				<h1>Laporan Kerusakan</h1>
+				<h4>Daftar Kasus Kerusakan Sepeda Kuning</h4>
+			</div>
 		</div>
 	</div>
 				

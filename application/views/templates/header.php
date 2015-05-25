@@ -10,6 +10,11 @@
     <meta name="author" content="">
 
     <title>SI Spekun</title>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+
+>>>>>>> fedb1495cd9d235d887261c09fb9fe67e398c924
 	<!-- DataTables CSS -->
 	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 	  
@@ -21,6 +26,9 @@
 	
 	<link rel="shortcut icon" href="http://mahasiswa.cs.ui.ac.id/~rika.amalia/SISpekun_Logo.png"/>
 	<link rel="shortcut icon" src="<?php echo base_url(). "assets/spekun.png"; ?>"/>
+
+	<link rel="shortcut icon" src="<?php echo base_url(). "assets/spekun.png"; ?>"/>
+
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo site_url('./bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
