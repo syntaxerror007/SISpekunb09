@@ -139,9 +139,9 @@
 			return $this->db->query($query);	
 		}
 		
-		public function getDaftarSpekunBelumKembaliUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir)
+		public function getDaftarSpekunBelumKembaliUsingInterval($tanggalAwal, $bulanAwal, $tahunAwal)
 		{
-			$query = "SELECT * FROM PEMINJAMAN WHERE (Status IS NULL OR Status = '0') AND tahun <= ".$tahunAkhir." AND tahun >= ". $tahunAwal." AND bulan <= ".$bulanAkhir." AND bulan >= ".$bulanAwal." AND Tanggal <= ".$tanggalAkhir. " AND Tanggal >= ".$tanggalAwal;
+			$query = "SELECT * FROM PEMINJAMAN WHERE (Status IS NULL OR Status = '0') AND tahun = ". $tahunAwal." AND bulan = ".$bulanAwal." AND Tanggal = ".$tanggalAwal;
 			return $this->db->query($query);	
 		}	
 		

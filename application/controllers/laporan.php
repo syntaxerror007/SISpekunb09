@@ -129,6 +129,9 @@
 					$tahunAkhir = date("Y");
 				}
 				
+				$data['error_message'] =  $this->session->userdata('ErrorTanggalLaporan');
+				$this->session->unset_userdata("ErrorTanggalLaporan");
+
 				$data['daftarKerusakanSpekun'] = $this->kerusakan_spekun_model-> getSpekunRusakUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
 				$data['page_loc'] = "Laporan Kerusakan";
 				
@@ -146,47 +149,64 @@
 		{
 			if($this->session->userdata('logged_in')){
 				$startDate = $this->input->post("start-date");
-				$endDate = $this->input->post("end-date");
-				if ($startDate == "")
+				if ($page == "kehilangan")
 				{
-					$startDate = date('d-m-Y');
-					$params = $startDate;
-					$endDate = date('d-m-Y');
-					$params = $params . "/" . $endDate;
-				} else if($endDate == "") {
-					if ($startDate > date('d-m-y')) {
-						$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kcil dari hari ini");
-					}
-					else {
-						$startDate = date('d-m-Y', strtotime($startDate));
+					if ($startDate == "")
+					{
+						$startDate = date('d-m-Y');
 						$params = $startDate;
 						$endDate = date('d-m-Y');
 						$params = $params . "/" . $endDate;
 					}
-				} else {
-					$startDate = date('d-m-Y', strtotime($startDate));
-					$endDate = date('d-m-Y', strtotime($endDate));
-					
-					if ($startDate > date('d-m-y')) {
-						$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kecil dari hari ini");
+					else {
+						$startDate = date('d-m-Y', strtotime($startDate));
+						if ($startDate > date('d-m-y')) {
+							$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kecil dari hari ini");
+						}
+						$params = $startDate;
 					}
-					
-					if ($startDate > $endDate) {
-						$this->session->set_userdata('ErrorTanggalLaporan',"Tanggal akhir harap lebih besar dari tanggal awal");
-					}
-					$startDate = date('d-m-Y', strtotime($startDate));
-					$params = $startDate;
-					$endDate = date('d-m-Y', strtotime($endDate));
-					$params = $params . "/" . $endDate;
-				}
-				if ($page == "peminjaman"){
-					redirect('laporan/PeminjamanPerTanggal/'.$params,'refresh');
-				}
-				else if ($page == "kerusakan"){
-					redirect('laporan/KerusakanPerTanggal/'.$params,'refresh');
-				} else if ($page == "kehilangan")
-				{
 					redirect('laporan/KehilanganPerTanggal/'.$params,'refresh');
+				}
+				else {
+					$endDate = $this->input->post("end-date");
+					if ($startDate == "")
+					{
+						$startDate = date('d-m-Y');
+						$params = $startDate;
+						$endDate = date('d-m-Y');
+						$params = $params . "/" . $endDate;
+					} else if($endDate == "") {
+						if ($startDate > date('d-m-y')) {
+							$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kecil dari hari ini");
+						}
+						else {
+							$startDate = date('d-m-Y', strtotime($startDate));
+							$params = $startDate;
+							$endDate = date('d-m-Y');
+							$params = $params . "/" . $endDate;
+						}
+					} else {
+						$startDate = date('d-m-Y', strtotime($startDate));
+						$endDate = date('d-m-Y', strtotime($endDate));
+						
+						if ($startDate > date('d-m-y')) {
+							$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kecil dari hari ini");
+						}
+						
+						if ($startDate > $endDate) {
+							$this->session->set_userdata('ErrorTanggalLaporan',"Tanggal akhir harap lebih besar dari tanggal awal");
+						}
+						$startDate = date('d-m-Y', strtotime($startDate));
+						$params = $startDate;
+						$endDate = date('d-m-Y', strtotime($endDate));
+						$params = $params . "/" . $endDate;
+					}
+					if ($page == "peminjaman"){
+						redirect('laporan/PeminjamanPerTanggal/'.$params,'refresh');
+					}
+					else if ($page == "kerusakan"){
+						redirect('laporan/KerusakanPerTanggal/'.$params,'refresh');
+					}
 				}
 			}
 			else{
@@ -218,12 +238,9 @@
 		{
 			if($this->session->userdata('logged_in')){
 				$tanggalAwal = "";
-				$tanggalAkhir = "";
-				$bulanAkhir = "";
 				$bulanAwal = "";
-				$tahunAkhir = "";
 				$tahunAwal = "";
-				if ($start != null || $end != "")
+				if ($start != null || $start != "")
 				{
 					$data = explode('-',$start,4);
 					$tanggalAwal = $data[0];
@@ -236,22 +253,13 @@
 					$tahunAwal = date("Y");
 				}
 				
-				if ($end != null || $end != "")
-				{
-					$data = explode('-',$end,4);
-					$tanggalAkhir = $data[0];
-					$bulanAkhir = $data[1];
-					$tahunAkhir = $data[2];
-				}
-				else{
-					$tanggalAkhir = date("d");
-					$bulanAkhir = date("m");
-					$tahunAkhir = date("Y");
-				}
 				
-				$data['daftarKehilanganSpekun'] = $this->peminjaman_model->getDaftarSpekunBelumKembaliUsingInterval($tanggalAwal, $tanggalAkhir, $bulanAwal, $bulanAkhir, $tahunAwal, $tahunAkhir);
+				$data['daftarKehilanganSpekun'] = $this->peminjaman_model->getDaftarSpekunBelumKembaliUsingInterval($tanggalAwal,$bulanAwal, $tahunAwal);
 				$data['page_loc'] = "Laporan Kehilangan";
 
+				$data['error_message'] =  $this->session->userdata('ErrorTanggalLaporan');
+				$this->session->unset_userdata("ErrorTanggalLaporan");
+				
 				$this->load->view('templates/header');
 				$this->load->view('templates/navigation', $data);
 				$this->load->view('laporanKehilangan_view', $data);

@@ -14,9 +14,8 @@
 			<div class="row">
 				<div class='col-lg-12'>
 					<div class="form-group">
-						<form action="<?php echo site_url('laporan/getTanggal/peminjaman'); ?>" method="POST">
+						<form action="<?php echo site_url('laporan/getTanggal/kerusakan'); ?>" method="POST">
 							<input type="date" id="start-date" name="start-date" />
-							<input type="date" id="end-date" name="end-date" />
 							<input type="submit" value="submit"/>
 						</form>
 					</div>
@@ -24,6 +23,7 @@
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
+				<?php echo $error_message; ?>
 				<div class="dataTable_wrapper">
 					<?php if ($daftarKerusakanSpekun->num_rows() == 0) echo "<h1>Tidak ada spekun yang rusak</h1>"; else { ?>
 					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
