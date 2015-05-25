@@ -4,6 +4,9 @@
 		public function laporan_penugasan($date = null)
 		{
 			if($this->session->userdata('logged_in')){
+				$data['error_message'] = $this->session->userdata('ErrorTanggalPenugasan');
+				$this->session->unset_userdata('ErrorTanggalPenugasan');
+	            
 				if ($date == null)
 				{
 					$Tanggal = date("d");
@@ -17,10 +20,14 @@
 					$Tanggal = $date[0];
 					$Bulan = $date[1];
 					$Tahun = $date[2];
-					$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugasUsingDate($Tanggal,$Bulan,$Tahun);
+					
+					if ($data['error_message'] != "")
+						$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugasUsingDate($Tanggal,$Bulan,$Tahun);
+					else 
+						$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
 				}
 				
-	            $data['page_loc'] = "Shelter";
+				$data['page_loc'] = "Shelter";
 
 	            $this->load->view('templates/header');
 	            $this->load->view('templates/navigation',$data);
@@ -39,11 +46,13 @@
 			if($this->session->userdata('logged_in')){
 				$startDate = $this->input->post("start-date");
 				$startDate = date('d-m-Y', strtotime($startDate));
-				
+				if ($startDate > date('d-m-Y')) {
+					$this->session->set_userdata('ErrorTanggalPenugasan',"Harap Input tanggal yang lebih kecil dari hari ini");
+				}
 				redirect('penugasan/shelter/'.$startDate);
 			}
 			else{
-                    redirect('auth', 'refresh');
+                redirect('auth', 'refresh');
             }
 		}
 		

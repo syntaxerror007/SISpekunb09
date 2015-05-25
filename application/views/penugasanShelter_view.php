@@ -9,6 +9,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <?php if ($error_message != "") echo "<script>alert('".$error_message."');</script>"; ?>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">				
@@ -27,8 +28,10 @@
 								</div>
 							</form>
 						</div>
+
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                        <?php if ($daftar_Shelter->num_rows() != 0) {?>
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -56,6 +59,7 @@
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
+                            <?php } else echo "<h1>Tidak ada penugasan shelter</h1>"; ?>
                         </div>
                         <!-- /.panel-body -->
                     </div>

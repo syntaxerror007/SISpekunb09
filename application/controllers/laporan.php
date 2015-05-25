@@ -155,7 +155,7 @@
 					$params = $params . "/" . $endDate;
 				} else if($endDate == "") {
 					if ($startDate > date('d-m-y')) {
-						$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih besar dari hari ini");
+						$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kcil dari hari ini");
 					}
 					else {
 						$startDate = date('d-m-Y', strtotime($startDate));
@@ -168,7 +168,7 @@
 					$endDate = date('d-m-Y', strtotime($endDate));
 					
 					if ($startDate > date('d-m-y')) {
-						$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih besar dari hari ini");
+						$this->session->set_userdata('ErrorTanggalLaporan',"Harap Input tanggal yang lebih kecil dari hari ini");
 					}
 					
 					if ($startDate > $endDate) {

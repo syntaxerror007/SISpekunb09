@@ -111,7 +111,7 @@
 										echo form_input($data);
 										echo "</div>";
 										
-										echo form_submit('Submit', 'Submit',"class='btn btn-default'");
+										echo form_submit('Submit', 'Simpan',"class='btn btn-default'");
 										echo form_close();
 										
 									?>
