@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+	<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Penugasan extends CI_Controller {
 		public function laporan_penugasan($date = null)
@@ -20,11 +20,10 @@
 					$Tanggal = $date[0];
 					$Bulan = $date[1];
 					$Tahun = $date[2];
-					
 					if ($data['error_message'] != "")
-						$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugasUsingDate($Tanggal,$Bulan,$Tahun);
-					else 
 						$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugas();
+					else 
+						$data['daftar_Shelter'] = $this->penugasan_penjaga_shelter_model->getAllPenugasanAndPetugasUsingDate($Tanggal,$Bulan,$Tahun);
 				}
 				
 				$data['page_loc'] = "Shelter";
